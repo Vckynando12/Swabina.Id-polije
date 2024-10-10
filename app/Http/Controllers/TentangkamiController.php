@@ -14,7 +14,7 @@ class TentangkamiController extends Controller
         $sekilasPerusahaan = SekilasPerusahaan::all();
         $fotolayanan = FotoLayanan::all();
         
-        return view('tentangkami.sekilasperusahaan', compact('sekilasPerusahaan', 'fotolayanan'));
+        return view('tentangkami.main-sekilas', compact('sekilasPerusahaan', 'fotolayanan'));
     }
     public function visiMisiBudaya()
     {
