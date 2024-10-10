@@ -9,7 +9,7 @@
 
 ## Tim Pengembang
 - Vicky Fernando A.P.I / [https://github.com/Vckynando12](https://github.com/Vckynando12)
-
+- Septiano Rizki / [https://github.com/SeptianoRizki](https://github.com/SeptianoRizki)
 ## Panduan Penggunaan
 
 1. Instal dependensi dengan Composer.
