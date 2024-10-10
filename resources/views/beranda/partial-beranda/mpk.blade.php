@@ -5,7 +5,7 @@
           <div class="card" style="width: 100%; border:none">
               <img src="/assets/gambar_landingpage/competence.png" class="card-img-top" alt="Card Image">
               <div class="card-body">
-                  <h4 class="card-title" style="font-weight: bold">Competence</h4>
+                  <h5 class="card-title" style="font-weight: bold">Competence</h5>
                   <a href="#" id="btn-mpk" class="btn btn-primary" style=""
                   onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">Baca Selengkapnya</a>
               </div>
@@ -15,7 +15,7 @@
           <div class="card" style="width: 100%; border:none">
               <img src="/assets/gambar_landingpage/integrity.png" class="card-img-top" alt="Card Image">
               <div class="card-body">
-                  <h4 class="card-title" style="font-weight: bold">Integrity</h4>
+                  <h5 class="card-title" style="font-weight: bold">Integrity</h5>
                   <a href="#" id="btn-mpk" class="btn btn-primary" style=""
                   onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">Baca Selengkapnya</a>
               </div>
@@ -25,7 +25,7 @@
           <div class="card" style="width: 100%; border:none">
               <img src="/assets/gambar_landingpage/excellence.png" class="card-img-top" alt="Card Image">
               <div class="card-body">
-                  <h4 class="card-title" style="font-weight: bold">Excellent</h4>
+                  <h5 class="card-title" style="font-weight: bold">Excellent</h5>
                   <a href="#" id="btn-mpk" class="btn btn-primary" style=""
                   onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">Baca Selengkapnya</a>
               </div>
@@ -35,7 +35,7 @@
         <div class="card" style="width: 100%; border:none">
             <img src="/assets/gambar_landingpage/innovative.png" class="card-img-top" alt="Card Image">
             <div class="card-body">
-                <h4 class="card-title" style="font-weight: bold">Innovative</h4>
+                <h5 class="card-title" style="font-weight: bold">Innovative</h5>
                 <a href="#" id="btn-mpk" class="btn btn-primary" style=""
                 onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">Baca Selengkapnya</a>
             </div>
@@ -45,7 +45,7 @@
       <div class="card" style="width: 100%; border:none">
           <img src="/assets/gambar_landingpage/profesional.png" class="card-img-top" alt="Card Image">
           <div class="card-body">
-              <h4 class="card-title" style="font-weight: bold">Profesional</h4>
+              <h5 class="card-title" style="font-weight: bold">Profesional</h5>
               <a href="#" id="btn-mpk" class="btn btn-primary " style=""
               onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">Baca Selengkapnya</a>
 

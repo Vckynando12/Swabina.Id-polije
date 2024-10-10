@@ -119,7 +119,7 @@
     <!--Sekilas Perusahaan-->
     
     <div class="tab-content mt-4" id="aboutTabContent">
-      <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab" style="display: block; padding: 20px;">
+      <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
         @foreach($sekilas as $sekilasItem)
           <p class="font-tentang-perusahaan" style="text-align: {{ $sekilasItem->text_align }};">
               {!! nl2br(e($sekilasItem->maintext)) !!}
@@ -132,30 +132,31 @@
       </a>
   </div>
 </div>
+
 <!--Visi dan Misi-->
-<div class="tab-pane fade" id="milestones" role="tabpanel" aria-labelledby="milestones-tab" style="display: none; padding: 20px;">
+<div class="tab-pane fade" id="milestones" role="tabpanel" aria-labelledby="milestones-tab">
   @if($jejakLangkahs->isNotEmpty())
       @foreach($jejakLangkahs as $jejakLangkah)
-          <img src="{{ asset('storage/' . $jejakLangkah->image) }}" alt="Jejak Langkah" class="img-fluid mb-3" style="display: block; margin: 0 auto;">
+          <img src="{{ asset('storage/' . $jejakLangkah->image) }}" alt="Jejak Langkah" class="img-fluid mb-3">
       @endforeach
   @else
-      <img src="/assets/gambar_landingpage/jejak_ind.png" alt="Jejak Langkah" class="img-fluid mb-3" style="display: block; margin: 0 auto;">
+      <img src="/assets/gambar_landingpage/jejak_ind.png" alt="Jejak Langkah" class="img-fluid mb-3">
   @endif
 </div>
-      <div class="tab-pane fade font-tentang-perusahaan" id="vision" role="tabpanel" aria-labelledby="vision-tab" style="display: none; padding: 20px;">
+      <div class="tab-pane fade font-tentang-perusahaan" id="vision" role="tabpanel" aria-labelledby="vision-tab">
         @if($visi->isNotEmpty())
-            <h1 style="margin-bottom: 15px;">VISI</h1>
+            <h2 style="margin-bottom: 15px;">VISI</h2>
             @foreach($visi as $visiItem)
-            <p style="font-size: larger; margin-bottom: 40px; text-align: {{ $visiItem->text_align }};">
+            <p style="font-size: large; margin-bottom: 40px; text-align: {{ $visiItem->text_align }};">
                     {!! nl2br(e($visiItem->content)) !!}
                 </p>
             @endforeach
             @endif
 
             @if($misi->isNotEmpty())
-            <h1 style="margin-bottom: 15px;">MISI</h1>
+            <h2 style="margin-bottom: 15px;">MISI</h2>
             @foreach($misi as $misiItem)
-            <p style="font-size: larger; text-align: {{ $misiItem->text_align }};">
+            <p style="font-size: large; text-align: {{ $misiItem->text_align }};">
                 {!! nl2br(e($misiItem->content)) !!}
             </p>
         @endforeach
@@ -163,10 +164,10 @@
 
     
         @if($budaya->isNotEmpty())
-            <h1 style="margin-bottom: 20px;">Budaya Perusahaan</h1>
+            <h2 style="margin-bottom: 20px;">Budaya Perusahaan</h2>
             @foreach($budaya as $budayaItem)
                 <h2 style="font-weight: bold">SIAP BISA</h2>
-                <p style="font-size: larger; text-align: {{ $budayaItem->text_align }};">
+                <p style="font-size: large; text-align: {{ $budayaItem->text_align }};">
                     {!! nl2br(e($budayaItem->content)) !!}
                 </p>
             @endforeach
@@ -178,7 +179,7 @@
           </a>
         </div>
         <!-- Sertifikat dan Penghargaan -->
-      <div class="tab-pane fade" id="certificates" role="tabpanel" aria-labelledby="certificates-tab" style="display: none; padding: 20px;">
+      <div class="tab-pane fade" id="certificates" role="tabpanel" aria-labelledby="certificates-tab">
         <div id="certificatesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
           <div class="carousel-indicators" style="bottom: -80px; text-align: center;">
             @foreach($sertifikatPenghargaans as $index => $sertifikat)
@@ -211,8 +212,7 @@
           </div>
         </div>
       </div>
-    </div>
-    
+</section>
     
   <!--Foto Direksi-->
   <div class="container-fluid" style="padding: 0; margin: 0;">
@@ -222,6 +222,7 @@
         <img src="/assets/gambar_landingpage/foto_direksi.jpeg" class="img-fluid img-direksi" alt="Default Gambar">
     @endif
 </div>
+
 <!--Konten Card Mengapa Memilih Kami-->
 @include('beranda.partial-beranda.mpk')
 

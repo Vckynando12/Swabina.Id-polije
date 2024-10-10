@@ -20,12 +20,12 @@
     border:none;
     text-decoration:none;
     color:white;
-    padding: 10px 25px;
+    padding: 10px 13px;
     display: inline-block;
     float:right;
     margin-top:55px;
-    margin-bottom: 80px;
-    font-size: large;
+    margin-bottom: 50px;
+    font-size: medium;
 }
 #btn-mpk{
     background: #0454a3; font-weight:bold; border: none;
@@ -49,6 +49,12 @@
     text-align: center;
     font-size: 1.2em;
 }
+
+/* Tentang Kami*/
+.tab-content .tab-pane:not(.active) {
+    display: none !important;
+}
+
 
 .scroll-indicator, .horizontal-list, .close-btn {
     display: none;
@@ -276,12 +282,23 @@
     flex-wrap: nowrap;
 }
 
+.tab-pane {
+    display: none; /* Sembunyikan semua tab secara default */
+}
+
+.tab-pane.show {
+    display: block; /* Tampilkan tab aktif */
+}
+
+
 /* Sertifikat */
 #sertifikat {
     width: 400px;
     height: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.19);
     margin: 10px;
+    min-height: 450px;
+    max-height: 500px;
 }
 
 /* Direksi*/

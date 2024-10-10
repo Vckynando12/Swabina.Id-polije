@@ -18,7 +18,7 @@ dots.forEach((dot) => {
 });
 
 
-      /* Tentang Kami */
+      /* Tentang Kami 
 document.querySelectorAll('#aboutTab .nav-link').forEach(function(link) {
     link.addEventListener('click', function(event) {
         event.preventDefault(); // Mencegah aksi default dari link
@@ -41,6 +41,7 @@ document.querySelectorAll('#aboutTab .nav-link').forEach(function(link) {
         }
     });
 });
+*/
 
 /*icon hotline*/
 document.addEventListener('DOMContentLoaded', () => {
