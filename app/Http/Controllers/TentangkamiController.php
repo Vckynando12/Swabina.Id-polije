@@ -20,7 +20,7 @@ class TentangkamiController extends Controller
     {
         $visiMisiBudaya = VisiMisiBudaya::all();
         
-        return view('tentangkami.visimisibudaya', compact('visiMisiBudaya'));
+        return view('tentangkami.main-visimisi', compact('visiMisiBudaya'));
     }
     public function sertifikat()
     {
