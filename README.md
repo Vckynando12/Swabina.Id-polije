@@ -42,7 +42,7 @@
     php artisan db:seed --class=UsersTableSeeder
     ```
 
- 7Seed data ke dalam tabel `users` menggunakan seeder `UsersTableSeeder`.
+ 7. Seed data ke dalam tabel `users` menggunakan seeder `UsersTableSeeder`.
     ```bash
     composer require intervention/image
     ```
