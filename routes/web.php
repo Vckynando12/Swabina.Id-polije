@@ -45,7 +45,7 @@ Route::get('/swasegar', [SwasegarController::class, 'index'])->name('swasegar');
 Route::get('/swatour', [SwatourorganizerController::class, 'index'])->name('swatour');
 Route::get('/Digital-Solution', [DigitalSolutionController::class, 'index'])->name('digitalsolution');
 Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
-Route::get('/beritaa', [BeritaController::class, 'index'])->name('berita');
+Route::get('/Berita', [BeritaController::class, 'index'])->name('berita');
 Route::get('/tentangkami', [TentangkamiController::class, 'sekilasPerusahaan'])->name('tentangkami');
 Route::get('/visimisibudaya', [TentangkamiController::class, 'visiMisiBudaya'])->name('visimisi');
 Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'])->name('sertif');
