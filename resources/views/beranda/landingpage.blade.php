@@ -216,8 +216,8 @@
     
   <!--Foto Direksi-->
   <div class="container-fluid" style="padding: 0; margin: 0;">
-    @if($fotoLayanans->isNotEmpty() && $fotoLayanans->first()->image1)
-        <img src="{{ asset('storage/' . $fotoLayanans->first()->image1) }}" class="img-fluid img-direksi" alt="Foto Layanan">
+    @if($fotoLayanan && $fotoLayanan->gambar_direksi_1)
+        <img src="{{ asset('storage/' . $fotoLayanan->gambar_direksi_1) }}" class="img-fluid img-direksi" alt="Foto Layanan">
     @else
         <img src="/assets/gambar_landingpage/foto_direksi.jpeg" class="img-fluid img-direksi" alt="Default Gambar">
     @endif
@@ -237,8 +237,12 @@
 
 <!-- Layanan Area -->
 <section class="section-custom" style="padding: 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.19); position: relative; margin-bottom: 0;">
-  <img  class="img-fluid gambare-layanan" src="/assets/gambar_landingpage/layanan_area.png" alt="Deskripsi Gambar">
-  <a href="#"  id="btn-selengkapnya-layanan" role="button"
+  @if($fotoLayanan && $fotoLayanan->jejak_langkah)
+    <img class="img-fluid gambare-layanan" src="{{ asset('storage/' . $fotoLayanan->jejak_langkah) }}" alt="Layanan Area">
+  @else
+    <img class="img-fluid gambare-layanan" src="/assets/gambar_landingpage/layanan_area.png" alt="Default Layanan Area">
+  @endif
+  <a href="#" id="btn-selengkapnya-layanan" role="button"
      onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">
     Baca Selengkapnya
   </a>

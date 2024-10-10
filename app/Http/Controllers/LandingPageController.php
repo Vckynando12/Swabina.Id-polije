@@ -18,7 +18,7 @@ class LandingPageController extends Controller
         $sekilas = SekilasPerusahaan::all();
         $jejakLangkahs = JejakLangkah::all();
         $sertifikatPenghargaans = SertifikatPenghargaan::all();
-        $fotoLayanans = FotoLayanan::all();
+        $fotoLayanan = FotoLayanan::first();
 
         // Fetch Visi, Misi, and Budaya separately
         $visi = VisiMisiBudaya::where('type', 'visi')->get();
@@ -30,7 +30,7 @@ class LandingPageController extends Controller
             'sekilas', 
             'jejakLangkahs', 
             'sertifikatPenghargaans', 
-            'fotoLayanans',
+            'fotoLayanan',
             'visi',
             'misi',
             'budaya'
