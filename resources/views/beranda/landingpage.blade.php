@@ -156,7 +156,7 @@
             @if($misi->isNotEmpty())
             <h2 style="margin-bottom: 15px;">MISI</h2>
             @foreach($misi as $misiItem)
-            <p style="font-size: large; text-align: {{ $misiItem->text_align }};">
+            <p style="font-size: large; text-align: {{ $misiItem->text_align }}; margin-bottom: 40px">
                 {!! nl2br(e($misiItem->content)) !!}
             </p>
         @endforeach

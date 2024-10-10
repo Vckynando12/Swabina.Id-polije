@@ -18,7 +18,7 @@ dots.forEach((dot) => {
 });
 
 
-      /* Tentang Kami 
+      /* Tentang Kami */
 document.querySelectorAll('#aboutTab .nav-link').forEach(function(link) {
     link.addEventListener('click', function(event) {
         event.preventDefault(); // Mencegah aksi default dari link
@@ -30,18 +30,9 @@ document.querySelectorAll('#aboutTab .nav-link').forEach(function(link) {
 
         link.style.backgroundColor = '#0454a3';
         link.style.color = 'white';
-
-        document.querySelectorAll('#aboutTabContent .tab-pane').forEach(function(pane) {
-            pane.style.display = 'none';
-        });
-
-        const targetPane = document.querySelector(link.getAttribute('href'));
-        if (targetPane) {
-            targetPane.style.display = 'block';
-        }
     });
 });
-*/
+
 
 /*icon hotline*/
 document.addEventListener('DOMContentLoaded', () => {
