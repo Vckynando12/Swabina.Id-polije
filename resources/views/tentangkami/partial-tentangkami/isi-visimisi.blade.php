@@ -1,19 +1,56 @@
-<!-- Konten Visi Misi -->
-
 <section class="section-vmb">
     <div class="bagian-visimisi">
-        <h1 class="judul-visi">VISI</h1>
-        <p class="teks-vmb">Menjadi Perusahaan yang dapat tumbuh dan berkembang dengan sehat dan selalu unggul dibidangnya.</p>
-        <h1 class="judul-misi">MISI</h1>
-        <p class="teks-vmb">1.  Meningkatkan dan mengembangkan bidang usaha utama (Core Business).<br>2.  Meningkatkan dan mengembangkan bidang usaha penunjang 
-            sebagai usaha untuk mendukung pendapatan dari kegiatan bidang usaha utama<br>3. Meningkatkan kualitas pengelolaan sumber daya 
-            manusia yang berdaya saing tinggi guna mendukung penyediaan tenaga kerja yang profesional<br>4. Menghasilkan laba yang wajar 
-            dan memberikan deviden yang memuaskan bagi Pemegang Saham.</p>
+        @if($visiMisiBudaya->where('type', 'visi')->isNotEmpty())
+            @php
+                $visiAlignment = $visiMisiBudaya->where('type', 'visi')->first()->text_align;
+            @endphp
+            <h1 class="judul-visi" style="text-align: {{ $visiAlignment }};">VISI</h1>
+            @foreach($visiMisiBudaya->where('type', 'visi') as $visi)
+                <p class="teks-vmb" style="text-align: {{ $visi->text_align }};">
+                    {!! nl2br(e($visi->content)) !!}
+                </p>
+            @endforeach
+        @else
+            <h1 class="judul-visi">VISI</h1>
+            <p class="teks-vmb">Data visi belum ditambahkan</p>
+        @endif
     </div>
+
+    <div class="bagian-visimisi">
+        @if($visiMisiBudaya->where('type', 'misi')->isNotEmpty())
+            @php
+                $misiAlignment = $visiMisiBudaya->where('type', 'misi')->first()->text_align;
+            @endphp
+            <h1 class="judul-misi" style="text-align: {{ $misiAlignment }};">MISI</h1>
+            @foreach($visiMisiBudaya->where('type', 'misi') as $misi)
+                <p class="teks-vmb" style="text-align: {{ $misi->text_align }};">
+                    {!! nl2br(e($misi->content)) !!}
+                </p>
+            @endforeach
+        @else
+            <h1 class="judul-misi">MISI</h1>
+            <p class="teks-vmb">Data misi belum ditambahkan</p>
+        @endif
+    </div>
+
     <div class="bagian-budaya">
-        <h1 class="judul-budaya">BUDAYA</h1>
-        <h3 class="subjudul-siapbisa">SIAP BISA</h3>
-        <p class="teks-vmb">Makna SIAP adalah Semangat, Ikhlas, Akhlak dan Profesional.<br>Makna BISA adalah dengan rahmat Allah SWT, PT Swabina Gatra pasti bisa
-        mewujudkan visi Perusahaan saat ini dan di masa selanjutnya.</p>
+        @if($visiMisiBudaya->where('type', 'budaya')->isNotEmpty())
+            @php
+                $budayaAlignment = $visiMisiBudaya->where('type', 'budaya')->first()->text_align;
+            @endphp
+            <h1 class="judul-budaya" style="text-align: {{ $budayaAlignment }};">BUDAYA</h1>
+            <h3 class="subjudul-siapbisa" style="text-align: {{ $budayaAlignment }};">
+                <b>SIAP BISA</b>
+            </h3>
+            @foreach($visiMisiBudaya->where('type', 'budaya') as $budaya)
+                <p class="teks-vmb" style="text-align: {{ $budaya->text_align }};">
+                    {!! nl2br(e($budaya->content)) !!}
+                </p>
+            @endforeach
+        @else
+            <h1 class="judul-budaya">BUDAYA</h1>
+            <h3 class="subjudul-siapbisa"><b>SIAP BISA</b></h3>
+            <p class="teks-vmb">Data budaya belum ditambahkan</p>
+        @endif
     </div>
 </section>

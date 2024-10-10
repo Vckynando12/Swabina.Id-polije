@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('foto_layanans', function (Blueprint $table) {
             $table->id();
-            $table->string('image1')->nullable();
-            $table->string('image2')->nullable();
+            $table->string('gambar_direksi_1')->nullable();
+            $table->string('gambar_direksi_2')->nullable();
+            $table->string('jejak_langkah')->nullable();
             $table->timestamps();
         });
     }

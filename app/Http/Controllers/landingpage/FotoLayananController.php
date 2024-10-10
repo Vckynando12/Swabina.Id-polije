@@ -24,10 +24,10 @@ class FotoLayananController extends Controller
     // Menampilkan halaman foto layanan CRUD
     public function index()
     {
-        $fotoLayanans = FotoLayanan::all();
+        $fotoLayanan = FotoLayanan::first(); // Mengambil satu record pertama
         $userRole = auth()->user()->role;
         $layout = $userRole === 'admin' ? 'layouts.app' : 'layouts.ppa';
-        return view('admin.landingpage.foto_layanan', compact('fotoLayanans', 'userRole', 'layout'));
+        return view('admin.landingpage.foto_layanan', compact('fotoLayanan', 'userRole', 'layout'));
     }
 
     // Fungsi untuk mengompres dan menyimpan gambar
@@ -82,26 +82,25 @@ class FotoLayananController extends Controller
     public function store(Request $request)
     {
         try {
-            $request->validate([
-                'image1' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
-                'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
+            $validator = Validator::make($request->all(), [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
+                'imageType' => 'required|in:gambar_direksi_1,gambar_direksi_2,jejak_langkah',
             ]);
 
-            $fotoLayanan = new FotoLayanan();
-
-            if ($request->hasFile('image1')) {
-                $fotoLayanan->image1 = $this->compressAndSaveImage($request->file('image1'));
+            if ($validator->fails()) {
+                return response()->json(['success' => false, 'message' => $validator->errors()->first()], 422);
             }
 
-            if ($request->hasFile('image2')) {
-                $fotoLayanan->image2 = $this->compressAndSaveImage($request->file('image2'));
+            $fotoLayanan = FotoLayanan::firstOrNew();
+            $imageType = $request->input('imageType');
+
+            if ($request->hasFile('image')) {
+                $fotoLayanan->$imageType = $this->compressAndSaveImage($request->file('image'));
             }
 
             $fotoLayanan->save();
 
             return response()->json(['success' => true, 'message' => 'Foto Layanan berhasil ditambahkan']);
-        } catch (ValidationException $e) {
-            return response()->json(['success' => false, 'message' => $e->errors()], 422);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Terjadi kesalahan: ' . $e->getMessage()], 500);
         }
@@ -113,30 +112,27 @@ class FotoLayananController extends Controller
         try {
             $fotoLayanan = FotoLayanan::findOrFail($id);
             
-            $request->validate([
-                'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
-                'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
+            $validator = Validator::make($request->all(), [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
+                'imageType' => 'required|in:gambar_direksi_1,gambar_direksi_2,jejak_langkah',
             ]);
 
-            if ($request->hasFile('image1')) {
-                if ($fotoLayanan->image1) {
-                    Storage::disk('public')->delete($fotoLayanan->image1);
-                }
-                $fotoLayanan->image1 = $this->compressAndSaveImage($request->file('image1'));
+            if ($validator->fails()) {
+                return response()->json(['success' => false, 'message' => $validator->errors()->first()], 422);
             }
 
-            if ($request->hasFile('image2')) {
-                if ($fotoLayanan->image2) {
-                    Storage::disk('public')->delete($fotoLayanan->image2);
+            $imageType = $request->input('imageType');
+
+            if ($request->hasFile('image')) {
+                if ($fotoLayanan->$imageType) {
+                    Storage::disk('public')->delete($fotoLayanan->$imageType);
                 }
-                $fotoLayanan->image2 = $this->compressAndSaveImage($request->file('image2'));
+                $fotoLayanan->$imageType = $this->compressAndSaveImage($request->file('image'));
             }
 
             $fotoLayanan->save();
 
             return response()->json(['success' => true, 'message' => 'Foto Layanan berhasil diperbarui']);
-        } catch (ValidationException $e) {
-            return response()->json(['success' => false, 'message' => $e->errors()], 422);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Terjadi kesalahan: ' . $e->getMessage()], 500);
         }
@@ -148,12 +144,15 @@ class FotoLayananController extends Controller
         try {
             $fotoLayanan = FotoLayanan::findOrFail($id);
 
-            if ($fotoLayanan->image1) {
-                Storage::disk('public')->delete($fotoLayanan->image1);
+            if ($fotoLayanan->gambar_direksi_1) {
+                Storage::disk('public')->delete($fotoLayanan->gambar_direksi_1);
             }
 
-            if ($fotoLayanan->image2) {
-                Storage::disk('public')->delete($fotoLayanan->image2);
+            if ($fotoLayanan->gambar_direksi_2) {
+                Storage::disk('public')->delete($fotoLayanan->gambar_direksi_2);
+            }
+            if ($fotoLayanan->jejak_langkah) {
+                Storage::disk('public')->delete($fotoLayanan->jejak_langkah);
             }
 
             $fotoLayanan->delete();

@@ -4,22 +4,50 @@
     <h1 class="judul-sekilas">Sekilas Perusahaan</h1>
     <div id="carouselExampleFade" class="carousel slide carousel-fade">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/assets/gambar-sekilas/slide1.jpeg" class="d-block carousel-sekilas" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/gambar-sekilas/slide2.jpg" class="d-block carousel-sekilas" alt="...">
-            </div>
+            @if($fotolayanan->isNotEmpty())
+                @php
+                    $fotoLayanan = $fotolayanan->first();
+                @endphp
+                @if($fotoLayanan->gambar_direksi_1)
+                    <div class="carousel-item active">
+                        <img src="{{ asset('storage/' . $fotoLayanan->gambar_direksi_1) }}" class="d-block carousel-sekilas" alt="Foto Direksi 1">
+                    </div>
+                @endif
+                @if($fotoLayanan->gambar_direksi_2)
+                    <div class="carousel-item {{ !$fotoLayanan->gambar_direksi_1 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $fotoLayanan->gambar_direksi_2) }}" class="d-block carousel-sekilas" alt="Foto Direksi 2">
+                    </div>
+                @endif
+            @endif
+            @if(!$fotolayanan->isNotEmpty() || (!$fotoLayanan->gambar_direksi_1 && !$fotoLayanan->gambar_direksi_2))
+                <div class="carousel-item active">
+                    <img src="/assets/gambar-sekilas/slide1.jpeg" class="d-block carousel-sekilas" alt="Default Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="/assets/gambar-sekilas/slide2.jpg" class="d-block carousel-sekilas" alt="Default Slide 2">
+                </div>
+            @endif
         </div>
+        <!-- Tombol panah kiri -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <!-- Tombol panah kanan -->
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
     
     <div class="deskripsi-sekilas">
-        <p>PT Swabina Gatra atau yang lebih dikenal dengan nama SWA adalah perusahaan swasta nasional dan merupakan bagian dari Semen Indonesia 
-        Group. Berdiri sejak tahun 1988, SWA memiliki kisah sukses yang panjang dan terus tumbuh menjadi perusahaan modern, profesional 
-        dan bereputasi prima. SWA memiliki 5 lini bisnis utama yaitu Penyediaan Tenaga Kerja, produksi Air Minum Dalam Kemasan, 
-        Jasa Agen Perjalanan, Solusi Teknologi Informasi serta Lembaga Diklat & Sertifikasi. Dengan pengalaman selama lebih 
-        dari 3 dekade, SWA telah dipercaya oleh Pelanggan dari beragam segmen yang tersebar di berbagai kota di Indonesia, 
-        mulai dari Aceh hingga Papua. Keberhasilan kami tidak terlepas dari komitmen akan kualitas. SWA senantiasa 
-        berkomitmen untuk menjaga standar tertinggi dalam menjalankan bisnisnya.</p>
+        @if($sekilasPerusahaan->isNotEmpty())
+            @foreach($sekilasPerusahaan as $sekilas)
+                <p style="text-align: {{ $sekilas->text_align }};">{{ $sekilas->maintext }}</p>
+            @endforeach
+        @else
+            
+        <h3>tidak ada data</h3>
+        @endif
     </div>
 </section>

@@ -9,7 +9,8 @@ class FotoLayanan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'image1',
-        'image2',
+        'gambar_direksi_1',
+        'gambar_direksi_2',
+        'jejak_langkah',
     ];
 }
