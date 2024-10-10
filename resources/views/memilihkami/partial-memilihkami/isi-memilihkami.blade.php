@@ -1,59 +1,21 @@
-<!-- Konten Mengapa Memilih Kami -->
-
 <section class="isi-konten-mengapa">
 <div class="container">
     <h1 class="text-center judul-mengapa">Mengapa Memilih Kami</h1>
     <div class="why-choose-us-btn-container">
-        <button class="btn why-choose-us-btn active" data-target="#competence">Competence</button>
-        <button class="btn why-choose-us-btn" data-target="#integrity">Integrity</button>
-        <button class="btn why-choose-us-btn" data-target="#excellent">Excellent</button>
-        <button class="btn why-choose-us-btn" data-target="#innovative">Innovative</button>
-        <button class="btn why-choose-us-btn" data-target="#professional">Professional</button>
+        @foreach($MK as $index => $item)
+            <button class="btn why-choose-us-btn {{ $index == 0 ? 'active' : '' }}" data-target="#mk-{{ $item->id }}">{{ $item->title }}</button>
+        @endforeach
     </div>
 
-    <div id="competence" class="why-choose-us-content-section active">
-        <img src="/assets/gambar_mengapa/competence.jpg" class="img-fluid gambare-konten" alt="Competence Image">
-        <h1 class="judule-konten">Competence</h1>
-        <p class="deskripsine-konten">
-            Untuk memenangkan persaingan bisnis di era kompetisi yang semakin ketat, SWA tidak pernah lelah belajar untuk mempertajam kompetensi 
-            dan keunggulan kompetitif yang dimiliki. Setiap karyawan SWA diwajibkan memahami dan mengimplementasikan 5 Kompetensi Dasar Karyawan, 
-            yaitu religi dan nasionalis, budaya SWA, budaya K3, program 5R dan Service Excellent. Untuk lebih memperkuat kepercayaan Pelanggan, 
-            SWA juga terus berupaya meningkatkan kualitas melalui berbagai sertifikasi.
-        </p>
-    </div>
-    <div id="integrity" class="why-choose-us-content-section">
-        <img src="/assets/gambar_mengapa/integrity.jpg" class="img-fluid gambare-konten" alt="Integrity Image">
-        <h1 class="judule-konten">Integrity</h1>
-        <p class="deskripsine-konten">
-            SWA selalu memiliki keteguhan dalam menjunjung tinggi nilai-nilai integritas dan telah menjadi budaya kerja sehari-hari. Dengan 
-            integritas, SWA secara konsisten mampu menjaga kredibilitas Perusahaan melalui pelayanan prima yang terpercaya.
-        </p>
-    </div>
-    <div id="excellent" class="why-choose-us-content-section">
-        <img src="/assets/gambar_mengapa/excellent.jpg" class="img-fluid gambare-konten" alt="Excellent Image">
-        <h1 class="judule-konten">Excellent</h1>
-        <p class="deskripsine-konten">
-            Menjaga produk dan layanan berada pada kualitas yang excellent adalah prioritas utama bagi SWA. Melalui pengawasan mutu yang dilakukan 
-            secara berkala, SWA memastikan Pelanggan mendapatkan produk dan layanan terbaik melebihi ekspektasi mereka.
-        </p>
-    </div>
-    <div id="innovative" class="why-choose-us-content-section">
-        <img src="/assets/gambar_mengapa/innovative.jpg" class="img-fluid gambare-konten" alt="Innovative Image">
-        <h1 class="judule-konten">Innovative</h1>
-        <p class="deskripsine-konten">
-            Inovasi selalu menjadi jiwa dari setiap insan SWA. SWA menerapkan inovasi berkelanjutan untuk membangun bisnis yang efektif dan efisien
-            demi kenyamanan Pelanggan. Melalui inovasi, SWA tumbuh menjadi perusahaan yang kompetitif dan mampu beradaptasi dengan berbagai 
-            perubahan.
-        </p>
-    </div>
-    <div id="professional" class="why-choose-us-content-section">
-        <img src="/assets/gambar_mengapa/professional.jpg" class="img-fluid gambare-konten" alt="Professional Image">
-        <h1 class="judule-konten">Professional</h1>
-        <p class="deskripsine-konten">
-            Profesionalisme kerja menjadikan SWA mampu memelihara loyalitas Pelanggan. Dalam melaksanakan pekerjaan, setiap insan SWA dibekali 
-            tanggung jawab yang besar untuk proaktif dalam menjawab kebutuhan Pelanggan dan senantiasa memberikan hasil kerja yang berkualitas.
-        </p>
-    </div>
+    @foreach($MK as $index => $item)
+        <div id="mk-{{ $item->id }}" class="why-choose-us-content-section {{ $index == 0 ? 'active' : '' }}">
+            <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid gambare-konten" alt="{{ $item->title }} Image">
+            <h1 class="judule-konten">{{ $item->title }}</h1>
+            <p class="deskripsine-konten">
+                {{ $item->description }}
+            </p>
+        </div>
+    @endforeach
 </div>
 </section>
 
