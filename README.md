@@ -12,65 +12,46 @@
 
 ## Panduan Penggunaan
 
-1. Clone repositori ini ke server lokal Anda.
-    ```bash
-    git clone <repository_url>
-    ```
-
-2. Masuk ke direktori proyek.
-    ```bash
-    cd <project_folder>
-    ```
-
-3. Instal dependensi dengan Composer.
+1. Instal dependensi dengan Composer.
     ```bash
     composer install
     ```
 
-4. Salin file `.env.example` menjadi `.env` dan atur konfigurasi database.
+2. Salin file `.env.example` menjadi `.env` dan atur konfigurasi database.
     ```bash
     cp .env.example .env
     ```
 
-5. Generate kunci aplikasi untuk `.env`.
+3. Generate kunci aplikasi untuk `.env`.
     ```bash
     php artisan key:generate
     ```
 
-6. Buat symbolic link untuk folder `storage`.
+4. Buat symbolic link untuk folder `storage`.
     ```bash
     php artisan storage:link
     ```
 
-7. Buat folder untuk menyimpan gambar carousel dan foto layanan.
-    ```bash
-    mkdir -p storage/app/public/carousels
-    ```
-    ```bash
-    mkdir -p storage/app/public/foto-layanan
-    ```
-
-8. Jalankan migrasi database.
+5. Jalankan migrasi database.
     ```bash
     php artisan migrate
     ```
 
-9. Seed data ke dalam tabel `users` menggunakan seeder `UsersTableSeeder`.
+6. Seed data ke dalam tabel `users` menggunakan seeder `UsersTableSeeder`.
     ```bash
     php artisan db:seed --class=UsersTableSeeder
     ```
 
-10. Atau gunakan seeder `UserSeeder` untuk seeding database.
+ 7Seed data ke dalam tabel `users` menggunakan seeder `UsersTableSeeder`.
     ```bash
-    php artisan db:seed --class=UserSeeder
+    composer require intervention/image
     ```
-
-11. Jalankan server lokal.
+8. Jalankan server lokal.
     ```bash
     php artisan serve
     ```
 
-12. Buka aplikasi di browser dengan alamat yang muncul pada terminal, contoh URL: [http://localhost:8000](http://localhost:8000).
+9. Buka aplikasi di browser dengan alamat yang muncul pada terminal, contoh URL: [http://localhost:8000](http://localhost:8000).
 
 ## Kontribusi
 
