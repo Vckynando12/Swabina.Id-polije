@@ -1,52 +1,32 @@
 <section class="bag-sertif">
   <h1 class="judule-sertif">Sertifikat dan Penghargaan</h1>
-<div id="carouselExampleIndicators" class="carousel slide bagian-sertif" data-bs-ride="carousel" data-bs-interval="2000">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="sertifikat-dot active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="sertifikat-dot" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="sertifikat-dot" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" class="sertifikat-dot" aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" class="sertifikat-dot" aria-label="Slide 5"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" class="sertifikat-dot" aria-label="Slide 6"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" class="sertifikat-dot" aria-label="Slide 7"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7" class="sertifikat-dot" aria-label="Slide 8"></button>
-  </div>
+  <div id="carouselExampleIndicators" class="carousel slide bagian-sertif" data-bs-ride="carousel" data-bs-interval="2000">
+    <div class="carousel-indicators">
+      @foreach($sertifikatPenghargaan as $index => $sertifikat)
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" 
+                class="sertifikat-dot {{ $index == 0 ? 'active' : '' }}" 
+                aria-current="{{ $index == 0 ? 'true' : 'false' }}" 
+                aria-label="Slide {{ $index + 1 }}"></button>
+      @endforeach
+    </div>
 
-  <div class="carousel-inner">
-    <div class="carousel-item active ini-sertif">
-      <img src="/assets/gambar-sertifikat/sertif1.jpg" class="d-block w-100 kontol" alt="sertif1">
+    <div class="carousel-inner">
+      @foreach($sertifikatPenghargaan as $index => $sertifikat)
+        <div class="carousel-item {{ $index == 0 ? 'active' : '' }} ini-sertif">
+          <img src="{{ asset('storage/' . $sertifikat->image) }}" class="d-block w-100" alt="sertifikat{{ $index + 1 }}">
+        </div>
+      @endforeach
     </div>
-    <div class="carousel-item ini-sertif">
-      <img src="/assets/gambar-sertifikat/sertif2.jpg" class="d-block w-100" alt="sertif2">
-    </div>
-    <div class="carousel-item ini-sertif">
-      <img src="/assets/gambar-sertifikat/sertif3.jpg" class="d-block w-100" alt="sertif3">
-    </div>
-    <div class="carousel-item ini-sertif">
-      <img src="/assets/gambar-sertifikat/sertif4.jpg" class="d-block w-100" alt="sertif4">
-    </div>
-    <div class="carousel-item ini-sertif">
-      <img src="/assets/gambar-sertifikat/sertif5.jpg" class="d-block w-100" alt="sertif5">
-    </div>
-    <div class="carousel-item ini-sertif">
-      <img src="/assets/gambar-sertifikat/sertif6.jpg" class="d-block w-100" alt="sertif6">
-    </div>
-    <div class="carousel-item ini-sertif">
-      <img src="/assets/gambar-sertifikat/sertif7.jpg" class="d-block w-100" alt="sertif7">
-    </div>
-    <div class="carousel-item ini-sertif">
-      <img src="/assets/gambar-sertifikat/sertif8.jpeg" class="d-block w-100" alt="sertif8">
-    </div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <i class="bi bi-triangle-fill left-arrow" aria-hidden="true"></i>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <i class="bi bi-triangle-fill right-arrow" aria-hidden="true"></i>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <i class="bi bi-triangle-fill left-arrow" aria-hidden="true"></i>
-    <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <i class="bi bi-triangle-fill right-arrow" aria-hidden="true"></i>
-    <span class="visually-hidden">Next</span>
-</button>
-</div>
 </section>
 
 <section>

@@ -25,6 +25,6 @@ class TentangkamiController extends Controller
     public function sertifikat()
     {
         $sertifikatPenghargaan = SertifikatPenghargaan::all();
-        return view('tentangkami.sertifikatPenghargaan', compact('sertifikatPenghargaan'));
+        return view('tentangkami.main-sertifikat', compact('sertifikatPenghargaan'));
     }
 }
