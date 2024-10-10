@@ -132,7 +132,6 @@
       </a>
   </div>
 </div>
-C:\Users\vicky\Downloads\New folder (2)\FrontEndSWA\resources\views\beranda\landingpage.blade.php
 <!--Visi dan Misi-->
 <div class="tab-pane fade" id="milestones" role="tabpanel" aria-labelledby="milestones-tab" style="display: none; padding: 20px;">
   @if($jejakLangkahs->isNotEmpty())
