@@ -131,23 +131,22 @@
          Baca Selengkapnya
       </a>
   </div>
-</div>
 
 <!--Visi dan Misi-->
 <div class="tab-pane fade" id="milestones" role="tabpanel" aria-labelledby="milestones-tab">
   @if($jejakLangkahs->isNotEmpty())
       @foreach($jejakLangkahs as $jejakLangkah)
-          <img src="{{ asset('storage/' . $jejakLangkah->image) }}" alt="Jejak Langkah" class="img-fluid mb-3">
+          <img src="{{ asset('storage/' . $jejakLangkah->image) }}" alt="Jejak Langkah" class="img-fluid mb-3 gambare-jelang">
       @endforeach
   @else
-      <img src="/assets/gambar_landingpage/jejak_ind.png" alt="Jejak Langkah" class="img-fluid mb-3">
+      <img src="/assets/gambar_landingpage/jejak_ind.png" alt="Jejak Langkah" class="img-fluid mb-3 gambare-jelang">
   @endif
 </div>
       <div class="tab-pane fade font-tentang-perusahaan" id="vision" role="tabpanel" aria-labelledby="vision-tab">
         @if($visi->isNotEmpty())
             <h2 style="margin-bottom: 15px;">VISI</h2>
             @foreach($visi as $visiItem)
-            <p style="font-size: large; margin-bottom: 40px; text-align: {{ $visiItem->text_align }};">
+            <p style="margin-bottom: 40px; text-align: {{ $visiItem->text_align }};">
                     {!! nl2br(e($visiItem->content)) !!}
                 </p>
             @endforeach
@@ -212,6 +211,7 @@
           </div>
         </div>
       </div>
+    </div>
 </section>
     
   <!--Foto Direksi-->
