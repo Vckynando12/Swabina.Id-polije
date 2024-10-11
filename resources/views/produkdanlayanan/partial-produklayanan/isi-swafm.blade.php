@@ -3,21 +3,17 @@
  <section>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: relative;">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/assets/gambar_swafm/fm1.jpeg" class="d-block w-100 carousel-image" alt="Slide 1">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/gambar_swafm/fm2.jpg" class="d-block w-100 carousel-image" alt="Slide 2">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/gambar_swafm/fm3.jpg" class="d-block w-100 carousel-image" alt="Slide 3">
-            </div>
+            @foreach($carousels as $index => $carousel)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                    <img src="{{ asset('storage/' . $carousel->image) }}" class="d-block w-100 carousel-image" alt="Slide {{ $index + 1 }}">
+                </div>
+            @endforeach
         </div>
     
         <div class="carousel-controls" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 1000;">
-            <span class="dot" data-bs-slide-to="0" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
-            <span class="dot" data-bs-slide-to="1" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
-            <span class="dot" data-bs-slide-to="2" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
+            @foreach($carousels as $index => $carousel)
+                <span class="dot" data-bs-slide-to="{{ $index }}" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
+            @endforeach
         </div>
     </div>
   </section>
@@ -27,24 +23,38 @@
 <section class="content-section">
     <!-- Gambar Pertama -->
     <div class="content-item align-left">
-        <img src="/assets/gambar_swafm/gambar-swafm1.jpeg" alt="Gambar Pertama" class="image1">
+        @if($gambarFM->gambar1)
+            <img src="{{ asset('storage/' . $gambarFM->gambar1) }}" alt="Gambar Pertama" class="image1">
+        @else
+            <!-- Placeholder image or message -->
+            <img src="{{ asset('path/to/placeholder-image.jpg') }}" alt="Placeholder" class="image1">
+        @endif
         <p class="description">
-            Sejak tahun 1988, SWA Facility Management telah berpengalaman dalam menyediakan tenaga kerja berkualitas yang dikelola sesuai 
-            dengan peraturan perundangan yang berlaku, mendukung kinerja bisnis mitra kerja. Layanan yang disediakan mencakup cleaning 
-            service, driver, tenaga pengamanan, pemeliharaan, pengantongan, staf administrasi, operator, resepsionis, dan berbagai 
-            posisi lainnya. Keunggulan SWA Facility Management terletak pada sistem rekrutmen yang dilengkapi alat tes akurat dan 
-            pelatihan komprehensif.
+            @php
+                $content = $texts->where('id', 1)->first()->content ?? 'Default text if no content found.';
+                $content = str_replace("\r\n", "\n", $content);
+            @endphp
+            {!! nl2br(e($content)) !!}
         </p>
     </div>
     <!-- Gambar Kedua -->
     <div class="content-item align-right">
-        <img src="/assets/gambar_swafm/gambar-swafm2.jpg" alt="Gambar Kedua" class="image2">
-        <p class="description">
-            SWA Facility Management juga menerapkan sistem penilaian dan evaluasi kerja secara berkala untuk memastikan kepuasan mitra kerja. 
-            Sebagai bukti kualitasnya, SWA Facility Management telah meraih berbagai sertifikasi, termasuk Sistem Manajemen Mutu 
-            ISO 9001:2015, Sistem Manajemen Kesehatan dan Keselamatan Kerja ISO 45001:2018, serta Sistem Manajemen Lingkungan 
-            ISO 14001:2015. Sertifikasi ini menunjukkan komitmen perusahaan terhadap standar kualitas dan kepuasan pelanggan.
-        </p>
+        @if($gambarFM->gambar2)
+            <img src="{{ asset('storage/' . $gambarFM->gambar2) }}" alt="Gambar Kedua" class="image2">
+        @else
+            <!-- Placeholder image or message -->
+            <img src="{{ asset('path/to/placeholder-image.jpg') }}" alt="Placeholder" class="image2">
+        @endif
+        
+        @foreach($texts->where('id', '>=', 2) as $text)
+            <p class="description">
+                @php
+                    $content = $text->content ?? 'Default text if no content found.';
+                    $content = str_replace("\r\n", "\n", $content);
+                @endphp
+                {!! nl2br(e($content)) !!}
+            </p>
+        @endforeach
     </div>
 </section>
 

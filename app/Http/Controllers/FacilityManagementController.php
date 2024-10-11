@@ -12,8 +12,9 @@ class FacilityManagementController extends Controller
     public function index()
     {
         $carousels = CarouselFM::all();
-        $gambarFM = GambarFM::first();
+        $gambarFM = GambarFM::first() ?? new GambarFM(); 
         $texts = TextFM::all();
-        return view('facilitymanagement', compact('carousels','gambarFM','texts'));
+        return view('produkdanlayanan.swafm', compact('carousels', 'gambarFM', 'texts'));
+        
     }
 }
