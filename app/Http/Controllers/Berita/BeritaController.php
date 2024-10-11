@@ -16,7 +16,7 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = Berita::all(); 
-        return view('berita', compact('berita'));
+        return view('berita.main-berita', compact('berita'));
     }
 
     public function showberita()
@@ -73,6 +73,14 @@ class BeritaController extends Controller
         }
     }
 
+    private function formatDescription($text)
+    {
+        // Menghapus karakter kontrol kecuali newline
+        $text = preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $text);
+        // Mengganti berbagai jenis newline menjadi \n
+        return preg_replace('/\r\n|\r|\n/', "\n", $text);
+    }
+
     public function store(Request $request)
     {
         Log::info('berita store method called', ['request' => $request->except('image')]);
@@ -80,13 +88,13 @@ class BeritaController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:20480', // 20MB limit
-                'title' => 'nullable|string|max:255',
-                'description' => 'nullable|string|max:255',
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
             ]);
 
             if ($validator->fails()) {
                 Log::warning('Validation failed', ['errors' => $validator->errors()]);
-                return response()->json(['success' => false, 'message' => $validator->errors()], 422);
+                return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
             }
 
             if (!$request->hasFile('image')) {
@@ -106,12 +114,12 @@ class BeritaController extends Controller
             $berita = Berita::create([
                 'image' => $path,
                 'title' => $request->title,
-                'description' => $request->description,
+                'description' => $this->formatDescription($request->description),
             ]);
 
             Log::info('berita created successfully', ['berita_id' => $berita->id]);
 
-            return response()->json(['success' => true, 'message' => 'Berita berhasil ditambahkan']);
+            return response()->json(['success' => true, 'message' => 'Berita berhasil ditambahkan', 'data' => $berita]);
         } catch (\Exception $e) {
             Log::error('Error in berita store', [
                 'error' => $e->getMessage(),
@@ -130,13 +138,13 @@ class BeritaController extends Controller
             
             $validator = Validator::make($request->all(), [
                 'title' => 'nullable|string|max:255',
-                'description' => 'nullable|string|max:255',
+                'description' => 'nullable|string',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480', // 20MB limit
             ]);
 
             if ($validator->fails()) {
                 Log::warning('Validation failed', ['errors' => $validator->errors()]);
-                return response()->json(['success' => false, 'message' => $validator->errors()], 422);
+                return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
             }
 
             if ($request->hasFile('image')) {
@@ -148,12 +156,12 @@ class BeritaController extends Controller
             }
 
             $berita->title = $request->title ?? $berita->title;
-            $berita->description = $request->description ?? $berita->description;
+            $berita->description = $this->formatDescription($request->description ?? $berita->description);
             $berita->save();
 
             Log::info('berita updated successfully', ['berita_id' => $berita->id]);
 
-            return response()->json(['success' => true, 'message' => 'Berita berhasil diperbarui']);
+            return response()->json(['success' => true, 'message' => 'Berita berhasil diperbarui', 'data' => $berita]);
         } catch (\Exception $e) {
             Log::error('Error in berita update', [
                 'error' => $e->getMessage(),
