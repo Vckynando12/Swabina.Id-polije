@@ -4,17 +4,11 @@
 <div class="container">
     <h2>Manage Texts</h2>
     
-    @if (session('success'))
-        <div class="alert alert-success">
-            <p>{{ session('success') }}</p>
-        </div>
-    @endif
-
     <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add New Text</button>
     
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
+            <th>No.</th>
             <th>Text</th>
             <th>Alignment</th>
             <th width="280px">Action</th>
@@ -159,8 +153,58 @@
 
 <script>
     function confirmDelete(url) {
-        $('#deleteForm').attr('action', url);
-        $('#deleteModal').modal('show');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        Swal.fire(
+                            'Deleted!',
+                            response.success,
+                            'success'
+                        ).then(() => {
+                            location.reload();
+                        });
+                    },
+                    error: function(xhr) {
+                        Swal.fire(
+                            'Error!',
+                            xhr.responseJSON.error,
+                            'error'
+                        );
+                    }
+                });
+            }
+        })
     }
+
+    // Check for flash messages and display SweetAlert2
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: "{{ session('success') }}",
+        });
+    @endif
+
+    @if(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "{{ session('error') }}",
+        });
+    @endif
 </script>
 @endsection

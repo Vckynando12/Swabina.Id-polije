@@ -15,6 +15,6 @@ class DigitalSolutionController extends Controller
         $gambards = Gambards::first();
         $texts = Textds::all();
         
-        return view('digitalsolution', compact('carousels','gambards','texts'));
+        return view('produkdanlayanan.swads', compact('carousels','gambards','texts'));
     }
 }

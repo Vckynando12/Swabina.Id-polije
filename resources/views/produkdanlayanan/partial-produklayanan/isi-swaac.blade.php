@@ -3,21 +3,17 @@
  <section>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: relative;">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/assets/gambar_swaac/ac1.jpg" class="d-block w-100 carousel-image" alt="Slide 1">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/gambar_swaac/ac2.jpg" class="d-block w-100 carousel-image" alt="Slide 2">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/gambar_swaac/ac3.jpeg" class="d-block w-100 carousel-image" alt="Slide 3">
-            </div>
+            @foreach($carousels as $index => $carousel)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                    <img src="{{ asset('storage/carousels/swaacademy/' . $carousel->image) }}" class="d-block w-100 carousel-image" alt="Slide {{ $index + 1 }}">
+                </div>
+            @endforeach
         </div>
     
         <div class="carousel-controls" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 1000;">
-            <span class="dot" data-bs-slide-to="0" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
-            <span class="dot" data-bs-slide-to="1" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
-            <span class="dot" data-bs-slide-to="2" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
+            @foreach($carousels as $index => $carousel)
+                <span class="dot" data-bs-slide-to="{{ $index }}" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
+            @endforeach
         </div>
     </div>
   </section>
@@ -40,6 +36,7 @@
             standar yang berlaku, memastikan setiap proses memenuhi ekspektasi dan kebutuhan industri.</p>
     </div>
 </section>
+
 
 
 

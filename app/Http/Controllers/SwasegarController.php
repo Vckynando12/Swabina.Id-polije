@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\GambarSS; 
 use App\Models\SwasegarCarousel;
 use App\Models\TextSS;
+
 class SwasegarController extends Controller
 {
     public function index()
@@ -14,6 +15,6 @@ class SwasegarController extends Controller
         $carousels = SwasegarCarousel::all();
         $gambarSS = GambarSS::first(); 
         $textss = TextSS::all();
-        return view('swasegar', compact('carousels', 'gambarSS','textss')); 
+        return view('produkdanlayanan.swaac', compact('carousels', 'gambarSS', 'textss')); 
     }   
 }

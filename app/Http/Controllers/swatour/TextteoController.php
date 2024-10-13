@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers\swatour;
 
-use App\models\Textteo;
+use App\Models\Textteo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TextteoController extends Controller
 {
     public function index()
     {
-        $texts = Textteo::all();
-        return view('admin.swatour.textteo', compact('texts'));
+        $texts = Textteo::orderBy('id')->get();
+        $texts = $texts->map(function ($text, $index) {
+            $text->row_number = $index + 1;
+            return $text;
+        });
+        $userRole = auth()->user()->role;
+        $layout = $userRole === 'admin' ? 'layouts.app' : 'layouts.ppa';
+        return view('admin.swatour.textteo', compact('texts', 'userRole', 'layout'));
     }
 
     public function store(Request $request)
@@ -28,13 +35,11 @@ class TextteoController extends Controller
             'text_align' => $request->text_align,
         ]);
 
-        return redirect()->route('admin.swatour.textteo.index')->with('success', 'Text added successfully.');
+        return redirect()->back()->with('success', 'Text berhasil disimpan.');
     }
 
     public function update(Request $request, $id)
     {
-        $text = Textteo::findOrFail($id);
-
         $request->validate([
             'content' => 'required|string',
             'text_align' => 'required|in:left,center,right,justify',
@@ -42,20 +47,45 @@ class TextteoController extends Controller
 
         $content = str_replace("\r\n", "\n", $request->content);
 
-        $text->update([
+        $textteo = Textteo::findOrFail($id);
+        $textteo->update([
             'content' => $content,
             'text_align' => $request->text_align,
         ]);
 
-        return redirect()->route('admin.swatour.textteo.index')->with('success', 'Text updated successfully.');
+        return redirect()->back()->with('success', 'Text berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
-        $text = Textteo::find($id);
-        $text->delete();
+        try {
+            // Delete the specified text
+            $textteo = Textteo::findOrFail($id);
+            $textteo->delete();
 
-        return redirect()->route('admin.swatour.textteo.index')->with('success', 'Text deleted successfully.');
+            // Get all remaining texts ordered by ID
+            $texts = Textteo::orderBy('id')->get();
+
+            // Reset the auto-increment
+            DB::statement('ALTER TABLE textteos AUTO_INCREMENT = 1');
+
+            // Update the IDs
+            foreach ($texts as $index => $text) {
+                $newId = $index + 1;
+                if ($text->id !== $newId) {
+                    DB::table('textteos')->where('id', $text->id)->update(['id' => $newId]);
+                }
+            }
+
+            if (request()->ajax()) {
+                return response()->json(['success' => 'Text berhasil dihapus dan ID direset.']);
+            }
+            return redirect()->back()->with('success', 'Text berhasil dihapus dan ID direset.');
+        } catch (\Exception $e) {
+            if (request()->ajax()) {
+                return response()->json(['error' => 'Terjadi kesalahan: ' . $e->getMessage()], 500);
+            }
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }
-

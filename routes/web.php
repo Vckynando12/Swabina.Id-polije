@@ -23,10 +23,12 @@ use App\Http\Controllers\landingpage\JejakLangkahController;
 use App\Http\Controllers\landingpage\SekilasPerusahaanController;
 use App\Http\Controllers\landingpage\SertifikatPenghargaanController;
 use App\Http\Controllers\landingpage\VisiMisiBudayaController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Memilihkami\MkController;
 use App\Http\Controllers\swaacademy\CarouselSAController;
 use App\Http\Controllers\Swaacademy\GambarSAController;
 use App\Http\Controllers\swaacademy\TextSAController;
+use App\Http\Controllers\SwaacademyController;
 use App\Http\Controllers\Swasegar\GambarSSController;
 use App\Http\Controllers\Swasegar\SwasegarCarouselController;
 use App\Http\Controllers\Swasegar\TextSSController;
@@ -39,16 +41,17 @@ use App\Http\Controllers\TentangkamiController;
 use Illuminate\Support\Facades\Route;
 
 //route untuk memanggil view
-Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'])->name('landingpage');
+Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/facility-management', [FacilityManagementController::class, 'index'])->name('facility-management');
 Route::get('/swasegar', [SwasegarController::class, 'index'])->name('swasegar');
 Route::get('/swatour', [SwatourorganizerController::class, 'index'])->name('swatour');
 Route::get('/Digital-Solution', [DigitalSolutionController::class, 'index'])->name('digitalsolution');
-Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
-Route::get('/Berita', [BeritaController::class, 'index'])->name('berita');
-Route::get('/tentangkami', [TentangkamiController::class, 'sekilasPerusahaan'])->name('tentangkami');
+Route::get('/swaacademy', [SwaacademyController::class, 'index'])->name('swasegar');
+Route::get('/sekilasperusahaan', [TentangkamiController::class, 'sekilasPerusahaan'])->name('tentangkami');
 Route::get('/visimisibudaya', [TentangkamiController::class, 'visiMisiBudaya'])->name('visimisi');
 Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'])->name('sertif');
+Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
+Route::get('/Berita', [BeritaController::class, 'index'])->name('berita');
 
 // Route untuk login
 Route::middleware('guest')->group(function () {

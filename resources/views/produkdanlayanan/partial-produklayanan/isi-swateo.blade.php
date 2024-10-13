@@ -3,21 +3,17 @@
  <section>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: relative;">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/assets/gambar_swateo/teo1.jpg" class="d-block w-100 carousel-image" alt="Slide 1">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/gambar_swateo/teo2.jpg" class="d-block w-100 carousel-image" alt="Slide 2">
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/gambar_swateo/teo3.jpg" class="d-block w-100 carousel-image" alt="Slide 3">
-            </div>
+            @foreach($carousels as $index => $carousel)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                    <img src="{{ asset('storage/' . $carousel->image) }}" class="d-block w-100 carousel-image" alt="Slide {{ $index + 1 }}">
+                </div>
+            @endforeach
         </div>
     
         <div class="carousel-controls" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 1000;">
-            <span class="dot" data-bs-slide-to="0" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
-            <span class="dot" data-bs-slide-to="1" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
-            <span class="dot" data-bs-slide-to="2" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
+            @foreach($carousels as $index => $carousel)
+                <span class="dot" data-bs-target="#carouselExampleFade" data-bs-slide-to="{{ $index }}" style="width: 12px; height: 12px; background-color: white; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease;"></span>
+            @endforeach
         </div>
     </div>
   </section>
@@ -27,25 +23,34 @@
 <section class="content-section">
     <!-- Gambar Pertama -->
     <div class="content-item align-left">
-        <img src="/assets/gambar_swateo/gambar-swateo1.jpg" alt="Gambar Pertama" class="image1">
-        <p class="description">
-            SWA Tour & Event Organizer menyediakan layanan lengkap untuk perjalanan wisata, baik domestik maupun internasional. Layanan meliputi 
-            MICE, pemesanan tiket pesawat, bus, kapal laut, kereta api, serta ekspedisi. Selain itu, SWA menyediakan layanan 
-            pengurusan berbagai dokumen perjalanan untuk memastikan pengalaman pelanggan yang mudah dan nyaman. Facility 
-            Management terletak pada sistem rekrutmen yang dilengkapi alat tes akurat dan pelatihan komprehensif.
-        </p>
+        @if($gambars->isNotEmpty() && $gambars->first()->gambar1)
+            <img src="{{ asset('storage/' . $gambars->first()->gambar1) }}" alt="Gambar Pertama" class="image1">
+        @else
+            <h3>belum ada gambar ditambahkan</h3>
+        @endif
+        @if($texts->isNotEmpty())
+            <p class="description" style="text-align: {{ $texts->first()->text_align }};">
+                {!! nl2br(e($texts->first()->content)) !!}
+            </p>
+        @else
+            <p class="description">No content available.</p>
+        @endif
     </div>
     <!-- Gambar Kedua -->
     <div class="content-item align-right">
-        <img src="/assets/gambar_swateo/gambar-swateo2.jpg" alt="Gambar Kedua" class="image2">
-        <p class="description">
-            Selain itu SWA Tour & Event Organizer juga menyediakan layanan event organizer untuk berbagai acara, baik yang diselenggarakan oleh 
-            korporasi seperti outbond, launching, gathering, anniversary party dan lain-lain atau acara pribadi seperti pernikahan, 
-            ulang tahun, baby shower dan sebagainya. Didukung dengan tim yang lengkap, SWA Tour & Event Organizer telah 
-            berpengalaman merancang acara dengan konsep yang kreatif, berkesan dan pastinya tidak terlupakan.
-        </p>
+        @if($gambars->isNotEmpty() && $gambars->first()->gambar2)
+            <img src="{{ asset('storage/' . $gambars->first()->gambar2) }}" alt="Gambar Kedua" class="image1">
+        @else
+            <h3>belum ada gambar ditambahkan</h3>
+        @endif
+        @foreach($texts->skip(1) as $text)
+            <p class="description" style="text-align: {{ $text->text_align }};">
+                {!! nl2br(e($text->content)) !!}
+            </p>
+        @endforeach
     </div>
 </section>
+
 
 
 

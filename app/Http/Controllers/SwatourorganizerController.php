@@ -14,6 +14,6 @@ class SwatourorganizerController extends Controller
         $carousels = Carouselteo::all(); 
         $gambars = Gambarteo::all(); 
         $texts = Textteo::all(); 
-        return view('swatour', compact('carousels', 'gambars', 'texts')); 
+        return view('produkdanlayanan.swateo', compact('carousels', 'gambars', 'texts')); 
     }
 }
