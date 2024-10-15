@@ -184,17 +184,17 @@
     position: absolute;
     background-color: #0071BC;
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
     opacity: 0;
   }
   
   .facebook-icon i, .instagram-icon i, .youtube-icon i, .whatsapp-icon i, .profile-icon i {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
 
