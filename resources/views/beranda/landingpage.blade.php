@@ -259,31 +259,31 @@
 
     <!-- Social Icons -->
     <div class="social-icons" style="position: absolute; left: -30px; top: 25%; transform: translateY(-50%);">
-      <div class="icon facebook-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; opacity: 0;">
+      <div class="icon facebook-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; transition: all 0.5s ease; opacity: 0;">
         <a href="https://www.facebook.com" target="_blank" style="color: white; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
           <i class="bi bi-facebook" style="font-size: 2rem;"></i>
         </a>
       </div>
 
-      <div class="icon instagram-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; opacity: 0;">
+      <div class="icon instagram-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; transition: all 0.5s ease; opacity: 0;">
         <a href="https://www.instagram.com" target="_blank" style="color: white; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
           <i class="bi bi-instagram" style="font-size: 2rem;"></i>
         </a>
       </div>
 
-      <div class="icon youtube-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; opacity: 0;">
+      <div class="icon youtube-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; transition: all 0.5s ease; opacity: 0;">
         <a href="https://www.youtube.com" target="_blank" style="color: white; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
           <i class="bi bi-youtube" style="font-size: 2rem;"></i>
         </a>
       </div>
 
-      <div class="icon whatsapp-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; opacity: 0;">
+      <div class="icon whatsapp-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; transition: all 0.5s ease; opacity: 0;">
         <a href="https://api.whatsapp.com/send?phone=6281281887873" target="_blank" style="color: white; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
           <i class="bi bi-whatsapp" style="font-size: 2rem;"></i>
         </a>
       </div>
 
-      <div class="icon profile-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; opacity: 0;">
+      <div class="icon profile-icon" style="position: absolute; background-color: #0071BC; border-radius: 50%; width: 55px; height: 55px; display: flex; justify-content: center; align-items: center; transition: all 0.5s ease; opacity: 0;">
         <a href="#" style="color: white; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
           <i class="bi bi-person-circle" style="font-size: 2rem;"></i>
         </a>
