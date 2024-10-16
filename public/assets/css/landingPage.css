@@ -648,12 +648,13 @@
         align-items: center;
         margin-top: -12px;
     }
+    
     .btn-baca{
         height: fit-content;
         width: fit-content;
         font-size: 15px;
-        padding:10px;
-        border-radius:10px ;
+        padding: 10px;
+        border-radius: 10px;
 
     }
 
