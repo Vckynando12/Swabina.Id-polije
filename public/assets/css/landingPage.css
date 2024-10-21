@@ -293,7 +293,7 @@
 
 .gambare-jelang {
     width: 85%; /* Atau ukuran spesifik, misalnya width: 300px */
-    height: 1200px; /* Sesuaikan dengan kebutuhan */
+    height: auto; /* Sesuaikan dengan kebutuhan */
     object-fit: contain; /* Gambar akan dipotong untuk memenuhi ukuran kontainer */
     display: block; /* Agar gambar dianggap sebagai block element */
     margin: 0 auto; /* Mengatur gambar berada di tengah secara horizontal */
