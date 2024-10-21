@@ -7,7 +7,7 @@
 #btn-hotline{
     font-weight: bold; 
     margin-left: 0; 
-    margin-right: 5px; 
+    margin-right: 2px; 
     margin-top: 5px; 
     color: white;
     border: #0454a3;
@@ -388,8 +388,8 @@
 
 /* Floating Button */
 .btn-img {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     cursor: pointer;
 }

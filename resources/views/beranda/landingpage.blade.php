@@ -255,7 +255,7 @@
 {{-- Floating Button --}}
 <div class="floating-btn" id="draggableBtn">
   <img src="/assets/gambar_landingpage/user.png" alt="Floating Button" class="btn-img">
-  <h5 id="btn-hotline">HOTLINE</h5>
+  <h6 id="btn-hotline">HOTLINE</h6>
 
     <!-- Social Icons -->
     <div class="social-icons" style="position: absolute; left: -30px; top: 25%; transform: translateY(-50%);">
