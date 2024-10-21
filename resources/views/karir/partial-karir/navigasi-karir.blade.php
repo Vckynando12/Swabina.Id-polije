@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg custom-navbar sticky-top" style="background-color: #0454a3; border-radius: 0px; width: 100%; padding:2px; margin:auto; box-shadow: 0px 15px 15px -5px rgba(0, 0, 0, 0.5)">
+<nav class="navbar navbar-expand-lg custom-navbar sticky-top" style="background-color: #0454a3; border-radius: 0px; width: 100%; padding:1px; margin:auto; box-shadow: 0px 15px 15px -5px rgba(0, 0, 0, 0.5)">
     <div class="container-fluid navigasi">
         <img id="logo-resp" src="/assets/gambar_landingpage/logo_swabina.png" alt="">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
