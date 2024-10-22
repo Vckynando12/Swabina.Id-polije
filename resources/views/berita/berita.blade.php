@@ -13,19 +13,19 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('berita.partial-berita.header-berita')
+    @include ('partial.header')
 
     <!-- Navigasi -->
-    @include ('berita.partial-berita.navigasi-berita')
+    @include ('partial.navigasi')
 
     <!-- Iki isine sekilas -->
     @include ('berita.partial-berita.isi-berita')
 
     <!-- Footer -->
-    @include ('berita.partial-berita.footer-berita')
+    @include ('partial.footer')
 
     <!-- Floating Button-->
-    @include ('berita.partial-berita.floating-berita')
+    @include ('partial.floating')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

@@ -11,19 +11,19 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('tentangkami.partial-tentangkami.header-tk')
+    @include ('patial.header')
 
     <!-- Navigasi -->
-    @include ('tentangkami.partial-tentangkami.navigasi-tk')
+    @include ('partial.navigasi')
 
     <!-- Isi Visi Misi -->
     @include ('tentangkami.partial-tentangkami.isi-visimisi')
 
     <!-- Footer -->
-    @include ('tentangkami.partial-tentangkami.footer-tk')
+    @include ('partial.footer')
 
     <!-- Floating Button-->
-    @include ('tentangkami.partial-tentangkami.floating-tk')
+    @include ('partial.floating')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 </body>

@@ -11,19 +11,19 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('produkdanlayanan.partial-produklayanan.header-pl')
+    @include ('partial.header')
 
     <!-- Navigasi -->
-    @include ('produkdanlayanan.partial-produklayanan.navigasi-pl')
+    @include ('partial.navigasi')
 
     <!-- Iki isine facility management -->
     @include ('produkdanlayanan.partial-produklayanan.isi-swafm')
 
     <!-- Footer -->
-    @include ('produkdanlayanan.partial-produklayanan.footer-pl')
+    @include ('partial.footer')
 
     <!-- Floating Button-->
-    @include ('produkdanlayanan.partial-produklayanan.floating-pl')
+    @include ('partial.floating')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/produklayanan.js') }}"></script>

@@ -11,19 +11,19 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('karir.partial-karir.header-karir')
+    @include ('partial.header')
 
     <!-- Navigasi -->
-    @include ('karir.partial-karir.navigasi-karir')
+    @include ('partial.navigasi')
 
     <!-- Iki isine sekilas -->
     @include ('karir.partial-karir.isi-karir')
 
     <!-- Footer -->
-    @include ('karir.partial-karir.footer-karir')
+    @include ('partial.footer')
 
     <!-- Floating Button-->
-    @include ('karir.partial-karir.floating-karir')
+    @include ('partial.floating')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/karir.js') }}"></script>

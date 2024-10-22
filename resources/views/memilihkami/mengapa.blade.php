@@ -11,19 +11,19 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('memilihkami.partial-memilihkami.header-mk')
+    @include ('partial.header')
 
     <!-- Navigasi -->
-    @include ('memilihkami.partial-memilihkami.navigasi-mk')
+    @include ('partial.navigasi')
 
     <!-- Iki isine sekilas -->
     @include ('memilihkami.partial-memilihkami.isi-memilihkami')
 
     <!-- Footer -->
-    @include ('memilihkami.partial-memilihkami.footer-mk')
+    @include ('partial.footer')
 
     <!-- Floating Button-->
-    @include ('memilihkami.partial-memilihkami.floating-mk')
+    @include ('partial.floating')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/memilihkami.js') }}"></script>

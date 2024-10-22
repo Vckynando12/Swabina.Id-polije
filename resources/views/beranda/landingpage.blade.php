@@ -33,7 +33,7 @@
 </div>
 
     <!-- Navbar -->
-   @include('beranda.partial-beranda.navigasi')
+   @include('partial.navigasi')
 
 <!-- Carousel -->
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="">
@@ -260,7 +260,7 @@
 </section>
 
 <!-- Footer -->
-@include('beranda.partial-beranda.footer')
+@include('partial.footer')
 
 {{-- Floating Button --}}
 <div class="floating-btn" id="draggableBtn">

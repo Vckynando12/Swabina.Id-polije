@@ -11,10 +11,10 @@
 </head>
 <body>
     <!-- Header -->
-    @include('tentangkami.partial-tentangkami.header-tk')
+    @include('partial.header')
 
     <!-- Navigasi -->
-    @include('tentangkami.partial-tentangkami.navigasi-tk')
+    @include('partial.navigasi')
 
     <!-- Konten Sekilas -->
     <main>
@@ -25,10 +25,10 @@
     </main>
 
     <!-- Footer -->
-    @include('tentangkami.partial-tentangkami.footer-tk')
+    @include('partial.footer')
 
     <!-- Floating Button-->
-    @include('tentangkami.partial-tentangkami.floating-tk')
+    @include('partial.floating')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/tentangkami.js') }}"></script>
