@@ -5,7 +5,7 @@
           <div class="contact-info">
             <i class="bi bi-geo-alt-fill"></i>
             <div class="footer-font">
-              <p class="title">Head Office Address:</p>
+              <p class="title">Head Office & AMDK Factory:</p>
               <p class="deskripsi">Jl. R.A. Kartini No.21 A Gresik, Jawa Timur 61122</p>
               <p class="title">Representative Office:</p>
               <p class="deskripsi">Desa Sumberarum, Kecamatan Kerek</p>
