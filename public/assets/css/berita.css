@@ -285,8 +285,8 @@ p.pengaturan-font-deskripsi{
     position: absolute;
     background-color: #0071BC;
     border-radius: 50%;
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -295,7 +295,7 @@ p.pengaturan-font-deskripsi{
   }
   
   .facebook-icon i, .instagram-icon i, .youtube-icon i, .whatsapp-icon i, .profile-icon i {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
 
