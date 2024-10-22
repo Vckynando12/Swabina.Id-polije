@@ -18,8 +18,8 @@
           <div class="d-flex align-items-center me-5">
               <i class="bi bi-geo-alt-fill me-2" style="font-size: 50px; color: #0454a3;"></i>
               <div class="d-flex flex-column me-4 deskripsi-alamat" style="color: #0454a3;">
-                  <span>Alamat</span>
-                  <span>Kantor Pusat & Pabrik AMDK:</span>
+                  <span>Address</span>
+                  <span>Head Office & AMDK Factory:</span>
                   <span>Jl. R.A. Kartini No.21 A Gresik 61122,</span>
                   <span>Jawa Timur</span>
               </div>
@@ -56,7 +56,7 @@
   <section id="produk-layanan">
     <!-- Judul Section -->
     <div class="text-center mb-4">
-        <h1 class="text-white fw-bold judul-pl">Produk dan Layanan</h1>
+        <h1 class="text-white fw-bold judul-pl">Products and Services</h1>
     </div>
 
     <!-- Wrapper untuk card, tambahkan justify-content-center untuk memusatkan -->
@@ -110,19 +110,19 @@
 <!--Tentang Kami-->
 <section>
   <div class="container mt-1">
-    <h1 id="tentang-kami" class="text-center">Tentang Kami</h1>
+    <h1 id="tentang-kami" class="text-center">About Us</h1>
     <ul class="nav nav-pills justify-content-center mt-3" id="aboutTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active about-tab" id="overview-tab" data-bs-toggle="pill" href="#overview  " role="tab" aria-controls="overview" aria-selected="true" >Sekilas Perusahaan</a>
+            <a class="nav-link active about-tab" id="overview-tab" data-bs-toggle="pill" href="#overview  " role="tab" aria-controls="overview" aria-selected="true" >Company Overview</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link about-tab" id="milestones-tab" data-bs-toggle="pill" href="#milestones " role="tab" aria-controls="milestones" aria-selected="false" >Jejak Langkah</a>
+            <a class="nav-link about-tab" id="milestones-tab" data-bs-toggle="pill" href="#milestones " role="tab" aria-controls="milestones" aria-selected="false" >Milestones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link about-tab" id="vision-tab" data-bs-toggle="pill" href="#vision " role="tab" aria-controls="vision" aria-selected="false" >Visi Misi dan Budaya</a>
+            <a class="nav-link about-tab" id="vision-tab" data-bs-toggle="pill" href="#vision " role="tab" aria-controls="vision" aria-selected="false" >Vision Mission and Culture</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link about-tab" id="certificates-tab" data-bs-toggle="pill" href="#certificates " role="tab" aria-controls="certificates" aria-selected="false" >Sertifikat dan Penghargaan</a>
+            <a class="nav-link about-tab" id="certificates-tab" data-bs-toggle="pill" href="#certificates " role="tab" aria-controls="certificates" aria-selected="false" >Certificates and Awards</a>
         </li>
     </ul>
   
@@ -138,7 +138,7 @@
       <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
       onmouseover="this.style.backgroundColor='#0d6efd';" 
          onmouseout="this.style.backgroundColor='#0454a3';">
-         Baca Selengkapnya
+         Read More
       </a>
   </div>
 
@@ -154,7 +154,7 @@
 </div>
       <div class="tab-pane fade font-tentang-perusahaan" id="vision" role="tabpanel" aria-labelledby="vision-tab">
         @if($visi->isNotEmpty())
-            <h2 style="margin-bottom: 15px;">VISI</h2>
+            <h2 style="margin-bottom: 15px;">VISION</h2>
             @foreach($visi as $visiItem)
             <p style="margin-bottom: 40px; text-align: {{ $visiItem->text_align }};">
                     {!! nl2br(e($visiItem->content)) !!}
@@ -163,7 +163,7 @@
             @endif
 
             @if($misi->isNotEmpty())
-            <h2 style="margin-bottom: 15px;">MISI</h2>
+            <h2 style="margin-bottom: 15px;">MISSION</h2>
             @foreach($misi as $misiItem)
             <p style="font-size: large; text-align: {{ $misiItem->text_align }}; margin-bottom: 40px">
                 {!! nl2br(e($misiItem->content)) !!}
@@ -173,7 +173,7 @@
 
     
         @if($budaya->isNotEmpty())
-            <h2 style="margin-bottom: 20px;">Budaya Perusahaan</h2>
+            <h2 style="margin-bottom: 20px;">CULTURE</h2>
             @foreach($budaya as $budayaItem)
                 <h2 style="font-weight: bold">SIAP BISA</h2>
                 <p style="font-size: large; text-align: {{ $budayaItem->text_align }};">
@@ -184,7 +184,7 @@
 
         <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
            onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">
-            Baca Selengkapnya
+            Read More
           </a>
         </div>
         <!-- Sertifikat dan Penghargaan -->
@@ -209,7 +209,7 @@
         </div>
           <a href="#" role="button" class="btn btn-primary btn-lg" id="btn-tentang" style=""
              onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">
-              Baca Selengkapnya
+              Read More
             </a>
             <!-- Kontrol Carousel -->
             <a class="carousel-control-prev" href="#certificatesCarousel" role="button" data-bs-slide="prev">
@@ -255,7 +255,7 @@
   @endif
   <a href="#" id="btn-selengkapnya-layanan" role="button"
      onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">
-    Baca Selengkapnya
+    Read More
   </a>
 </section>
 

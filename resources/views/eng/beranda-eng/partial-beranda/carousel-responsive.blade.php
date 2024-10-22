@@ -1,7 +1,7 @@
 <section id="produk-layanan2">
     <!-- Judul Section -->
     <div class="text-center mb-2">
-        <h1 class="text-white fw-bold">Produk dan Layanan</h1>
+        <h1 class="text-white fw-bold">Products and Services</h1>
     </div>
 
     <!-- Carousel -->
