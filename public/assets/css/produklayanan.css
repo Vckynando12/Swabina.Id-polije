@@ -525,7 +525,7 @@
 
     }
     .btn-img {
-        margin-left: -5px;
+        margin-left: -3px;
         height: 100%;
         width: 100%;
        /* Warna latar merah untuk efek awal */
@@ -607,15 +607,15 @@
     }
   
         #btn-hotline{
-        font-weight: bold;
-        font-size: small;
-        margin-left: 0px;
-        margin-right: 3px;
-        margin-top: 9px;
-        color: white;
-        background-color: #0454a3;
-        border-radius: 10px;
-        border: #0454a3;
+            font-weight: bold;
+            font-size: x-small; 
+            margin-left: -3px; 
+            margin-right: 0; 
+            margin-top: 5px; 
+            color: white;
+            border: #0454a3;
+            border-radius: 10px;
+            background-color: #0454a3;;
     }
 
     /* Hotline Button */

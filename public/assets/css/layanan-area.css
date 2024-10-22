@@ -459,14 +459,14 @@
   
         #btn-hotline{
             font-weight: bold;
-            font-size: small;
-            margin-left: 0px;
-            margin-right: -40px;
-            margin-top: 9px;
+            font-size: x-small; 
+            margin-left: -3px; 
+            margin-right: 0; 
+            margin-top: 5px; 
             color: white;
-            background-color: #0454a3;
-            border-radius: 10px;
             border: #0454a3;
+            border-radius: 10px;
+            background-color: #0454a3;
     }
 
     /* Hotline Button */
