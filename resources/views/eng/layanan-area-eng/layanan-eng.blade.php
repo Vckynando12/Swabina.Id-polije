@@ -11,19 +11,19 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('layanan-area.partial-layanan.header-layanan')
+    @include ('partial-eng.header-eng')
 
     <!-- Navigasi -->
-    @include ('layanan-area.partial-layanan.navigasi-layanan')
+    @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine sekilas -->
-    @include ('layanan-area.partial-layanan.isi-layanan')
+    @include ('layanan-area-eng.partial-layanan.isi-layanan')
 
     <!-- Footer -->
-    @include ('layanan-area.partial-layanan.footer-layanan')
+    @include ('partial-eng.footer-eng')
 
     <!-- Floating Button-->
-    @include ('layanan-area.partial-layanan.floating-layanan')
+    @include ('partial-eng.floating-eng')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/layanan-area.js') }}"></script>

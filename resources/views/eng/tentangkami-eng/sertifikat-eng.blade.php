@@ -11,19 +11,19 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('tentangkami.partial-tentangkami.header-tk')
+    @include ('partial-eng.header-eng')
 
     <!-- Navigasi -->
-    @include ('tentangkami.partial-tentangkami.navigasi-tk')
+    @include ('partial-eng.navigasi-eng')
 
     <!-- Isi Sertifikat -->
-    @include ('tentangkami.partial-tentangkami.isi-sertifikat')
+    @include ('tentangkami-eng.partial-tentangkami.isi-sertifikat')
 
     <!-- Footer -->
-    @include ('tentangkami.partial-tentangkami.footer-tk')
+    @include ('partial-eng.footer-eng')
 
     <!-- Floating Button-->
-    @include ('tentangkami.partial-tentangkami.floating-tk')
+    @include ('partial-eng.floating-eng')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/tentangkami.js') }}"></script>

@@ -11,19 +11,19 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('produkdanlayanan.partial-produklayanan.header-pl')
+    @include ('partial-eng.header-eng')
 
     <!-- Navigasi -->
-    @include ('produkdanlayanan.partial-produklayanan.navigasi-pl')
+    @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine ftour and event organizer -->
-    @include ('produkdanlayanan.partial-produklayanan.isi-swateo')
+    @include ('produkdanlayanan-eng.partial-produklayanan.isi-swateo')
 
     <!-- Footer -->
-    @include ('produkdanlayanan.partial-produklayanan.footer-pl')
+    @include ('partial-eng.footer-eng')
 
     <!-- Floating Button-->
-    @include ('produkdanlayanan.partial-produklayanan.floating-pl')
+    @include ('partial-eng.floating-eng')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/produklayanan.js') }}"></script>

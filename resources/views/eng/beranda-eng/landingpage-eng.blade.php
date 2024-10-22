@@ -33,7 +33,7 @@
 </div>
 
     <!-- Navbar -->
-   @include('beranda.partial-beranda.navigasi')
+   @include('partial-eng.navigasi-eng')
 
 <!-- Carousel -->
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="">
@@ -105,7 +105,7 @@
 
 
     <!-- Carousel responsive -->
-    @include('beranda.partial-beranda.carousel-responsive')
+    @include('beranda-eng.partial-beranda.carousel-responsive')
 
 <!--Tentang Kami-->
 <section>
@@ -234,7 +234,7 @@
 </div>
 
 <!--Konten Card Mengapa Memilih Kami-->
-@include('beranda.partial-beranda.mpk')
+@include('beranda-eng.partial-beranda.mpk')
 
 
 <!--Video Youtube-->
@@ -260,7 +260,7 @@
 </section>
 
 <!-- Footer -->
-@include('beranda.partial-beranda.footer')
+@include('partial-eng.footer-eng')
 
 {{-- Floating Button --}}
 <div class="floating-btn" id="draggableBtn">

@@ -11,19 +11,19 @@
 </head>
 <body>
 <!-- Header -->
-    @include ('kontak.partial-kontak.header-kontak')
+    @include ('partial-eng.header-eng')
 
     <!-- Navigasi -->
-    @include ('kontak.partial-kontak.navigasi-kontak')
+    @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine sekilas -->
-    @include ('kontak.partial-kontak.isi-kontak')
+    @include ('kontak-eng.partial-kontak.isi-kontak')
 
     <!-- Footer -->
-    @include ('kontak.partial-kontak.footer-kontak')
+    @include ('partial-eng.footer-eng')
 
     <!-- Floating Button-->
-    @include ('kontak.partial-kontak.floating-kontak')
+    @include ('partial-eng.floating-eng')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/kontak.js') }}"></script>

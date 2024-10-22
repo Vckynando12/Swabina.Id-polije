@@ -11,24 +11,24 @@
 </head>
 <body>
     <!-- Header -->
-    @include('tentangkami.partial-tentangkami.header-tk')
+    @include('partial-eng.header-eng')
 
     <!-- Navigasi -->
-    @include('tentangkami.partial-tentangkami.navigasi-tk')
+    @include('partial-eng.navigasi-eng')
 
     <!-- Konten Sekilas -->
     <main>
         <!-- Iki isine sekilas -->
-        @include('tentangkami.partial-tentangkami.isi-sekilas')
+        @include('tentangkami-eng.partial-tentangkami.isi-sekilas')
 
         <!-- Tambahan konten spesifik untuk halaman sekilas bisa ditambahkan di sini -->
     </main>
 
     <!-- Footer -->
-    @include('tentangkami.partial-tentangkami.footer-tk')
+    @include('partial-eng.footer-eng')
 
     <!-- Floating Button-->
-    @include('tentangkami.partial-tentangkami.floating-tk')
+    @include('partial-eng.floating-eng')
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/tentangkami.js') }}"></script>
