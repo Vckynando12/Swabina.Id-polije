@@ -1,12 +1,12 @@
 <!-- Struktur Owl Carousel -->
 <section class="panggen-berita">
-    <h1 class="judule-berita">Berita SWA</h1>
+    <h1 class="judule-berita">SWA News</h1>
 
     <div class="owl-carousel">
         @foreach($berita as $index => $item)
             <div class="item">
                 <img src="{{ asset('storage/' . $item->image) }}" alt="Berita {{ $index + 1 }}">
-                <button class="read-more-btn" data-target="desc{{ $index + 1 }}">Baca Selengkapnya</button>
+                <button class="read-more-btn" data-target="desc{{ $index + 1 }}">Read More</button>
             </div>
         @endforeach
     </div>

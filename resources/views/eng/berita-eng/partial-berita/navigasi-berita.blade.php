@@ -11,12 +11,12 @@
         <ul class="navbar-nav mx-auto">
 
           <li class="nav-item">
-            <a class="nav-link me-5"  id="nav-hamburger" href="#" style="">Beranda</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5"  id="nav-hamburger" href="#" style="">Home</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item dropdown position-relative">
             <a id="nav-hamburger" class="nav-link dropdown-toggle me-5" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="">
-              Produk dan Layanan
+              Products and Services
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown1" style="">
               <li><a class="dropdown-item" id="nav-hamburger"  href="#" style="">SWA Facility Management</a></li>
@@ -29,33 +29,33 @@
 
           <li class="nav-item dropdown position-relative">
             <a id="nav-hamburger"  class="nav-link dropdown-toggle me-5" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="">
-              Tentang Kami
+              About Us
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown2" style="">
-              <li><a class="dropdown-item" href="#" style="">Sekilas Perusahaan</a></li>
-              <li><a class="dropdown-item" href="#" style="">Visi & Misi Perusahaan</a></li>
-              <li><a class="dropdown-item" href="#" style="">Sertifikat & Penghargaan</a></li>
+              <li><a class="dropdown-item" href="#" style="">Company Overview</a></li>
+              <li><a class="dropdown-item" href="#" style="">Vision Mission & Culture</a></li>
+              <li><a class="dropdown-item" href="#" style="">Certificates & Awards</a></li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5"  id="nav-hamburger" href="#" style="">Mengapa Memilih Kami</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5"  id="nav-hamburger" href="#" style="">Why Choose Us</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5" id="nav-hamburger"  href="#" style="">Berita</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5" id="nav-hamburger"  href="#" style="">News</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5" id="nav-hamburger" href="#"style="">Karir</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5" id="nav-hamburger" href="#"style="">Career</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5" id="nav-hamburger"  href="#" style="">Kontak Kami</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5" id="nav-hamburger"  href="#" style="">Contact Us</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5" id="nav-hamburger" href="#" >Eng</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5" id="nav-hamburger" href="#" >Id</a> <!-- Add me-5 for margin -->
           </li>
 
           {{-- logo dan gambar --}}

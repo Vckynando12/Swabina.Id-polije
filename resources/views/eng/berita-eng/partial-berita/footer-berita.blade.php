@@ -5,9 +5,9 @@
           <div class="contact-info">
             <i class="bi bi-geo-alt-fill"></i>
             <div class="footer-font">
-              <p class="title">Alamat Kantor:</p>
+              <p class="title">Head Office & AMDK Factory:</p>
               <p class="deskripsi">Jl. R.A. Kartini No.21 A Gresik, Jawa Timur 61122</p>
-              <p class="title">Kantor Perwakilan:</p>
+              <p class="title">Represntative Office:</p>
               <p class="deskripsi">Desa Sumberarum, Kecamatan Kerek</p>
               <p class="deskripsi">Tuban, 62356 Jawa Timur</p>
             </div>
@@ -22,7 +22,7 @@
           <div class="contact-info">
             <i class="bi bi-telephone-fill"></i>
             <div class="footer-font">
-              <p class="title">Telepon:</p>
+              <p class="title">Phone:</p>
               <p class="deskripsi">+62 31 3984719</p>
               <p class="deskripsi">+62 31 3985794</p>
               <p class="deskripsi">+62 356 711992</p>
