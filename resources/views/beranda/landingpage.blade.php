@@ -1,7 +1,17 @@
-@extends('beranda.main-home')
-@section('konten')
-    <!-- Header / Top Bar -->
-<div class="container-fluid bg-white py-2 topheader" style="padding:0; border-bottom: 25px solid white;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/landingPage.css')}}">
+</head>
+<body>
+ <!-- Header / Top Bar -->
+ <div class="container-fluid bg-white py-2 topheader" style="padding:0; border-bottom: 25px solid white;">
   <div class="container d-flex justify-content-between align-items-center px-5">
       <img src="/assets/gambar_landingpage/logo_swabina.png" alt="Company Logo" class="img-fluid" style="width: 80px; height: 80px;">
       <div class="d-flex align-items-center">
@@ -293,6 +303,10 @@
 
   <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('assets/js/landingpage.js') }}"></script>
- @endsection
+</body>
+</html>
+
+
+   
 
 

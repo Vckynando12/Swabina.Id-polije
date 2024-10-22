@@ -1,22 +1,31 @@
-@extends ('kontak.main-kontak')
-@section ('konten-kontak')
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/kontak.css')}}">
+</head>
+<body>
 <!-- Header -->
-@include ('kontak.partial-kontak.header-kontak')
+    @include ('kontak.partial-kontak.header-kontak')
 
-<!-- Navigasi -->
-@include ('kontak.partial-kontak.navigasi-kontak')
+    <!-- Navigasi -->
+    @include ('kontak.partial-kontak.navigasi-kontak')
 
-<!-- Iki isine sekilas -->
-@include ('kontak.partial-kontak.isi-kontak')
+    <!-- Iki isine sekilas -->
+    @include ('kontak.partial-kontak.isi-kontak')
 
-<!-- Footer -->
-@include ('kontak.partial-kontak.footer-kontak')
+    <!-- Footer -->
+    @include ('kontak.partial-kontak.footer-kontak')
 
-<!-- Floating Button-->
-@include ('kontak.partial-kontak.floating-kontak')
+    <!-- Floating Button-->
+    @include ('kontak.partial-kontak.floating-kontak')
 
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/kontak.js') }}"></script>
-
-@endsection 
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/kontak.js') }}"></script>
+</body>
+</html>
