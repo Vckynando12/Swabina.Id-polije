@@ -1,5 +1,5 @@
 <section class="bag-sertif">
-  <h1 class="judule-sertif">Sertifikat dan Penghargaan</h1>
+  <h1 class="judule-sertif">Certificates & Awards</h1>
   <div id="carouselExampleIndicators" class="carousel slide bagian-sertif" data-bs-ride="carousel" data-bs-interval="2000">
     <div class="carousel-indicators">
       @foreach($sertifikatPenghargaan as $index => $sertifikat)

@@ -1,14 +1,14 @@
 <section class="section-pengumuman">
-    <h1 class="judul-karir">Karir</h1>
-    <p class="teks-lowongan">Mari bergabung dan berkarir bersama SWABINA. Untuk melamar silahkan klik 
+    <h1 class="judul-karir">Career</h1>
+    <p class="teks-lowongan">Let's join and have a career with SWA. To apply, please click on 
     <button type="button" class="btn btn-primary tombole-lowongan" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Lowongan Yang Tersedia
+        The Availabe Vacancies
     </button>
-    dan isi form link di bawah ini:
+    and fill out the link form below:
     </p>
     <!-- Link Form Data Pelamar-->
     <p class="teks-link">
-        <a href="https://swabina.isc-hr.id/apply" class="link-form">Form Data Pelamar</a>
+        <a href="https://swabina.isc-hr.id/apply" class="link-form">Applicant Data Form</a>
     </p>
 
 
@@ -17,7 +17,7 @@
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Lowongan Yang Tersedia</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">The Availabe Vacancies</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

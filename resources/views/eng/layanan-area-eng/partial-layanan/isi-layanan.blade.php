@@ -1,19 +1,19 @@
 <section class="bagian-layanan">
   <div class="container-xl">
-    <h1 class="judul-klien">Klien Kami</h1>
-    <p class="deskripsi-judul-klien">SWA telah dipercaya oleh berbagai Perusahaan di seluruh Indonesia dengan beragam bidang usaha, antara lain :</p>
+    <h1 class="judul-klien">Our Clients</h1>
+    <p class="deskripsi-judul-klien">SWA has been trusted by various companies throughout Indonesia in various business fields, including :</p>
   </div>
     <img src="/assets/gambar_layanan/ind.png" class="img-fluid gambare-layanan" alt="Gambar Layanan">
 </section>
 
 <section class="bagian-daftar-perusahaan">
     <div class="container-xl">
-      <h1 class="judul-daftar-klien">Daftar Klien</h1>
+      <h1 class="judul-daftar-klien">Client List</h1>
     <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed teks-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              Industri Semen
+              Cement Industry
             </button>
           </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -32,7 +32,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed teks-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-              Logistik, Transportasi & Distribusi
+              Logistics, Transportation & Distribution
             </button>
           </h2>
           <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -51,7 +51,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed teks-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-              Keuangan & Perbankan
+              Finance & Banking
             </button>
           </h2>
           <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -85,7 +85,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed teks-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                Kesehatan
+                Health
               </button>
             </h2>
             <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -163,7 +163,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed teks-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
-                Pertambangan
+                Mining
               </button>
             </h2>
             <div id="flush-collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -191,7 +191,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed teks-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseEleven">
-                Fabrikasi
+                Fabrication
               </button>
             </h2>
             <div id="flush-collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -206,7 +206,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed teks-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
-                Informasi Teknologi & Komunikasi
+                Information Technology & Communication
               </button>
             </h2>
             <div id="flush-collapseTwelve" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
@@ -279,7 +279,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed teks-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeventeen" aria-expanded="false" aria-controls="flush-collapseSeventeen">
-                Lain-lain
+                Etc
               </button>
             </h2>
             <div id="flush-collapseSeventeen" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">

@@ -1,6 +1,6 @@
 <section class="isi-konten-mengapa">
 <div class="container">
-    <h1 class="text-center judul-mengapa">Mengapa Memilih Kami</h1>
+    <h1 class="text-center judul-mengapa">Why Choose Us</h1>
     <div class="why-choose-us-btn-container">
         @foreach($MK as $index => $item)
             <button class="btn why-choose-us-btn {{ $index == 0 ? 'active' : '' }}" data-target="#mk-{{ $item->id }}">{{ $item->title }}</button>

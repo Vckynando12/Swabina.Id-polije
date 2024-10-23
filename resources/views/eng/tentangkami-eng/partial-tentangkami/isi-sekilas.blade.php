@@ -1,7 +1,7 @@
 <!-- Carousel Sekilas -->
 
 <section>
-    <h1 class="judul-sekilas">Sekilas Perusahaan</h1>
+    <h1 class="judul-sekilas">Company Overview</h1>
     <div id="carouselExampleFade" class="carousel slide carousel-fade">
         <div class="carousel-inner">
             @if($fotolayanan->isNotEmpty())
