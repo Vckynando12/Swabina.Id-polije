@@ -18,7 +18,7 @@ class MkController extends Controller // Ubah mkController menjadi MkController
     public function index()
     {
         $MK = MK::all(); 
-        return view('memilihkami.main-mengapa', compact('MK'));
+        return view('memilihkami.mengapa', compact('MK'));
     }
 
     // Menampilkan halaman mk CRUD

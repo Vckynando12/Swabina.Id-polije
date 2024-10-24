@@ -46,7 +46,10 @@ $(function () {
         $(this).next("ul").removeClass("in");
       }
     });
+    // Comment out or remove this section
+    /*
     $("#sidebarnav >li >a.has-arrow").on("click", function (e) {
       e.preventDefault();
     });
+    */
   });
