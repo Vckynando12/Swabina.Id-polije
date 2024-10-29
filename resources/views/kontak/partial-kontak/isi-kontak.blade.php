@@ -133,7 +133,7 @@
       <div class="icon">
         <i class="bi bi-person-fill"></i> <!-- Icon bisa disesuaikan -->
       </div>
-      <p class="answer mb-0">Iya benar, kami memiliki berbagai cabang. Silakan cek URL ini untuk melihat informasi selanjutnya: 
+      <p class="answer mb-0">Iya benar, kami memiliki relasi di berbagai cabang. Silakan cek URL ini untuk melihat informasi selanjutnya: 
         <a href="https://swabina.id/home/klien">https://swabina.id/home/klien</a>
       </p>
     </div>

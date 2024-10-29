@@ -133,7 +133,7 @@
       <div class="icon">
         <i class="bi bi-person-fill"></i> <!-- Icon bisa disesuaikan -->
       </div>
-      <p class="answer mb-0">Yes it does, we have various branches. Please check this url to view further information: 
+      <p class="answer mb-0">Yes it does, we have realtionships in various branches. Please check this url to view further information: 
         <a href="https://swabina.id/home/klien">https://swabina.id/home/klien</a>
       </p>
     </div>
