@@ -25,15 +25,21 @@ class LandingPageController extends Controller
         $misi = VisiMisiBudaya::where('type', 'misi')->get();
         $budaya = VisiMisiBudaya::where('type', 'budaya')->get();
 
-        return view('beranda.landingpage', compact(
-            'carousels', 
-            'sekilas', 
-            'jejakLangkahs', 
-            'sertifikatPenghargaans', 
-            'fotoLayanan',
-            'visi',
-            'misi',
-            'budaya'
-        ));
+        return view('beranda.landingpage', compact('carousels', 'sekilas', 'jejakLangkahs', 'sertifikatPenghargaans', 'fotoLayanan','visi','misi','budaya'));
+    }
+    public function indexEng()
+    {
+        $carousels = Carousel::all();
+        $sekilas = SekilasPerusahaan::all();
+        $jejakLangkahs = JejakLangkah::all();
+        $sertifikatPenghargaans = SertifikatPenghargaan::all();
+        $fotoLayanan = FotoLayanan::first();
+
+        // Fetch Visi, Misi, and Budaya separately
+        $visi = VisiMisiBudaya::where('type', 'visi')->get();
+        $misi = VisiMisiBudaya::where('type', 'misi')->get();
+        $budaya = VisiMisiBudaya::where('type', 'budaya')->get();
+
+        return view('eng.beranda-eng.landingpage-eng', compact('carousels', 'sekilas', 'jejakLangkahs', 'sertifikatPenghargaans', 'fotoLayanan','visi','misi','budaya'));
     }
 }

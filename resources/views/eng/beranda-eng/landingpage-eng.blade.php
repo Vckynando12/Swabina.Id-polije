@@ -105,7 +105,7 @@
 
 
     <!-- Carousel responsive -->
-    @include('beranda-eng.partial-beranda.carousel-responsive')
+    @include('eng.beranda-eng.partial-beranda.carousel-responsive')
 
 <!--Tentang Kami-->
 <section>
@@ -131,10 +131,10 @@
     <div class="tab-content mt-4" id="aboutTabContent">
       <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
         @foreach($sekilas as $sekilasItem)
-          <p class="font-tentang-perusahaan" style="text-align: {{ $sekilasItem->text_align }};">
-              {!! nl2br(e($sekilasItem->maintext)) !!}
-          </p>
-      @endforeach
+        <p class="font-tentang-perusahaan" style="text-align: {{ $sekilasItem->text_align }};">
+            {!! nl2br(e($sekilasItem->maintext['en'])) !!}
+        </p>
+    @endforeach
       <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
       onmouseover="this.style.backgroundColor='#0d6efd';" 
          onmouseout="this.style.backgroundColor='#0454a3';">
@@ -234,7 +234,7 @@
 </div>
 
 <!--Konten Card Mengapa Memilih Kami-->
-@include('beranda-eng.partial-beranda.mpk')
+@include('eng.beranda-eng.partial-beranda.mpk')
 
 
 <!--Video Youtube-->

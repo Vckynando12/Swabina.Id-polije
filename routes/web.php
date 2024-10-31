@@ -40,7 +40,7 @@ use App\Http\Controllers\SwatourorganizerController;
 use App\Http\Controllers\TentangkamiController;
 use Illuminate\Support\Facades\Route;
 
-//route untuk memanggil view
+//route untuk memanggil view Indonesia
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/facility-management', [FacilityManagementController::class, 'index'])->name('facility-management');
 Route::get('/swasegar', [SwasegarController::class, 'index'])->name('swasegar');
@@ -52,6 +52,9 @@ Route::get('/visimisibudaya', [TentangkamiController::class, 'visiMisiBudaya'])-
 Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'])->name('sertif');
 Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
 Route::get('/Berita', [BeritaController::class, 'index'])->name('berita');
+
+//Route untuk memanggil view English
+Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpage');
 
 // Route untuk login
 Route::middleware('guest')->group(function () {
