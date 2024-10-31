@@ -20,7 +20,13 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Text</th>
+                <th>
+                    Text
+                    <div class="btn-group ms-2" role="group">
+                        <button type="button" class="btn btn-sm btn-outline-primary active" onclick="toggleLanguage('id')">Indonesia</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage('en')">English</button>
+                    </div>
+                </th>
                 <th>Alignment</th>
                 <th width="280px">Action</th>
             </tr>
@@ -29,7 +35,10 @@
             @foreach ($texts as $text)
             <tr>
                 <td>{{ $text->id }}</td>
-                <td style="text-align: {{ $text->text_align }}; white-space: pre-wrap;">{!! nl2br(e($text->content)) !!}</td>
+                <td style="text-align: {{ $text->text_align }}; white-space: pre-wrap;">
+                    <div class="content-id">{!! nl2br(e($text->content['id'])) !!}</div>
+                    <div class="content-en" style="display: none;">{!! nl2br(e($text->content['en'])) !!}</div>
+                </td>
                 <td>{{ ucfirst($text->text_align) }}</td>
                 <td>
                     <button class="btn btn-warning" data-toggle="modal" data-target="#editModal{{ $text->id }}">Edit</button>
@@ -53,8 +62,8 @@
                                 @method('PUT')
 
                                 <div class="form-group">
-                                    <label for="content{{ $text->id }}">Text:</label>
-                                    <textarea class="form-control" id="content{{ $text->id }}" name="content" rows="4" required style="white-space: pre-wrap;">{{ $text->content }}</textarea>
+                                    <label for="text">Edit Text:</label>
+                                    <textarea class="form-control" name="text" rows="3" required style="white-space: pre-wrap;">{{ $text->content['id'] }}</textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -107,8 +116,8 @@
                     <form action="{{ route('admin.swatour.textteo.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="content">New Text:</label>
-                            <textarea class="form-control" name="content" rows="3" required style="white-space: pre-wrap;"></textarea>
+                            <label for="text">New Text:</label>
+                            <textarea class="form-control" name="text" rows="3" required style="white-space: pre-wrap;"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="text_align">Text Alignment:</label>
@@ -185,6 +194,21 @@
                 $('#deleteForm').submit();
             }
         });
+    }
+
+    function toggleLanguage(lang) {
+        document.querySelectorAll('.btn-group .btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        if (lang === 'id') {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = '');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = 'none');
+        } else {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = '');
+        }
     }
 </script>
 @endsection

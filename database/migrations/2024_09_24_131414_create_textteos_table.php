@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('textteos', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
+            $table->json('content');
             $table->string('text_align')->default('left');
             $table->timestamps();
         });

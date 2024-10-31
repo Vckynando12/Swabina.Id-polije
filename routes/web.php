@@ -56,9 +56,8 @@ Route::get('/Berita', [BeritaController::class, 'index'])->name('berita');
 //Route untuk memanggil view English
 Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');
 Route::get('/en/facility-management', [FacilityManagementController::class, 'indexEng'])->name('facility-managementEng');
-Route::get('/en/swasegar', [SwasegarController::class, 'indexEng'])->name('swasegar');
-
-
+Route::get('/en/swasegar', [SwasegarController::class, 'indexEng'])->name('swasegarEng');
+Route::get('/en/swatour', [SwatourorganizerController::class, 'indexEng'])->name('swatourEng');
 
 // Route untuk login
 Route::middleware('guest')->group(function () {

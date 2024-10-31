@@ -14,17 +14,17 @@ class TentangkamiController extends Controller
         $sekilasPerusahaan = SekilasPerusahaan::all();
         $fotolayanan = FotoLayanan::all();
         
-        return view('tentangkami.main-sekilas', compact('sekilasPerusahaan', 'fotolayanan'));
+        return view('tentangkami.sekilas', compact('sekilasPerusahaan', 'fotolayanan'));
     }
     public function visiMisiBudaya()
     {
         $visiMisiBudaya = VisiMisiBudaya::all();
         
-        return view('tentangkami.main-visimisi', compact('visiMisiBudaya'));
+        return view('tentangkami.visimisi', compact('visiMisiBudaya'));
     }
     public function sertifikat()
     {
         $sertifikatPenghargaan = SertifikatPenghargaan::all();
-        return view('tentangkami.main-sertifikat', compact('sertifikatPenghargaan'));
+        return view('tentangkami.sertifikat', compact('sertifikatPenghargaan'));
     }
 }

@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- Header -->
-    @include ('patial.header')
+    @include ('partial.header')
 
     <!-- Navigasi -->
     @include ('partial.navigasi')

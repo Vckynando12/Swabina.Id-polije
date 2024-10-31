@@ -10,4 +10,6 @@ class Textteo extends Model
     use HasFactory;
 
     protected $fillable = ['content', 'text_align'];
+
+    protected $casts = ['content' => 'array',];
 }

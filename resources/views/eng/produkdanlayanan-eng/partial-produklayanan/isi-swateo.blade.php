@@ -1,6 +1,6 @@
- <!-- Carousel Swateo-->
+<!-- Carousel Swateo-->
 
- <section>
+<section>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: relative;">
         <div class="carousel-inner">
             @foreach($carousels as $index => $carousel)
@@ -30,7 +30,7 @@
         @endif
         @if($texts->isNotEmpty())
             <p class="description" style="text-align: {{ $texts->first()->text_align }};">
-                {!! nl2br(e($texts->first()->content)) !!}
+                {!! nl2br(e($texts->first()->content['en'])) !!}
             </p>
         @else
             <p class="description">No content available.</p>
@@ -45,7 +45,7 @@
         @endif
         @foreach($texts->skip(1) as $text)
             <p class="description" style="text-align: {{ $text->text_align }};">
-                {!! nl2br(e($text->content)) !!}
+                {!! nl2br(e($text->content['en'])) !!}
             </p>
         @endforeach
     </div>

@@ -6,6 +6,7 @@ use App\Models\Textteo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TextteoController extends Controller
 {
@@ -29,9 +30,15 @@ class TextteoController extends Controller
         ]);
 
         $content = str_replace("\r\n", "\n", $request->content);
+        
+        // Initialize Google Translate
+        $tr_en = new GoogleTranslate('en');
 
         Textteo::create([
-            'content' => $content,
+            'content' => [
+                'id' => $content,
+                'en' => $tr_en->translate($content)
+            ],
             'text_align' => $request->text_align,
         ]);
 
@@ -46,10 +53,16 @@ class TextteoController extends Controller
         ]);
 
         $content = str_replace("\r\n", "\n", $request->content);
+        
+        // Initialize Google Translate
+        $tr_en = new GoogleTranslate('en');
 
         $textteo = Textteo::findOrFail($id);
         $textteo->update([
-            'content' => $content,
+            'content' => [
+                'id' => $content,
+                'en' => $tr_en->translate($content)
+            ],
             'text_align' => $request->text_align,
         ]);
 

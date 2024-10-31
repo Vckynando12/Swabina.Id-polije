@@ -17,7 +17,7 @@
     @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine ftour and event organizer -->
-    @include ('produkdanlayanan-eng.partial-produklayanan.isi-swateo')
+    @include ('eng.produkdanlayanan-eng.partial-produklayanan.isi-swateo')
 
     <!-- Footer -->
     @include ('partial-eng.footer-eng')
