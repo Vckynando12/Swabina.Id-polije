@@ -154,39 +154,39 @@
 </div>
       <div class="tab-pane fade font-tentang-perusahaan" id="vision" role="tabpanel" aria-labelledby="vision-tab">
         @if($visi->isNotEmpty())
-            <h2 style="margin-bottom: 15px;">VISION</h2>
+        <h2 style="margin-bottom: 15px; text-align: {{ $visi->first()->text_align }};">VISION</h2>
             @foreach($visi as $visiItem)
-            <p style="margin-bottom: 40px; text-align: {{ $visiItem->text_align }};">
-                    {!! nl2br(e($visiItem->content)) !!}
+                <p style="margin-bottom: 40px; text-align: {{ $visiItem->text_align }};">
+                    {!! nl2br(e($visiItem->content['en'])) !!}
                 </p>
             @endforeach
-            @endif
+        @endif
 
-            @if($misi->isNotEmpty())
-            <h2 style="margin-bottom: 15px;">MISSION</h2>
+        @if($misi->isNotEmpty())
+        <h2 style="margin-bottom: 15px; text-align: {{ $misi->first()->text_align }};">MISSION</h2>
             @foreach($misi as $misiItem)
-            <p style="font-size: large; text-align: {{ $misiItem->text_align }}; margin-bottom: 40px">
-                {!! nl2br(e($misiItem->content)) !!}
-            </p>
-        @endforeach
-    @endif
+                <p style="font-size: large; text-align: {{ $misiItem->text_align }}; margin-bottom: 40px">
+                    {!! nl2br(e($misiItem->content['en'])) !!}
+                </p>
+            @endforeach
+        @endif
 
-    
         @if($budaya->isNotEmpty())
-            <h2 style="margin-bottom: 20px;">CULTURE</h2>
+        <h2 style="margin-bottom: 20px; text-align: {{ $budaya->first()->text_align }};">CULTURE</h2>
             @foreach($budaya as $budayaItem)
                 <h2 style="font-weight: bold">SIAP BISA</h2>
                 <p style="font-size: large; text-align: {{ $budayaItem->text_align }};">
-                    {!! nl2br(e($budayaItem->content)) !!}
+                    {!! nl2br(e($budayaItem->content['en'])) !!}
                 </p>
             @endforeach
-            @endif
+        @endif
 
         <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
-           onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">
+            onmouseover="this.style.backgroundColor='#0d6efd';" 
+            onmouseout="this.style.backgroundColor='#0454a3';">
             Read More
-          </a>
-        </div>
+        </a>
+      </div>
         <!-- Sertifikat dan Penghargaan -->
       <div class="tab-pane fade" id="certificates" role="tabpanel" aria-labelledby="certificates-tab">
         <div id="certificatesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">

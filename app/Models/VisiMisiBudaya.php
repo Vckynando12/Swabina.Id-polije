@@ -9,4 +9,8 @@ class VisiMisiBudaya extends Model
 {
     use HasFactory;
     protected $fillable = ['type', 'content', 'text_align'];
+    
+    protected $casts = [
+        'content' => 'array',
+    ];
 }

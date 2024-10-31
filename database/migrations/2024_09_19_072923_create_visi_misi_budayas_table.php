@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('visi_misi_budayas', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['visi', 'misi', 'budaya']);
-            $table->text('content');
+            $table->json('content');
             $table->string('text_align')->default('left');
             $table->timestamps();
         });
