@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\landingpage;
+
 use App\Models\SekilasPerusahaan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class SekilasPerusahaanController extends Controller
-
 {
     public function index()
     {
@@ -31,8 +32,14 @@ class SekilasPerusahaanController extends Controller
 
             $maintext = str_replace("\r\n", "\n", $request->maintext);
 
+            // Inisialisasi Google Translate untuk bahasa Inggris
+            $tr_en = new GoogleTranslate('en');
+
             SekilasPerusahaan::create([
-                'maintext' => $maintext,
+                'maintext' => [
+                    'id' => $maintext, // Simpan teks asli (Indonesia)
+                    'en' => $tr_en->translate($maintext) // Terjemahkan ke bahasa Inggris dan simpan
+                ],
                 'text_align' => $request->text_align,
             ]);
 
@@ -58,9 +65,15 @@ class SekilasPerusahaanController extends Controller
 
             $maintext = str_replace("\r\n", "\n", $request->maintext);
 
+            // Inisialisasi Google Translate untuk bahasa Inggris
+            $tr_en = new GoogleTranslate('en');
+
             $sekilas = SekilasPerusahaan::findOrFail($id);
             $sekilas->update([
-                'maintext' => $maintext,
+                'maintext' => [
+                    'id' => $maintext, // Update teks asli (Indonesia)
+                    'en' => $tr_en->translate($maintext) // Update terjemahan ke bahasa Inggris
+                ],
                 'text_align' => $request->text_align,
             ]);
 
@@ -77,4 +90,5 @@ class SekilasPerusahaanController extends Controller
         return response()->json(['success' => true, 'message' => 'Data deleted successfully.']);
     }    
 }
+
 

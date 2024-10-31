@@ -18,16 +18,31 @@
     
     <table class="table table-bordered">
         <tr>
-            <th>Deskripsi</th>
+            <th>
+                Deskripsi
+                <div class="btn-group ms-2" role="group">
+                    <button type="button" class="btn btn-sm btn-outline-primary active" onclick="toggleLanguage('id')">Indonesia</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage('en')">English</button>
+                </div>
+            </th>
             <th>Alignment</th>
             <th width="280px">Aksi</th>
         </tr>
         @foreach ($data as $item)
         <tr>
-            <td style="text-align: {{ $item->text_align }}; white-space: pre-wrap;">{!! nl2br(e($item->maintext)) !!}</td>
+            <td style="text-align: {{ $item->text_align }}; white-space: pre-wrap;">
+                <div class="content-id">{!! nl2br(e($item->maintext['id'])) !!}</div>
+                <div class="content-en" style="display: none;">{!! nl2br(e($item->maintext['en'])) !!}</div>
+            </td>
             <td>{{ ucfirst($item->text_align) }}</td>
             <td>
-                <button class="btn btn-warning editBtn" data-id="{{ $item->Id_sekilas }}" data-maintext="{{ $item->maintext }}" data-text-align="{{ $item->text_align }}" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                <button class="btn btn-warning editBtn" 
+                    data-id="{{ $item->Id_sekilas }}" 
+                    data-maintext-id="{{ $item->maintext['id'] }}"
+                    data-maintext-en="{{ $item->maintext['en'] }}"
+                    data-text-align="{{ $item->text_align }}" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#editModal">Edit</button>
                 <button class="btn btn-danger deleteBtn" data-id="{{ $item->Id_sekilas }}">Hapus</button>
             </td>
         </tr>
@@ -163,16 +178,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    function toggleLanguage(lang) {
+        document.querySelectorAll('.btn-group .btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        if (lang === 'id') {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = '');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = 'none');
+        } else {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = '');
+        }
+    }
+
     document.querySelectorAll('.editBtn').forEach(btn => {
         btn.addEventListener('click', function() {
             var id = this.getAttribute('data-id');
-            var maintext = this.getAttribute('data-maintext');
+            var maintextId = this.getAttribute('data-maintext-id');
+            var maintextEn = this.getAttribute('data-maintext-en');
             var textAlign = this.getAttribute('data-text-align');
 
             document.getElementById('editForm').reset();
             document.getElementById('editModalLabel').textContent = 'Edit Sekilas Perusahaan';
             document.getElementById('editId').value = id;
-            document.getElementById('editMaintext').value = maintext;
+            document.getElementById('editMaintext').value = maintextId;
             document.getElementById('edit' + textAlign.charAt(0).toUpperCase() + textAlign.slice(1)).checked = true;
         });
     });

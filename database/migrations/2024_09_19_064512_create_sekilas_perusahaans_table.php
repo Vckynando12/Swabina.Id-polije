@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sekilas_perusahaans', function (Blueprint $table) {
             $table->id('Id_sekilas');
-            $table->text('maintext');
+            $table->json('maintext');
             $table->string('text_align')->default('left');
             $table->timestamps();
         });

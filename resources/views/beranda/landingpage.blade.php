@@ -132,7 +132,7 @@
       <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
         @foreach($sekilas as $sekilasItem)
           <p class="font-tentang-perusahaan" style="text-align: {{ $sekilasItem->text_align }};">
-              {!! nl2br(e($sekilasItem->maintext)) !!}
+              {!! nl2br(e($sekilasItem->maintext['id'])) !!}
           </p>
       @endforeach
       <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
@@ -154,7 +154,7 @@
 </div>
       <div class="tab-pane fade font-tentang-perusahaan" id="vision" role="tabpanel" aria-labelledby="vision-tab">
         @if($visi->isNotEmpty())
-            <h2 style="margin-bottom: 15px;">VISI</h2>
+        <h2 style="margin-bottom: 15px; text-align: {{ $visi->first()->text_align }};"><b>VISI</b></h2>
             @foreach($visi as $visiItem)
             <p style="margin-bottom: 40px; text-align: {{ $visiItem->text_align }};">
                     {!! nl2br(e($visiItem->content)) !!}
@@ -163,7 +163,7 @@
             @endif
 
             @if($misi->isNotEmpty())
-            <h2 style="margin-bottom: 15px;">MISI</h2>
+            <h2 style="margin-bottom: 15px; text-align: {{ $misi->first()->text_align }};"><b>MISI</b></h2>
             @foreach($misi as $misiItem)
             <p style="font-size: large; text-align: {{ $misiItem->text_align }}; margin-bottom: 40px">
                 {!! nl2br(e($misiItem->content)) !!}
@@ -173,9 +173,9 @@
 
     
         @if($budaya->isNotEmpty())
-            <h2 style="margin-bottom: 20px;">Budaya Perusahaan</h2>
+            <h2 style="margin-bottom: 20px; text-align: {{ $budaya->first()->text_align }};">Budaya Perusahaan</h2>
             @foreach($budaya as $budayaItem)
-                <h2 style="font-weight: bold">SIAP BISA</h2>
+                <h2 style="font-weight: bold ;text-align: {{ $budaya->first()->text_align }};">SIAP BISA</h2>
                 <p style="font-size: large; text-align: {{ $budayaItem->text_align }};">
                     {!! nl2br(e($budayaItem->content)) !!}
                 </p>

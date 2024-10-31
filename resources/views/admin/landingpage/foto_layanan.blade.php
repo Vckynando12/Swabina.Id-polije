@@ -5,7 +5,7 @@
     <h1>Manage Foto Layanan</h1>
 
     <div class="row">
-        @foreach(['gambar_direksi_1' => 'Gambar Direksi 1', 'gambar_direksi_2' => 'Gambar Direksi 2', 'jejak_langkah' => 'Jejak Langkah'] as $key => $label)
+        @foreach(['gambar_direksi_1' => 'Gambar Direksi 1', 'gambar_direksi_2' => 'Gambar Direksi 2', 'jejak_langkah' => 'Layanan Area'] as $key => $label)
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-header">
@@ -89,7 +89,7 @@
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
-        })
+        })  
         .then(response => response.json())
         .then(data => {
             if (data.success) {

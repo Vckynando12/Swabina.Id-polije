@@ -13,4 +13,7 @@ class SekilasPerusahaan extends Model
     protected $primaryKey = 'Id_sekilas';
 
     protected $fillable = ['maintext', 'text_align'];
+
+    protected $casts = [ 'maintext' => 'array',];
 }
+
