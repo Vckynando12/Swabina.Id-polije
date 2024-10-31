@@ -51,13 +51,14 @@ Route::get('/sekilasperusahaan', [TentangkamiController::class, 'sekilasPerusaha
 Route::get('/visimisibudaya', [TentangkamiController::class, 'visiMisiBudaya'])->name('visimisi');
 Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'])->name('sertif');
 Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
-Route::get('/Berita', [BeritaController::class, 'index'])->name('berita');
+Route::get('/Beritashow', [BeritaController::class, 'index'])->name('berita1212');
 
 //Route untuk memanggil view English
 Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');
 Route::get('/en/facility-management', [FacilityManagementController::class, 'indexEng'])->name('facility-managementEng');
 Route::get('/en/swasegar', [SwasegarController::class, 'indexEng'])->name('swasegarEng');
 Route::get('/en/swatour', [SwatourorganizerController::class, 'indexEng'])->name('swatourEng');
+Route::get('/en/Digital-Solution', [DigitalSolutionController::class, 'indexEng'])->name('digitalsolution');
 
 // Route untuk login
 Route::middleware('guest')->group(function () {

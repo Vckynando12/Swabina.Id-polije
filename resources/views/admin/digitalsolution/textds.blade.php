@@ -8,14 +8,23 @@
     <table class="table table-bordered">
         <tr>
             <th>ID</th>
-            <th>Text</th>
+            <th>
+                Text
+                <div class="btn-group ms-2" role="group">
+                    <button type="button" class="btn btn-sm btn-outline-primary active" onclick="toggleLanguage('id')">Indonesia</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage('en')">English</button>
+                </div>
+            </th>
             <th>Alignment</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($texts as $text)
         <tr>
             <td>{{ $text->id }}</td>
-            <td style="text-align: {{ $text->text_align }}; white-space: pre-wrap;">{!! nl2br(e($text->text)) !!}</td>
+            <td style="text-align: {{ $text->text_align }}; white-space: pre-wrap;">
+                <div class="content-id">{!! nl2br(e($text->content['id'])) !!}</div>
+                <div class="content-en" style="display: none;">{!! nl2br(e($text->content['en'])) !!}</div>
+            </td>
             <td>{{ ucfirst($text->text_align) }}</td>
             <td>
                 <button class="btn btn-warning" data-toggle="modal" data-target="#editModal{{ $text->id }}">Edit</button>
@@ -206,5 +215,20 @@
             text: "{{ session('error') }}",
         });
     @endif
+
+    function toggleLanguage(lang) {
+        document.querySelectorAll('.btn-group .btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        if (lang === 'id') {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = '');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = 'none');
+        } else {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = '');
+        }
+    }
 </script>
 @endsection

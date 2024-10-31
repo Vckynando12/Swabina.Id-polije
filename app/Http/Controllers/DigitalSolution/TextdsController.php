@@ -6,6 +6,7 @@ use App\Models\Textds;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TextdsController extends Controller
 {
@@ -28,10 +29,16 @@ class TextdsController extends Controller
             'text_align' => 'required|in:left,center,right,justify',
         ]);
 
-        $text = str_replace("\r\n", "\n", $request->text);
+        $content = str_replace("\r\n", "\n", $request->text);
+        
+        // Initialize Google Translate
+        $tr_en = new GoogleTranslate('en');
 
         Textds::create([
-            'text' => $text,
+            'content' => [
+                'id' => $content,
+                'en' => $tr_en->translate($content)
+            ],
             'text_align' => $request->text_align,
         ]);
 
@@ -45,11 +52,17 @@ class TextdsController extends Controller
             'text_align' => 'required|in:left,center,right,justify',
         ]);
 
-        $text = str_replace("\r\n", "\n", $request->text);
+        $content = str_replace("\r\n", "\n", $request->text);
+        
+        // Initialize Google Translate
+        $tr_en = new GoogleTranslate('en');
 
         $textds = Textds::findOrFail($id);
         $textds->update([
-            'text' => $text,
+            'content' => [
+                'id' => $content,
+                'en' => $tr_en->translate($content)
+            ],
             'text_align' => $request->text_align,
         ]);
 

@@ -17,4 +17,12 @@ class DigitalSolutionController extends Controller
         
         return view('produkdanlayanan.swads', compact('carousels','gambards','texts'));
     }
+    public function indexEng()
+    {
+        $carousels = Carouselds::all();
+        $gambards = Gambards::first();
+        $texts = Textds::all();
+        
+        return view('eng.produkdanlayanan-eng.swads-eng', compact('carousels','gambards','texts'));
+    }
 }

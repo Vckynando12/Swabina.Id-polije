@@ -16,7 +16,7 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = Berita::all(); 
-        return view('berita.main-berita', compact('berita'));
+        return view('berita.berita', compact('berita'));
     }
 
     public function showberita()
