@@ -17,7 +17,7 @@
     @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine swa academy -->
-    @include ('produkdanlayanan-eng.partial-produklayanan.isi-swaac')
+    @include ('eng.produkdanlayanan-eng.partial-produklayanan.isi-swaac')
 
     <!-- Footer -->
     @include ('partial-eng.footer-eng')

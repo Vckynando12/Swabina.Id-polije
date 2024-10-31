@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TextSS extends Model
 {
     use HasFactory;
-    protected $fillable = ['text', 'text_align'];
+    protected $fillable = ['content', 'text_align'];
+
+    protected $casts = ['content' => 'array',];
 }

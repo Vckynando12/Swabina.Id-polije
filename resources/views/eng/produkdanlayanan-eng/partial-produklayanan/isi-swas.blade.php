@@ -1,6 +1,6 @@
- <!-- Carousel Swaac-->
+<!-- Carousel Swaac-->
 
- <section>
+<section>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: relative;">
         <div class="carousel-inner">
             @foreach($carousels as $index => $carousel)
@@ -16,7 +16,7 @@
             @endforeach
         </div>
     </div>
- </section>
+</section>
 
 <!-- Artikel Swaac -->
 <h1 class="judul-swaac">SWA Segar</h1>
@@ -26,13 +26,13 @@
         @if($gambarSS && $gambarSS->gambar1)
             <img src="{{ asset('storage/' . $gambarSS->gambar1) }}" alt="Gambar Pertama" class="image1">
         @else
-            <img src="{{ asset('path/to/default/image.jpg') }}" alt="Default Gambar Pertama" class="image1">
+            <p>No image Found</p>
         @endif
         <p class="description" style="text-align: {{ $textss->where('id', 1)->first()->text_align ?? 'left' }};">
             @if($textss->where('id', 1)->first())
-                {!! nl2br(e($textss->where('id', 1)->first()->text)) !!}
+                {!! nl2br(e($textss->where('id', 1)->first()->content['en'])) !!}
             @else
-                Tidak ada data ditemukan pada id 1                
+                No data found for id 1                
             @endif
         </p>
     </div>
@@ -41,11 +41,11 @@
         @if($gambarSS && $gambarSS->gambar2)
             <img src="{{ asset('storage/' . $gambarSS->gambar2) }}" alt="Gambar Kedua" class="image2">
         @else
-            <img src="{{ asset('path/to/default/image.jpg') }}" alt="Default Gambar Kedua" class="image2">
+            <p>No image Found</p>
         @endif
         @foreach($textss->where('id', '>', 1) as $text)
             <p class="description" style="text-align: {{ $text->text_align }};">
-                {!! nl2br(e($text->text)) !!}
+                {!! nl2br(e($text->content['en'])) !!}
             </p>
         @endforeach
     </div>
