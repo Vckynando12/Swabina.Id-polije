@@ -9,6 +9,8 @@ class TextFM extends Model
 {
     use HasFactory;
     
-    protected $table = 'text_f_m_s';  // Add this line to specify the table name
+    protected $table = 'text_f_m_s';
     protected $fillable = ['content', 'text_align'];
+
+    protected $casts = ['content' => 'array',];
 }

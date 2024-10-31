@@ -6,6 +6,7 @@ use App\models\TextFM;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TextFMController extends Controller
 {
@@ -29,9 +30,15 @@ class TextFMController extends Controller
         ]);
 
         $content = str_replace("\r\n", "\n", $request->content);
+        
+        // Initialize Google Translate
+        $tr_en = new GoogleTranslate('en');
 
         TextFM::create([
-            'content' => $content,
+            'content' => [
+                'id' => $content,
+                'en' => $tr_en->translate($content)
+            ],
             'text_align' => $request->text_align,
         ]);
 
@@ -46,10 +53,16 @@ class TextFMController extends Controller
         ]);
 
         $content = str_replace("\r\n", "\n", $request->content);
+        
+        // Initialize Google Translate
+        $tr_en = new GoogleTranslate('en');
 
         $textFM = TextFM::findOrFail($id);
         $textFM->update([
-            'content' => $content,
+            'content' => [
+                'id' => $content,
+                'en' => $tr_en->translate($content)
+            ],
             'text_align' => $request->text_align,
         ]);
 

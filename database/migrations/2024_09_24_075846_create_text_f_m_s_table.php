@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('text_f_m_s', function (Blueprint $table) {
             $table->id();
-            $table->text('content');  // Change 'text' to 'content'
+            $table->json('content');  // Change 'text' to 'content'
             $table->string('text_align')->default('left');
             $table->timestamps();
         });

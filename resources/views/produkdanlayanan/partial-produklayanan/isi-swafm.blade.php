@@ -1,6 +1,6 @@
- <!-- Carousel Swafm-->
+<!-- Carousel Swafm-->
 
- <section>
+<section>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false" style="position: relative;">
         <div class="carousel-inner">
             @foreach($carousels as $index => $carousel)
@@ -26,30 +26,30 @@
         @if($gambarFM->gambar1)
             <img src="{{ asset('storage/' . $gambarFM->gambar1) }}" alt="Gambar Pertama" class="image1">
         @else
-            <!-- Placeholder image or message -->
             <img src="{{ asset('path/to/placeholder-image.jpg') }}" alt="Placeholder" class="image1">
         @endif
         <p class="description">
             @php
-                $content = $texts->where('id', 1)->first()->content ?? 'Default text if no content found.';
+                $firstText = $texts->where('id', 1)->first();
+                $content = $firstText ? $firstText->content['id'] : 'Default text if no content found.';
                 $content = str_replace("\r\n", "\n", $content);
             @endphp
             {!! nl2br(e($content)) !!}
         </p>
     </div>
+
     <!-- Gambar Kedua -->
     <div class="content-item align-right">
         @if($gambarFM->gambar2)
             <img src="{{ asset('storage/' . $gambarFM->gambar2) }}" alt="Gambar Kedua" class="image2">
         @else
-            <!-- Placeholder image or message -->
             <img src="{{ asset('path/to/placeholder-image.jpg') }}" alt="Placeholder" class="image2">
         @endif
         
         @foreach($texts->where('id', '>=', 2) as $text)
             <p class="description">
                 @php
-                    $content = $text->content ?? 'Default text if no content found.';
+                    $content = $text->content['id'] ?? 'Default text if no content found.';
                     $content = str_replace("\r\n", "\n", $content);
                 @endphp
                 {!! nl2br(e($content)) !!}

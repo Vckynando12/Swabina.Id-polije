@@ -54,7 +54,9 @@ Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
 Route::get('/Berita', [BeritaController::class, 'index'])->name('berita');
 
 //Route untuk memanggil view English
-Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpage');
+Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');
+Route::get('/en/facility-management', [FacilityManagementController::class, 'indexEng'])->name('facility-managementEng');
+
 
 // Route untuk login
 Route::middleware('guest')->group(function () {
