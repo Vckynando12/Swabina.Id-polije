@@ -4,7 +4,7 @@
         <div class="d-flex align-items-center">
             <div class="d-flex align-items-center me-5">
                 <i class="bi bi-geo-alt-fill me-2" style="font-size: 50px; color: #0454a3;"></i>
-                <div class="d-flex flex-column me-4" style="color: #0454a3; font-size: small;">
+                <div class="d-flex flex-column me-4" style="color: #0454a3; font-size: x-small;">
                     <span>Alamat</span>
                     <span>Kantor Pusat & Pabrik AMDK:</span>
                     <span>Jl. R.A. Kartini No.21 A Gresik 61122,</span>
