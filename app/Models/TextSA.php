@@ -10,5 +10,7 @@ class TextSA extends Model
     use HasFactory;
     
     protected $table = 'text_s_a_s';
-    protected $fillable = ['text', 'text_align'];
+    protected $fillable = ['content', 'text_align'];
+
+    protected $casts = ['content' => 'array',];
 }
