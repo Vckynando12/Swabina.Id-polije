@@ -78,7 +78,6 @@
 .judul-sekilas {
     text-align: center;
     font-weight: bold;
-    font-size: 3rem;
     margin-top: 20px;
     color: #0454a3;
 }
@@ -141,7 +140,6 @@
 /* Sertifikat */
 .judule-sertif {
     font-weight: bold;
-    font-size: 3rem;
     text-align: center;
     margin-bottom: 50px;
     margin-top: 50px;
