@@ -5,10 +5,16 @@
     <h1>Data MK</h1>
     <button class="btn btn-primary" id="addMkBtn" data-bs-toggle="modal" data-bs-target="#mkModal">Tambah MK</button>
     <table class="table mt-4">
+        <div class="btn-group ms-2" role="group">
+            <button type="button" class="btn btn-sm btn-outline-primary active" id="btn-id">Indonesia</button>
+            <button type="button" class="btn btn-sm btn-outline-primary" id="btn-en">English</button>
+        </div>
         <thead>
             <tr>
                 <th>Image</th>
-                <th>Title</th>
+                <th>
+                    Title
+                </th>
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
@@ -17,10 +23,22 @@
             @foreach($MK as $item)
             <tr>
                 <td><img src="{{ asset('storage/' . $item->image) }}" width="100" height="50" /></td>
-                <td>{{ $item->title }}</td>
-                <td>{{ $item->description }}</td>
                 <td>
-                    <button class="btn btn-warning editBtn" data-id="{{ $item->id }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-image="{{ asset('storage/' . $item->image) }}" data-bs-toggle="modal" data-bs-target="#mkModal">Edit</button>
+                    <div class="content-id">{{ is_array($item->title) ? $item->title['id'] : $item->title }}</div>
+                    <div class="content-en" style="display: none;">{{ is_array($item->title) ? $item->title['en'] : '' }}</div>
+                </td>
+                <td>
+                    <div class="content-id">{{ is_array($item->description) ? $item->description['id'] : $item->description }}</div>
+                    <div class="content-en" style="display: none;">{{ is_array($item->description) ? $item->description['en'] : '' }}</div>
+                </td>
+                <td>
+                    <button class="btn btn-warning editBtn" 
+                        data-id="{{ $item->id }}" 
+                        data-title-id="{{ is_array($item->title) ? $item->title['id'] : $item->title }}"
+                        data-description-id="{{ is_array($item->description) ? $item->description['id'] : $item->description }}"
+                        data-image="{{ asset('storage/' . $item->image) }}" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#mkModal">Edit</button>
                     <button class="btn btn-danger deleteBtn" data-id="{{ $item->id }}">Delete</button>
                 </td>
             </tr>
@@ -82,15 +100,19 @@
         btn.addEventListener('click', function() {
             isEditing = true;
             editId = this.getAttribute('data-id');
-            var title = this.getAttribute('data-title');
-            var description = this.getAttribute('data-description');
-            var image = this.getAttribute('data-image');
-
+            
+            // Parse JSON string jika diperlukan
+            let titleData = this.getAttribute('data-title-id');
+            let descData = this.getAttribute('data-description-id');
+            
+            // Update form fields
             document.getElementById('mkModalLabel').textContent = 'Edit MK';
             document.getElementById('id').value = editId;
-            document.getElementById('title').value = title;
-            document.getElementById('description').value = description;
-            document.getElementById('previewImage').src = image;
+            document.getElementById('title').value = titleData;
+            document.getElementById('description').value = descData;
+            
+            // Set preview image
+            document.getElementById('previewImage').src = this.getAttribute('data-image');
             document.getElementById('previewImage').style.display = 'block';
         });
     });
@@ -196,13 +218,37 @@
     });
 
     document.getElementById('image').addEventListener('change', function() {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('previewImage').src = e.target.result;
-            document.getElementById('previewImage').style.display = 'block';
-        };
-        reader.readAsDataURL(this.files[0]);
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('previewImage').src = e.target.result;
+                document.getElementById('previewImage').style.display = 'block';
+            };
+            reader.readAsDataURL(this.files[0]);
+        }
     });
+
+    document.getElementById('btn-id').addEventListener('click', function() {
+        toggleLanguage('id');
+        this.classList.add('active');
+        document.getElementById('btn-en').classList.remove('active');
+    });
+
+    document.getElementById('btn-en').addEventListener('click', function() {
+        toggleLanguage('en');
+        this.classList.add('active');
+        document.getElementById('btn-id').classList.remove('active');
+    });
+
+    function toggleLanguage(lang) {
+        if (lang === 'id') {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = '');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = 'none');
+        } else {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = '');
+        }
+    }
 </script>
 
 @endsection

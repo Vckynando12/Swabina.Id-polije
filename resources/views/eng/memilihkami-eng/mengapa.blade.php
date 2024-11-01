@@ -17,7 +17,7 @@
     @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine sekilas -->
-    @include ('memilihkami-eng.partial-memilihkami.isi-memilihkami')
+    @include ('eng.memilihkami-eng.partial-memilihkami.isi-memilihkami')
 
     <!-- Footer -->
     @include ('partial-eng.footer-eng')

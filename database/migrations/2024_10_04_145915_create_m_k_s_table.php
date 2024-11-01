@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('m_k_s', function (Blueprint $table) {
             $table->id();
             $table->string('image'); // Menyimpan nama file gambar
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->json('title')->nullable(); // Ubah ke json
+            $table->json('description')->nullable(); // Ubah ke json
             $table->timestamps();
         });
     }

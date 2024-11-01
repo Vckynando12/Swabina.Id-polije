@@ -3,16 +3,18 @@
     <h1 class="text-center judul-mengapa">Why Choose Us</h1>
     <div class="why-choose-us-btn-container">
         @foreach($MK as $index => $item)
-            <button class="btn why-choose-us-btn {{ $index == 0 ? 'active' : '' }}" data-target="#mk-{{ $item->id }}">{{ $item->title }}</button>
+            <button class="btn why-choose-us-btn {{ $index == 0 ? 'active' : '' }}" data-target="#mk-{{ $item->id }}">
+                {{ is_array($item->title) ? $item->title['en'] : $item->title }}
+            </button>
         @endforeach
     </div>
 
     @foreach($MK as $index => $item)
         <div id="mk-{{ $item->id }}" class="why-choose-us-content-section {{ $index == 0 ? 'active' : '' }}">
-            <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid gambare-konten" alt="{{ $item->title }} Image">
-            <h1 class="judule-konten">{{ $item->title }}</h1>
+            <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid gambare-konten" alt="{{ is_array($item->title) ? $item->title['en'] : $item->title }} Image">
+            <h1 class="judule-konten">{{ is_array($item->title) ? $item->title['en'] : $item->title }}</h1>
             <p class="deskripsine-konten">
-                {{ $item->description }}
+                {{ is_array($item->description) ? $item->description['en'] : $item->description }}
             </p>
         </div>
     @endforeach

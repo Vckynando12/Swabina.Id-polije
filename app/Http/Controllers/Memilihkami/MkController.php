@@ -11,6 +11,7 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Validation\ValidationException; // Add this line
 use Illuminate\Support\Facades\Log;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class MkController extends Controller // Ubah mkController menjadi MkController
 {
@@ -19,6 +20,11 @@ class MkController extends Controller // Ubah mkController menjadi MkController
     {
         $MK = MK::all(); 
         return view('memilihkami.mengapa', compact('MK'));
+    }
+    public function indexEng()
+    {
+        $MK = MK::all(); 
+        return view('eng.memilihkami-eng.mengapa', compact('MK'));
     }
 
     // Menampilkan halaman mk CRUD
@@ -84,9 +90,9 @@ class MkController extends Controller // Ubah mkController menjadi MkController
 
         try {
             $validator = Validator::make($request->all(), [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:20480', // 20MB limit
-                'title' => 'nullable|string|max:255',
-                'description' => 'nullable|string|max:255',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:20480',
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
             ]);
 
             if ($validator->fails()) {
@@ -100,22 +106,28 @@ class MkController extends Controller // Ubah mkController menjadi MkController
             }
 
             $file = $request->file('image');
-            Log::info('Image file details', [
-                'name' => $file->getClientOriginalName(),
-                'size' => $file->getSize(),
-                'mime' => $file->getMimeType()
-            ]);
-
             $path = $this->compressAndSaveImage($file);
+
+            // Initialize Google Translate
+            $tr = new GoogleTranslate('en');
+
+            // Default values if title or description is empty
+            $title = $request->title ?? '';
+            $description = $request->description ?? '';
 
             $MK = MK::create([
                 'image' => $path,
-                'title' => $request->title,
-                'description' => $request->description,
+                'title' => [
+                    'id' => $title,
+                    'en' => $title ? $tr->translate($title) : ''
+                ],
+                'description' => [
+                    'id' => $description,
+                    'en' => $description ? $tr->translate($description) : ''
+                ],
             ]);
 
             Log::info('mk created successfully', ['mk_id' => $MK->id]);
-
             return response()->json(['success' => true, 'message' => 'mk berhasil ditambahkan']);
         } catch (\Exception $e) {
             Log::error('Error in mk store', [
@@ -135,9 +147,9 @@ class MkController extends Controller // Ubah mkController menjadi MkController
             $MK = MK::findOrFail($id);
             
             $validator = Validator::make($request->all(), [
-                'title' => 'nullable|string|max:255',
-                'description' => 'nullable|string|max:255',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480', // 20MB limit
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480',
             ]);
 
             if ($validator->fails()) {
@@ -146,21 +158,34 @@ class MkController extends Controller // Ubah mkController menjadi MkController
             }
 
             if ($request->hasFile('image')) {
-                // Delete old image
                 if ($MK->image) {
                     Storage::disk('public')->delete($MK->image);
                 }
-                
-                // Compress and save new image
                 $MK->image = $this->compressAndSaveImage($request->file('image'));
             }
 
-            $MK->title = $request->title ?? $MK->title;
-            $MK->description = $request->description ?? $MK->description;
+            // Initialize Google Translate
+            $tr = new GoogleTranslate('en');
+
+            // Update title if provided
+            if ($request->filled('title')) {
+                $MK->title = [
+                    'id' => $request->title,
+                    'en' => $tr->translate($request->title)
+                ];
+            }
+
+            // Update description if provided
+            if ($request->filled('description')) {
+                $MK->description = [
+                    'id' => $request->description,
+                    'en' => $tr->translate($request->description)
+                ];
+            }
+
             $MK->save();
 
             Log::info('mk updated successfully', ['mk_id' => $MK->id]);
-
             return response()->json(['success' => true, 'message' => 'mk berhasil diperbarui']);
         } catch (\Exception $e) {
             Log::error('Error in mk update', [

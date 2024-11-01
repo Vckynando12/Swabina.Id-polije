@@ -63,6 +63,7 @@ Route::get('/en/swaacademy', [SwaacademyController::class, 'indexEng'])->name('s
 Route::get('/en/sekilasperusahaan', [TentangkamiController::class, 'sekilasPerusahaanEng'])->name('tentangkamiEng');
 Route::get('/en/visimisibudaya', [TentangkamiController::class, 'visiMisiBudayaEng'])->name('visimisiEng');
 Route::get('/en/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikatEng'])->name('sertifEng');
+Route::get('/en/memilihkami', [MkController::class, 'indexEng'])->name('memilihkamiEng');
 // Route untuk login
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
