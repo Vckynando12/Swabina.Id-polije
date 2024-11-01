@@ -55,7 +55,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5" id="nav-hamburger" href="#" >Eng</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5" id="nav-hamburger" href="{{ route('landingpageEng') }}" >Eng</a> <!-- Add me-5 for margin -->
           </li>
 
           {{-- logo dan gambar --}}
