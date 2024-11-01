@@ -16,4 +16,12 @@ class SwaacademyController extends Controller
         
         return view('produkdanlayanan.swaac', compact('carousels', 'gambarSA', 'texts'));
     }
+    public function indexEng()
+    {
+        $carousels = CarouselSA::all();
+        $gambarSA = GambarSA::first();
+        $texts = TextSA::all();
+        
+        return view('eng.produkdanlayanan-eng.swaac-eng', compact('carousels', 'gambarSA', 'texts'));
+    }
 }

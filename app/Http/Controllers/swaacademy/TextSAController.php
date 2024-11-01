@@ -5,6 +5,7 @@ namespace App\Http\Controllers\swaacademy;
 use App\Models\TextSA;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TextSAController extends Controller
 {
@@ -23,10 +24,16 @@ class TextSAController extends Controller
             'text_align' => 'required|in:left,center,right,justify',
         ]);
 
-        $text = str_replace("\r\n", "\n", $request->text);
+        $content = str_replace("\r\n", "\n", $request->text);
+        
+        // Initialize Google Translate
+        $tr_en = new GoogleTranslate('en');
 
         TextSA::create([
-            'text' => $text,
+            'content' => [
+                'id' => $content,
+                'en' => $tr_en->translate($content)
+            ],
             'text_align' => $request->text_align,
         ]);
 
@@ -40,11 +47,17 @@ class TextSAController extends Controller
             'text_align' => 'required|in:left,center,right,justify',
         ]);
 
-        $text = str_replace("\r\n", "\n", $request->text);
+        $content = str_replace("\r\n", "\n", $request->text);
+        
+        // Initialize Google Translate
+        $tr_en = new GoogleTranslate('en');
 
         $textSA = TextSA::findOrFail($id);
         $textSA->update([
-            'text' => $text,
+            'content' => [
+                'id' => $content,
+                'en' => $tr_en->translate($content)
+            ],
             'text_align' => $request->text_align,
         ]);
 
