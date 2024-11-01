@@ -11,7 +11,7 @@
         <ul class="navbar-nav mx-auto">
 
           <li class="nav-item">
-            <a class="nav-link me-5"  id="nav-hamburger" href="#" style="">Beranda</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5"  id="nav-hamburger" href="{{ route('landingpage') }}" style="">Beranda</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item dropdown position-relative">
@@ -19,11 +19,11 @@
               Produk dan Layanan
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown1" style="">
-              <li><a class="dropdown-item" id="nav-hamburger"  href="#" style="">SWA Facility Management</a></li>
-              <li><a class="dropdown-item" id="nav-hamburger"  href="#" style="">SWA Segar</a></li>
-              <li><a class="dropdown-item" id="nav-hamburger"  href="#" style="">SWA Tour & Event Organizer</a></li>
-              <li><a class="dropdown-item" id="nav-hamburger"  href="#" style="">SWA Digital Solution</a></li>
-              <li><a class="dropdown-item" id="nav-hamburger"  href="#" style="">SWA Academy</a></li>
+              <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('facility-management') }}" style="">SWA Facility Management</a></li>
+              <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('swasegar') }}" style="">SWA Segar</a></li>
+              <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('swatour') }}" style="">SWA Tour & Event Organizer</a></li>
+              <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('digitalsolution') }}" style="">SWA Digital Solution</a></li>
+              <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('swaacademy') }}" style="">SWA Academy</a></li>
             </ul>
           </li>
 
@@ -32,18 +32,18 @@
               Tentang Kami
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown2" style="">
-              <li><a class="dropdown-item" href="#" style="">Sekilas Perusahaan</a></li>
-              <li><a class="dropdown-item" href="#" style="">Visi & Misi Perusahaan</a></li>
-              <li><a class="dropdown-item" href="#" style="">Sertifikat & Penghargaan</a></li>
+              <li><a class="dropdown-item" href="{{ route('sekilas') }}" style="">Sekilas Perusahaan</a></li>
+              <li><a class="dropdown-item" href="{{ route('visimisi') }}" style="">Visi & Misi Perusahaan</a></li>
+              <li><a class="dropdown-item" href="{{ route('sertif') }}" style="">Sertifikat & Penghargaan</a></li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5"  id="nav-hamburger" href="#" style="">Mengapa Memilih Kami</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5"  id="nav-hamburger" href="{{ route('memilihkami') }}" style="">Mengapa Memilih Kami</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5" id="nav-hamburger"  href="#" style="">Berita</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5" id="nav-hamburger"  href="{{ route('berita1212') }}" style="">Berita</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item">

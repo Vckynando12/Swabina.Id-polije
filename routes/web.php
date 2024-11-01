@@ -46,8 +46,8 @@ Route::get('/facility-management', [FacilityManagementController::class, 'index'
 Route::get('/swasegar', [SwasegarController::class, 'index'])->name('swasegar');
 Route::get('/swatour', [SwatourorganizerController::class, 'index'])->name('swatour');
 Route::get('/Digital-Solution', [DigitalSolutionController::class, 'index'])->name('digitalsolution');
-Route::get('/swaacademy', [SwaacademyController::class, 'index'])->name('swasegar');
-Route::get('/sekilasperusahaan', [TentangkamiController::class, 'sekilasPerusahaan'])->name('tentangkami');
+Route::get('/swaacademy', [SwaacademyController::class, 'index'])->name('swaacademy');
+Route::get('/sekilasperusahaan', [TentangkamiController::class, 'sekilasPerusahaan'])->name('sekilas');
 Route::get('/visimisibudaya', [TentangkamiController::class, 'visiMisiBudaya'])->name('visimisi');
 Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'])->name('sertif');
 Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
@@ -58,7 +58,7 @@ Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpage
 Route::get('/en/facility-management', [FacilityManagementController::class, 'indexEng'])->name('facility-managementEng');
 Route::get('/en/swasegar', [SwasegarController::class, 'indexEng'])->name('swasegarEng');
 Route::get('/en/swatour', [SwatourorganizerController::class, 'indexEng'])->name('swatourEng');
-Route::get('/en/Digital-Solution', [DigitalSolutionController::class, 'indexEng'])->name('digitalsolution');
+Route::get('/en/Digital-Solution', [DigitalSolutionController::class, 'indexEng'])->name('digitalsolutionEng');
 
 // Route untuk login
 Route::middleware('guest')->group(function () {
