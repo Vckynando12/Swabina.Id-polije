@@ -40,7 +40,7 @@
       </div>
       <div class="row">
         <div class="col-12 text-center mt-3 "  >
-          <p id="copyright">&copy; 2024 Politeknik Negeri Jember. All rights reserved.</p>
+          <p id="copyright">&copy; PT Swabina Gatra 2024. All rights reserved.</p>
         </div>
       </div>
     </div>
