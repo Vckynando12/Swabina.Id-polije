@@ -135,7 +135,7 @@
               {!! nl2br(e($sekilasItem->maintext['id'])) !!}
           </p>
       @endforeach
-      <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
+      <a href="{{ route('sekilas') }}" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
       onmouseover="this.style.backgroundColor='#0d6efd';" 
          onmouseout="this.style.backgroundColor='#0454a3';">
          Baca Selengkapnya
@@ -181,7 +181,7 @@
             @endforeach
         @endif
 
-        <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
+        <a href="{{ route('visimisi') }}" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
             onmouseover="this.style.backgroundColor='#0d6efd';" 
             onmouseout="this.style.backgroundColor='#0454a3';">
             Baca Selengkapnya
@@ -207,7 +207,7 @@
           </div>
           @endforeach
         </div>
-          <a href="#" role="button" class="btn btn-primary btn-lg" id="btn-tentang" style=""
+          <a href="{{ route('sertif') }}" role="button" class="btn btn-primary btn-lg" id="btn-tentang" style=""
              onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">
               Baca Selengkapnya
             </a>
