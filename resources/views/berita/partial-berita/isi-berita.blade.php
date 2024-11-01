@@ -2,11 +2,17 @@
 <section class="panggen-berita">
     <h1 class="judule-berita">Berita SWA</h1>
 
+    <!-- Tambahkan tombol toggle bahasa -->
+    
+
     <div class="owl-carousel">
         @foreach($berita as $index => $item)
             <div class="item">
                 <img src="{{ asset('storage/' . $item->image) }}" alt="Berita {{ $index + 1 }}">
-                <button class="read-more-btn" data-target="desc{{ $index + 1 }}">Baca Selengkapnya</button>
+                <button class="read-more-btn" data-target="desc{{ $index + 1 }}">
+                    <span class="content-id">Baca Selengkapnya</span>
+                    <span class="content-en" style="display: none;">Read More</span>
+                </button>
             </div>
         @endforeach
     </div>
@@ -25,10 +31,30 @@
 <section class="deskripsi-berita">
     @foreach($berita as $index => $item)
         <div id="desc{{ $index + 1 }}" class="description">
-            <h3 class="sub-judul">{{ $item->title }}</h3>
+            <h3 class="sub-judul">
+                <span class="content-id">{{ isset($item->title['id']) ? $item->title['id'] : '' }}</span>
+            </h3>
             <p class="pengaturan-font-deskripsi">
-                {!! nl2br(e($item->description)) !!}
+                <span class="content-id">{!! nl2br(e(isset($item->description['id']) ? $item->description['id'] : '')) !!}</span>
             </p>
         </div>
     @endforeach
 </section>
+
+<script>
+function toggleLanguage(lang) {
+    // Update active state of buttons
+    document.querySelectorAll('.btn-group .btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+
+    // Toggle content visibility
+    if (lang === 'id') {
+        document.querySelectorAll('.content-id').forEach(el => el.style.display = '');
+    } else {
+        document.querySelectorAll('.content-id').forEach(el => el.style.display = 'none');
+    
+    }
+}
+</script>

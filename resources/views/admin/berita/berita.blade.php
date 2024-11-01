@@ -8,7 +8,13 @@
         <thead>
             <tr>
                 <th>Image</th>
-                <th>Title</th>
+                <th>
+                    Title
+                    <div class="btn-group ms-2" role="group">
+                        <button type="button" class="btn btn-sm btn-outline-primary active" onclick="toggleLanguage('id')">Indonesia</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage('en')">English</button>
+                    </div>
+                </th>
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
@@ -17,10 +23,22 @@
             @foreach($berita as $item)
             <tr>
                 <td><img src="{{ asset('storage/' . $item->image) }}" width="100" height="50" /></td>
-                <td>{{ $item->title }}</td>
-                <td>{{ $item->description }}</td>
                 <td>
-                    <button class="btn btn-warning editBtn" data-id="{{ $item->id }}" data-title="{{ $item->title }}" data-description="{{ $item->description }}" data-image="{{ asset('storage/' . $item->image) }}" data-bs-toggle="modal" data-bs-target="#beritaModal">Edit</button>
+                    <div class="content-id">{{ isset($item->title['id']) ? $item->title['id'] : '' }}</div>
+                    <div class="content-en" style="display: none;">{{ isset($item->title['en']) ? $item->title['en'] : '' }}</div>
+                </td>
+                <td>
+                    <div class="content-id">{{ isset($item->description['id']) ? $item->description['id'] : '' }}</div>
+                    <div class="content-en" style="display: none;">{{ isset($item->description['en']) ? $item->description['en'] : '' }}</div>
+                </td>
+                <td>
+                    <button class="btn btn-warning editBtn" 
+                        data-id="{{ $item->id }}" 
+                        data-title-id="{{ isset($item->title['id']) ? $item->title['id'] : '' }}"
+                        data-description-id="{{ isset($item->description['id']) ? $item->description['id'] : '' }}"
+                        data-image="{{ asset('storage/' . $item->image) }}" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#beritaModal">Edit</button>
                     <button class="btn btn-danger deleteBtn" data-id="{{ $item->id }}">Delete</button>
                 </td>
             </tr>
@@ -82,8 +100,8 @@
         btn.addEventListener('click', function() {
             isEditing = true;
             editId = this.getAttribute('data-id');
-            var title = this.getAttribute('data-title');
-            var description = this.getAttribute('data-description');
+            var title = this.getAttribute('data-title-id');
+            var description = this.getAttribute('data-description-id');
             var image = this.getAttribute('data-image');
 
             document.getElementById('beritaModalLabel').textContent = 'Edit Berita';
@@ -203,5 +221,20 @@
         };
         reader.readAsDataURL(this.files[0]);
     });
+
+    function toggleLanguage(lang) {
+        document.querySelectorAll('.btn-group .btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+
+        if (lang === 'id') {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = '');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = 'none');
+        } else {
+            document.querySelectorAll('.content-id').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.content-en').forEach(el => el.style.display = '');
+        }
+    }
 </script>
 @endsection

@@ -19,7 +19,7 @@
     @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine sekilas -->
-    @include ('berita-eng.partial-berita.isi-berita')
+    @include ('eng.berita-eng.partial-berita.isi-berita')
 
     <!-- Footer -->
     @include ('partial-eng.footer-eng')

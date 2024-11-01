@@ -10,4 +10,9 @@ class Berita extends Model
     use HasFactory;
     
     protected $fillable = ['image', 'title', 'description'];
+
+    protected $casts = [
+        'title' => 'array',
+        'description' => 'array',
+    ];
 }

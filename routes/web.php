@@ -51,7 +51,7 @@ Route::get('/sekilasperusahaan', [TentangkamiController::class, 'sekilasPerusaha
 Route::get('/visimisibudaya', [TentangkamiController::class, 'visiMisiBudaya'])->name('visimisi');
 Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'])->name('sertif');
 Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
-Route::get('/Beritashow', [BeritaController::class, 'index'])->name('berita1212');
+Route::get('/Berita', [BeritaController::class, 'index'])->name('berita1212');
 
 //Route untuk memanggil view English
 Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');
@@ -64,6 +64,7 @@ Route::get('/en/sekilasperusahaan', [TentangkamiController::class, 'sekilasPerus
 Route::get('/en/visimisibudaya', [TentangkamiController::class, 'visiMisiBudayaEng'])->name('visimisiEng');
 Route::get('/en/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikatEng'])->name('sertifEng');
 Route::get('/en/memilihkami', [MkController::class, 'indexEng'])->name('memilihkamiEng');
+Route::get('/en/Berita', [BeritaController::class, 'indexEng'])->name('berita1212Eng');
 // Route untuk login
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

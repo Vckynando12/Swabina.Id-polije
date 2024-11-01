@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\Log;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class BeritaController extends Controller
 {
@@ -17,6 +18,11 @@ class BeritaController extends Controller
     {
         $berita = Berita::all(); 
         return view('berita.berita', compact('berita'));
+    }
+    public function indexEng()
+    {
+        $berita = Berita::all(); 
+        return view('eng.berita-eng.berita-eng', compact('berita'));
     }
 
     public function showberita()
@@ -83,43 +89,35 @@ class BeritaController extends Controller
 
     public function store(Request $request)
     {
-        Log::info('berita store method called', ['request' => $request->except('image')]);
-
         try {
             $validator = Validator::make($request->all(), [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:20480', // 20MB limit
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:20480',
                 'title' => 'required|string|max:255',
                 'description' => 'required|string',
             ]);
 
             if ($validator->fails()) {
-                Log::warning('Validation failed', ['errors' => $validator->errors()]);
                 return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
             }
 
-            if (!$request->hasFile('image')) {
-                Log::error('No image file uploaded');
-                return response()->json(['success' => false, 'message' => 'No image file uploaded'], 400);
-            }
+            $path = $this->compressAndSaveImage($request->file('image'));
 
-            $file = $request->file('image');
-            Log::info('Image file details', [
-                'name' => $file->getClientOriginalName(),
-                'size' => $file->getSize(),
-                'mime' => $file->getMimeType()
-            ]);
-
-            $path = $this->compressAndSaveImage($file);
+            // Initialize Google Translate
+            $tr = new GoogleTranslate('en');
 
             $berita = Berita::create([
                 'image' => $path,
-                'title' => $request->title,
-                'description' => $this->formatDescription($request->description),
+                'title' => [
+                    'id' => $request->title,
+                    'en' => $tr->translate($request->title)
+                ],
+                'description' => [
+                    'id' => $this->formatDescription($request->description),
+                    'en' => $tr->translate($this->formatDescription($request->description))
+                ],
             ]);
 
-            Log::info('berita created successfully', ['berita_id' => $berita->id]);
-
-            return response()->json(['success' => true, 'message' => 'Berita berhasil ditambahkan', 'data' => $berita]);
+            return response()->json(['success' => true, 'message' => 'Berita berhasil ditambahkan']);
         } catch (\Exception $e) {
             Log::error('Error in berita store', [
                 'error' => $e->getMessage(),
@@ -131,19 +129,16 @@ class BeritaController extends Controller
 
     public function update(Request $request, $id)
     {
-        Log::info('berita update method called', ['request' => $request->except('image'), 'id' => $id]);
-
         try {
             $berita = Berita::findOrFail($id);
             
             $validator = Validator::make($request->all(), [
                 'title' => 'nullable|string|max:255',
                 'description' => 'nullable|string',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480', // 20MB limit
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480',
             ]);
 
             if ($validator->fails()) {
-                Log::warning('Validation failed', ['errors' => $validator->errors()]);
                 return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
             }
 
@@ -151,17 +146,29 @@ class BeritaController extends Controller
                 if ($berita->image) {
                     Storage::disk('public')->delete($berita->image);
                 }
-                
                 $berita->image = $this->compressAndSaveImage($request->file('image'));
             }
 
-            $berita->title = $request->title ?? $berita->title;
-            $berita->description = $this->formatDescription($request->description ?? $berita->description);
+            // Initialize Google Translate
+            $tr = new GoogleTranslate('en');
+
+            if ($request->filled('title')) {
+                $berita->title = [
+                    'id' => $request->title,
+                    'en' => $tr->translate($request->title)
+                ];
+            }
+
+            if ($request->filled('description')) {
+                $berita->description = [
+                    'id' => $this->formatDescription($request->description),
+                    'en' => $tr->translate($this->formatDescription($request->description))
+                ];
+            }
+
             $berita->save();
 
-            Log::info('berita updated successfully', ['berita_id' => $berita->id]);
-
-            return response()->json(['success' => true, 'message' => 'Berita berhasil diperbarui', 'data' => $berita]);
+            return response()->json(['success' => true, 'message' => 'Berita berhasil diperbarui']);
         } catch (\Exception $e) {
             Log::error('Error in berita update', [
                 'error' => $e->getMessage(),
