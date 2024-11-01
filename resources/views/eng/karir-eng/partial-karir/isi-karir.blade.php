@@ -21,7 +21,36 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          @foreach($karirs as $karir)
+          <div class="karir-item mb-3 d-flex align-items-center">
+              <h5 class="mb-0 me-3">{{ $karir->judul }}</h5>
+              <a href="{{ asset('storage/documents/' . $karir->file) }}" class="btn btn-sm btn-primary me-3" target="_blank">
+                  Download Requirements
+              </a>
+              <div class="file-icon">
+                  @php
+                      $extension = pathinfo($karir->file, PATHINFO_EXTENSION);
+                      $iconClass = '';
+                      switch(strtolower($extension)) {
+                          case 'pdf':
+                              $iconClass = 'far fa-file-pdf text-danger';
+                              break;
+                          case 'doc':
+                          case 'docx':
+                              $iconClass = 'far fa-file-word text-primary';
+                              break;
+                          case 'xls':
+                          case 'xlsx':
+                              $iconClass = 'far fa-file-excel text-success';
+                              break;
+                          default:
+                              $iconClass = 'far fa-file text-secondary';
+                      }
+                  @endphp
+                  <i class="{{ $iconClass }} fa-2x"></i>
+              </div>
+          </div>
+          @endforeach
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

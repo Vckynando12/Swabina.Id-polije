@@ -15,6 +15,17 @@ class KarirController extends Controller
         return view('admin.karir.karir', compact('karirs'));
     }
 
+    public function karir()
+    {
+        $karirs = Karir::all();
+        return view('karir.karir', compact('karirs'));
+    }
+    public function karirEng()
+    {
+        $karirs = Karir::all();
+        return view('eng.karir-eng.karir-eng', compact('karirs'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
