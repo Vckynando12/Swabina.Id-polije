@@ -41,13 +41,14 @@
     </div>
     
     <div class="deskripsi-sekilas">
-        @if($sekilasPerusahaan->isNotEmpty())
-            @foreach($sekilasPerusahaan as $sekilas)
-                <p style="text-align: {{ $sekilas->text_align }};">{{ $sekilas->maintext }}</p>
-            @endforeach
+        @if($sekilas->isNotEmpty())
+        @foreach($sekilas as $sekilasItem)
+        <p class="font-tentang-perusahaan" style="text-align: {{ $sekilasItem->text_align }};">
+            {!! nl2br(e($sekilasItem->maintext['id'])) !!}
+        </p>
+    @endforeach
         @else
-            
-        <h3>tidak ada data</h3>
+            <h3>No data available</h3>
         @endif
     </div>
 </section>

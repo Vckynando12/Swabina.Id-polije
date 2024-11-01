@@ -19,7 +19,7 @@
     <!-- Konten Sekilas -->
     <main>
         <!-- Iki isine sekilas -->
-        @include('tentangkami-eng.partial-tentangkami.isi-sekilas')
+        @include('eng.tentangkami-eng.partial-tentangkami.isi-sekilas')
 
         <!-- Tambahan konten spesifik untuk halaman sekilas bisa ditambahkan di sini -->
     </main>

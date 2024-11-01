@@ -4,15 +4,15 @@
             @php
                 $visiAlignment = $visiMisiBudaya->where('type', 'visi')->first()->text_align;
             @endphp
-            <h1 class="judul-visi" style="text-align: {{ $visiAlignment }};">VISI</h1>
+            <h1 class="judul-visi" style="text-align: {{ $visiAlignment }};">VISION</h1>
             @foreach($visiMisiBudaya->where('type', 'visi') as $visi)
                 <p class="teks-vmb" style="text-align: {{ $visi->text_align }};">
-                    {!! nl2br(e($visi->content)) !!}
+                    {!! nl2br(e($visi->content['en'])) !!}
                 </p>
             @endforeach
         @else
             <h1 class="judul-visi">VISION</h1>
-            <p class="teks-vmb">Data visi belum ditambahkan</p>
+            <p class="teks-vmb">Vision data has not been added</p>
         @endif
     </div>
 
@@ -21,15 +21,15 @@
             @php
                 $misiAlignment = $visiMisiBudaya->where('type', 'misi')->first()->text_align;
             @endphp
-            <h1 class="judul-misi" style="text-align: {{ $misiAlignment }};">MISI</h1>
+            <h1 class="judul-misi" style="text-align: {{ $misiAlignment }};">MISSION</h1>
             @foreach($visiMisiBudaya->where('type', 'misi') as $misi)
                 <p class="teks-vmb" style="text-align: {{ $misi->text_align }};">
-                    {!! nl2br(e($misi->content)) !!}
+                    {!! nl2br(e($misi->content['en'])) !!}
                 </p>
             @endforeach
         @else
             <h1 class="judul-misi">MISSION</h1>
-            <p class="teks-vmb">Data misi belum ditambahkan</p>
+            <p class="teks-vmb">Mission data has not been added</p>
         @endif
     </div>
 
@@ -44,13 +44,13 @@
             </h3>
             @foreach($visiMisiBudaya->where('type', 'budaya') as $budaya)
                 <p class="teks-vmb" style="text-align: {{ $budaya->text_align }};">
-                    {!! nl2br(e($budaya->content)) !!}
+                    {!! nl2br(e($budaya->content['en'])) !!}
                 </p>
             @endforeach
         @else
             <h1 class="judul-budaya">CULTURE</h1>
             <h3 class="subjudul-siapbisa"><b>SIAP BISA</b></h3>
-            <p class="teks-vmb">Data budaya belum ditambahkan</p>
+            <p class="teks-vmb">Culture data has not been added</p>
         @endif
     </div>
 </section>

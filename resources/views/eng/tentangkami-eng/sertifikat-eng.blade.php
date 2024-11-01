@@ -17,7 +17,7 @@
     @include ('partial-eng.navigasi-eng')
 
     <!-- Isi Sertifikat -->
-    @include ('tentangkami-eng.partial-tentangkami.isi-sertifikat')
+    @include ('eng.tentangkami-eng.partial-tentangkami.isi-sertifikat')
 
     <!-- Footer -->
     @include ('partial-eng.footer-eng')

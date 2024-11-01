@@ -17,7 +17,7 @@
     @include ('partial-eng.navigasi-eng')
 
     <!-- Isi Visi Misi -->
-    @include ('tentangkami-eng.partial-tentangkami.isi-visimisi')
+    @include ('eng.tentangkami-eng.partial-tentangkami.isi-visimisi')
 
     <!-- Footer -->
     @include ('partial-eng.footer-eng')

@@ -30,11 +30,7 @@
 </section>
 
 <section>
-  <p class="deskripsi-sertifikat">Kepercayaan Pelanggan merupakan hal yang paling utama bagi SWA. Karena itulah SWA selalu menjaganya melalui 
-    penyediaan produk dan layanan yang berkualitas. Usaha terbaik SWA dalam meraih standar mutu tertinggi demi kepuasan pelanggan, 
-    telah diakui dengan adanya penghargaan dan pencapaian yang bergengsi. Kedepannya, SWA akan terus berupaya untuk terus 
-    meningkatkan kualitas produk dan layanan yang dihasilkan, melalui berbagai inovasi tiada henti diikuti dengan 
-    pengawasan mutu yang ketat.</p>
+  <p class="deskripsi-sertifikat">Customer trust is the most important thing for SWA. That's why SWA always takes care of it by providing quality products and services. SWA's best efforts in achieving the highest quality standards for customer satisfaction have been recognized with prestigious awards and achievements. In the future, SWA will continue to strive to improve the quality of the products and services produced, through continuous innovation followed by strict quality control.</p>
 </section>
 
 <section class="penghargaan">

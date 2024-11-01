@@ -60,7 +60,9 @@ Route::get('/en/swasegar', [SwasegarController::class, 'indexEng'])->name('swase
 Route::get('/en/swatour', [SwatourorganizerController::class, 'indexEng'])->name('swatourEng');
 Route::get('/en/Digital-Solution', [DigitalSolutionController::class, 'indexEng'])->name('digitalsolutionEng');
 Route::get('/en/swaacademy', [SwaacademyController::class, 'indexEng'])->name('swaacademyEng');
-
+Route::get('/en/sekilasperusahaan', [TentangkamiController::class, 'sekilasPerusahaanEng'])->name('tentangkamiEng');
+Route::get('/en/visimisibudaya', [TentangkamiController::class, 'visiMisiBudayaEng'])->name('visimisiEng');
+Route::get('/en/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikatEng'])->name('sertifEng');
 // Route untuk login
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

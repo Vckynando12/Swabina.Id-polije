@@ -11,10 +11,10 @@ class TentangkamiController extends Controller
 {
     public function sekilasPerusahaan()
     {
-        $sekilasPerusahaan = SekilasPerusahaan::all();
+        $sekilas = SekilasPerusahaan::all();
         $fotolayanan = FotoLayanan::all();
         
-        return view('tentangkami.sekilas', compact('sekilasPerusahaan', 'fotolayanan'));
+        return view('tentangkami.sekilas', compact('sekilas', 'fotolayanan'));
     }
     public function visiMisiBudaya()
     {
@@ -26,5 +26,25 @@ class TentangkamiController extends Controller
     {
         $sertifikatPenghargaan = SertifikatPenghargaan::all();
         return view('tentangkami.sertifikat', compact('sertifikatPenghargaan'));
+    }
+
+    //Controller English
+    public function sekilasPerusahaanEng()
+    {
+        $sekilas = SekilasPerusahaan::all();
+        $fotolayanan = FotoLayanan::all();
+        
+        return view('eng.tentangkami-eng.sekilas-eng', compact('sekilas', 'fotolayanan'));
+    }
+    public function visiMisiBudayaEng()
+    {
+        $visiMisiBudaya = VisiMisiBudaya::all();
+        
+        return view('eng.tentangkami-eng.visimisi-eng', compact('visiMisiBudaya'));
+    }
+    public function sertifikatEng()
+    {
+        $sertifikatPenghargaan = SertifikatPenghargaan::all();
+        return view('eng.tentangkami-eng.sertifikat-eng', compact('sertifikatPenghargaan'));
     }
 }

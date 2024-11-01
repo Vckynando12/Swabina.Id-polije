@@ -7,7 +7,7 @@
             <h1 class="judul-visi" style="text-align: {{ $visiAlignment }};">VISI</h1>
             @foreach($visiMisiBudaya->where('type', 'visi') as $visi)
                 <p class="teks-vmb" style="text-align: {{ $visi->text_align }};">
-                    {!! nl2br(e($visi->content)) !!}
+                    {!! nl2br(e($visi->content['id'])) !!}
                 </p>
             @endforeach
         @else
@@ -24,7 +24,7 @@
             <h1 class="judul-misi" style="text-align: {{ $misiAlignment }};">MISI</h1>
             @foreach($visiMisiBudaya->where('type', 'misi') as $misi)
                 <p class="teks-vmb" style="text-align: {{ $misi->text_align }};">
-                    {!! nl2br(e($misi->content)) !!}
+                    {!! nl2br(e($misi->content['id'])) !!}
                 </p>
             @endforeach
         @else
@@ -44,7 +44,7 @@
             </h3>
             @foreach($visiMisiBudaya->where('type', 'budaya') as $budaya)
                 <p class="teks-vmb" style="text-align: {{ $budaya->text_align }};">
-                    {!! nl2br(e($budaya->content)) !!}
+                    {!! nl2br(e($budaya->content['id'])) !!}
                 </p>
             @endforeach
         @else
