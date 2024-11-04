@@ -24,9 +24,9 @@
     <!-- Gambar Pertama -->
     <div class="content-item align-left">
         @if($gambarFM->gambar1)
-            <img src="{{ asset('storage/' . $gambarFM->gambar1) }}" alt="Gambar Pertama" class="image1">
+            <img src="{{ asset('storage/' . $gambarFM->gambar1) }}" alt="Gambar Pertama" class="gambar1">
         @else
-            <img src="{{ asset('path/to/placeholder-image.jpg') }}" alt="Placeholder" class="image1">
+            <img src="{{ asset('path/to/placeholder-image.jpg') }}" alt="Placeholder" class="gambar1">
         @endif
         <p class="description">
             @php
@@ -41,9 +41,9 @@
     <!-- Gambar Kedua -->
     <div class="content-item align-right">
         @if($gambarFM->gambar2)
-            <img src="{{ asset('storage/' . $gambarFM->gambar2) }}" alt="Gambar Kedua" class="image2">
+            <img src="{{ asset('storage/' . $gambarFM->gambar2) }}" alt="Gambar Kedua" class="gambar2">
         @else
-            <img src="{{ asset('path/to/placeholder-image.jpg') }}" alt="Placeholder" class="image2">
+            <img src="{{ asset('path/to/placeholder-image.jpg') }}" alt="Placeholder" class="gambar2">
         @endif
         
         @foreach($texts->where('id', '>=', 2) as $text)

@@ -149,18 +149,17 @@
 }
 
 /* Mengatur gambar pertama */
-.image1 {
-    max-width: 30%;
-    height: auto;
+.gambar1 {
+    width: 35%;
+    height: 60%;
     margin-right: 20px; /* Jarak di sisi kanan gambar */
     border-radius: 20px;
 }
 
-/* Mengatur gambar kedua */
-.image2 {
-    max-width: 20%; /* Disesuaikan dengan gambar pertama agar konsisten */
-    height: auto;
-    margin-left: 20px; /* Jarak di sisi kiri gambar */
+.gambar2 {
+    width: 20%;
+    height: 40%;
+    margin-left: 20px; /* Jarak di sisi kanan gambar */
     border-radius: 20px;
 }
 

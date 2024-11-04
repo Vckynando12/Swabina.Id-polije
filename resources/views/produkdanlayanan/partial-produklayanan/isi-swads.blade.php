@@ -24,7 +24,7 @@
     <!-- Gambar Pertama -->
     <div class="content-item align-left">
         @if($gambards && $gambards->gambar1)
-            <img src="{{ asset('storage/' . $gambards->gambar1) }}" alt="Gambar Pertama" class="image1">
+            <img src="{{ asset('storage/' . $gambards->gambar1) }}" alt="Gambar Pertama" class="gambar1">
         @else
             <p>Gambar pertama belum tersedia.</p>
         @endif
@@ -39,7 +39,7 @@
     <!-- Gambar Kedua -->
     <div class="content-item align-right">
         @if($gambards && $gambards->gambar2)
-            <img src="{{ asset('storage/' . $gambards->gambar2) }}" alt="Gambar Kedua" class="image2">
+            <img src="{{ asset('storage/' . $gambards->gambar2) }}" alt="Gambar Kedua" class="gambar2">
         @else
             <p>Gambar kedua belum tersedia.</p>
         @endif
