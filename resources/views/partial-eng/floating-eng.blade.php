@@ -30,7 +30,7 @@
       </div>
 
       <div class="icon profile-icon" style="">
-        <a href="#" style="color: white; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+        <a href="{{ route('login') }}" style="color: white; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
           <i class="bi bi-person-circle" style=";"></i>
         </a>
       </div>
