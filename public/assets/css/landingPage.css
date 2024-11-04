@@ -201,8 +201,8 @@
 }
 
 .card img {
-    width: 100%;
-    height: 200px;
+    width: 95%;
+    height: 150px;
     padding: 10px;
 }
 
@@ -266,7 +266,7 @@
 /* Tentang Kami */
 #tentang-kami {
     font-weight: bold;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 30px;
     text-align: center;
 }
