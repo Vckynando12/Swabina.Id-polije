@@ -35,6 +35,7 @@
               <li><a class="dropdown-item" href="{{ route('sekilas') }}" style="">Sekilas Perusahaan</a></li>
               <li><a class="dropdown-item" href="{{ route('visimisi') }}" style="">Visi & Misi Perusahaan</a></li>
               <li><a class="dropdown-item" href="{{ route('sertif') }}" style="">Sertifikat & Penghargaan</a></li>
+              <li><a class="dropdown-item" href="#" style="">Kebijakan</a></li>
             </ul>
           </li>
 
