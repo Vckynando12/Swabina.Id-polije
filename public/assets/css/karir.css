@@ -92,6 +92,10 @@
     text-align: center;
     color: white;
 }
+.link {
+    color: yellow;
+    font-weight: bold;
+}
 
 .teks-link{
     padding-bottom: 25px;
@@ -100,7 +104,7 @@
 .link-form {
     font-size: medium;
     color: yellow;
-    padding-left: 280px;
+    padding-left: 218px;
     font-weight: bold;
 }
 
