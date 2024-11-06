@@ -22,7 +22,7 @@
               <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('facility-managementEng') }}" style="">SWA Facility Management</a></li>
               <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('swasegarEng') }}" style="">SWA Segar</a></li>
               <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('swatourEng') }}" style="">SWA Tour & Event Organizer</a></li>
-              <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('digitalsolutionEng') }}" style="">SWA Digital Solution</a></li>
+              <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('digitalsolutionEng') }}" style="">SWA Tech</a></li>
               <li><a class="dropdown-item" id="nav-hamburger"  href="{{ route('swaacademyEng') }}" style="">SWA Academy</a></li>
             </ul>
           </li>
