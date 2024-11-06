@@ -35,7 +35,7 @@
               <li><a class="dropdown-item" href="{{ route('tentangkamiEng') }}" style="">Company Overview</a></li>
               <li><a class="dropdown-item" href="{{ route('visimisiEng') }}" style="">Vision Mission & Culture</a></li>
               <li><a class="dropdown-item" href="{{ route('sertifEng') }}" style="">Certificates & Awards</a></li>
-              <li><a class="dropdown-item" href="#" style="">Policy</a></li>
+              <li><a class="dropdown-item" href="/assets/file_pdf/PANCAGATRA (5 KOMPETENSI DASAR KARYAWAN SWA)-1.pdf" target="_blank" style="">Policy</a></li>
             </ul>
           </li>
 
