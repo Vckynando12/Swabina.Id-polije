@@ -15,8 +15,10 @@ use App\Http\Controllers\Facilitymanagement\TextFMController;
 use App\Http\Controllers\FacilityManagementController;
 use App\Http\Controllers\karir\KarirController;
 use App\Http\Controllers\kontakkami\CarouselKKController;
+use App\Http\Controllers\kontakkami\FaqController;
 use App\Http\Controllers\kontakkami\GambarKKController;
 use App\Http\Controllers\kontakkami\TextKKController;
+use App\Http\Controllers\KontakkamiController;
 use App\Http\Controllers\landingpage\CarouselController;
 use App\Http\Controllers\landingpage\FotoLayananController;
 use App\Http\Controllers\landingpage\JejakLangkahController;
@@ -53,7 +55,7 @@ Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'
 Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
 Route::get('/Berita', [BeritaController::class, 'index'])->name('berita1212');
 Route::get('/Karir', [KarirController::class, 'karir'])->name('Karir');
-
+route::get('/Kontakkami',[KontakkamiController::class, 'index'])->name('kontakkami');
 
 //Route untuk memanggil view English
 Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');
@@ -68,6 +70,7 @@ Route::get('/en/SertifikatPenghargaan', [TentangkamiController::class, 'sertifik
 Route::get('/en/memilihkami', [MkController::class, 'indexEng'])->name('memilihkamiEng');
 Route::get('/en/Berita', [BeritaController::class, 'indexEng'])->name('berita1212Eng');
 Route::get('/en/Karir', [KarirController::class, 'karirEng'])->name('KarirEng');
+Route::get('/en/Kontakkami', [KontakkamiController::class, 'indexEng'])->name('kontakkamiEng');
 // Route untuk login
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -260,6 +263,14 @@ Route::group(['middleware' => ['auth', 'role:admin,marketing']], function() {
         Route::post('/carouselkk', [GambarKKController::class, 'store'])->name('admin.kontakkami.gambarkk.store');
         Route::put('/carouselkk/{id}', [GambarKKController::class, 'update'])->name('admin.kontakkami.gambarkk.update');
         Route::delete('/carouselkk/{id}', [GambarKKController::class, 'destroy'])->name('admin.kontakkami.gambarkk.destroy');
+    });
+
+    // Route untuk FAQ
+    Route::prefix('faq')->group(function () {
+        Route::get('/', [FaqController::class, 'index'])->name('admin.kontakkami.faq.index');
+        Route::post('/store', [FaqController::class, 'store'])->name('admin.kontakkami.faq.store');
+        Route::put('/update/{id}', [FaqController::class, 'update'])->name('admin.kontakkami.faq.update');
+        Route::delete('/destroy/{id}', [FaqController::class, 'destroy'])->name('admin.kontakkami.faq.destroy');
     });
 
 });

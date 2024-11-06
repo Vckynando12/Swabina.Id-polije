@@ -9,8 +9,260 @@
 <link rel="stylesheet" href="{{ asset('admin/css/styles.min.css') }}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    /* Dark mode styles */
+    [data-bs-theme="dark"] {
+        --bs-body-color: #dee2e6;
+        --bs-body-bg: #212529;
+    }
+
+    [data-bs-theme="dark"] .page-wrapper {
+        background: #1e1e2d;
+    }
+
+    [data-bs-theme="dark"] .navbar {
+        background: #1e1e2d !important;
+        border-color: #2d2d3f !important;
+    }
+
+    [data-bs-theme="dark"] .left-sidebar {
+        background: #1e1e2d;
+        border-right: 1px solid #2d2d3f;
+    }
+
+    [data-bs-theme="dark"] .sidebar-nav ul .sidebar-item .sidebar-link {
+        color: #cdcdde !important;
+    }
+
+    [data-bs-theme="dark"] .sidebar-nav ul .nav-small-cap {
+        color: #9899ac !important;
+    }
+
+    [data-bs-theme="dark"] .sidebar-nav ul .sidebar-item .sidebar-link:hover,
+    [data-bs-theme="dark"] .sidebar-nav ul .sidebar-item .sidebar-link.active {
+        background: #2d2d3f;
+        color: #fff !important;
+    }
+
+    [data-bs-theme="dark"] .card {
+        background: #1e1e2d;
+        border-color: #2d2d3f;
+    }
+
+    [data-bs-theme="dark"] .table {
+        --bs-table-bg: #1e1e2d;
+        --bs-table-border-color: #2d2d3f;
+        color: #cdcdde;
+    }
+
+    [data-bs-theme="dark"] .form-control,
+    [data-bs-theme="dark"] .form-select {
+        background-color: #1e1e2d;
+        border-color: #2d2d3f;
+        color: #cdcdde;
+    }
+
+    [data-bs-theme="dark"] .form-control:focus,
+    [data-bs-theme="dark"] .form-select:focus {
+        background-color: #2d2d3f;
+        border-color: #3699ff;
+        color: #cdcdde;
+    }
+
+    [data-bs-theme="dark"] .dropdown-menu {
+        background-color: #1e1e2d;
+        border-color: #2d2d3f;
+    }
+
+    [data-bs-theme="dark"] .dropdown-item {
+        color: #cdcdde;
+    }
+
+    [data-bs-theme="dark"] .dropdown-item:hover {
+        background-color: #2d2d3f;
+        color: #fff;
+    }
+
+    [data-bs-theme="dark"] .modal-content {
+        background-color: #1e1e2d;
+        border-color: #2d2d3f;
+    }
+
+    [data-bs-theme="dark"] .modal-header,
+    [data-bs-theme="dark"] .modal-footer {
+        border-color: #2d2d3f;
+    }
+
+    [data-bs-theme="dark"] .border-bottom,
+    [data-bs-theme="dark"] .border-top,
+    [data-bs-theme="dark"] .border-start,
+    [data-bs-theme="dark"] .border-end {
+        border-color: #2d2d3f !important;
+    }
+
+    /* Theme toggle button styles */
+    .theme-toggle {
+        background: transparent;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .theme-toggle i {
+        font-size: 1.2rem;
+        color: inherit;
+    }
+
+    [data-bs-theme="dark"] .theme-toggle i {
+        color: #cdcdde;
+    }
+
+    /* Scrollbar styles for dark mode */
+    [data-bs-theme="dark"] ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    [data-bs-theme="dark"] ::-webkit-scrollbar-track {
+        background: #1e1e2d;
+    }
+
+    [data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+        background: #2d2d3f;
+        border-radius: 4px;
+    }
+
+    [data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+        background: #3699ff;
+    }
+
+    /* Navbar specific dark mode styles */
+    [data-bs-theme="dark"] .app-header {
+        background: #1e1e2d !important;
+        border-bottom: 1px solid #2d2d3f;
+    }
+
+    [data-bs-theme="dark"] .nav-link {
+        color: #cdcdde !important;
+    }
+
+    [data-bs-theme="dark"] .nav-link:hover {
+        color: #ffffff !important;
+    }
+
+    [data-bs-theme="dark"] .navbar {
+        background: #1e1e2d !important;
+    }
+
+    [data-bs-theme="dark"] .navbar-collapse {
+        background: #1e1e2d;
+    }
+
+    [data-bs-theme="dark"] .dropdown-menu {
+        background: #1e1e2d;
+        border-color: #2d2d3f;
+    }
+
+    [data-bs-theme="dark"] .dropdown-item {
+        color: #cdcdde;
+    }
+
+    [data-bs-theme="dark"] .dropdown-item:hover {
+        background: #2d2d3f;
+        color: #ffffff;
+    }
+
+    [data-bs-theme="dark"] .message-body {
+        background: #1e1e2d;
+    }
+
+    [data-bs-theme="dark"] .btn-outline-primary {
+        color: #cdcdde;
+        border-color: #2d2d3f;
+    }
+
+    [data-bs-theme="dark"] .btn-outline-primary:hover {
+        background: #2d2d3f;
+        color: #ffffff;
+        border-color: #3699ff;
+    }
+
+    /* Additional styles for better contrast */
+    [data-bs-theme="dark"] .nav-icon-hover:hover {
+        background: #2d2d3f !important;
+    }
+
+    [data-bs-theme="dark"] .ti {
+        color: #cdcdde;
+    }
+
+    /* Navbar right side styles */
+    [data-bs-theme="dark"] .navbar-nav .nav-link {
+        color: #cdcdde !important;
+        transition: color 0.3s ease;
+    }
+
+    [data-bs-theme="dark"] .navbar-nav .nav-link:hover {
+        color: #ffffff !important;
+    }
+
+    .navbar-nav .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-nav .nav-link i {
+        font-size: 1.1rem;
+    }
+
+    /* Optional: Add hover effect */
+    .navbar-nav .nav-link:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    [data-bs-theme="dark"] .navbar-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Navbar icon styles */
+    .navbar-nav .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .navbar-nav .nav-link i {
+        font-size: 0.95rem;
+    }
+
+    .theme-toggle {
+        padding: 0.4rem 0.8rem !important;
+    }
+
+    .theme-toggle i {
+        font-size: 0.95rem;
+    }
+
+    /* Hover effects */
+    .nav-icon-hover {
+        transition: all 0.2s ease;
+    }
+
+    .nav-icon-hover:hover {
+        transform: scale(1.1);
+    }
+
+    [data-bs-theme="dark"] .nav-icon-hover:hover {
+        color: #ffffff !important;
+    }
+</style>
+@stack('styles')
 </head>
 
 <body>
@@ -21,9 +273,9 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-center">
-            <a href="#" class="text-nowrap logo-img">
+            <a href="{{ route('landingpage')}}" class="text-nowrap logo-img">
             {{-- <a href="{{ route('landingpage') }}" class="text-nowrap logo-img"> --}}
-            <img src="https://th.bing.com/th/id/OIP.kAUISDUCtKkJbri2eOKW6gAAAA?rs=1&pid=ImgDetMain" alt="" width="50" height="50" />
+            <img src="{{ asset('assets/logo-perusahaan/LogaSWA_Biru_2cm-removebg-preview.png') }}" alt="Logo Swabina" width="50" height="50" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -281,7 +533,7 @@
                     </span>
                     <span class="hide-menu">Berita</span>
                 </a>
-            </li>  
+            </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('logout') }}" 
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
@@ -306,42 +558,39 @@
     <div class="body-wrapper">
         <!--  Header Start -->
     <header class="app-header">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg">
             <ul class="navbar-nav">
-            <li class="nav-item d-block d-xl-none">
-                <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
-                <i class="ti ti-menu-2"></i>
-                </a>
-            </li>
-
-            </ul>
-            <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                    <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                        <i class="ti ti-user fs-6"></i>
-                        <p class="mb-0 fs-3"></p>
+                <li class="nav-item d-block d-xl-none">
+                    <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                        <i class="ti ti-menu-2"></i>
                     </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                        <i class="ti ti-mail fs-6"></i>
-                        <p class="mb-0 fs-3"></p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                        <i class="ti ti-list-check fs-6"></i>
-                        <p class="mb-0 fs-3"></p>
-                    </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                    </div>
-                </div>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-link nav-link px-3 theme-toggle">
+                        <i class="fas fa-sun theme-icon-light"></i>
+                        <i class="fas fa-moon theme-icon-dark d-none"></i>
+                    </button>
                 </li>
             </ul>
-        </div>
+            <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link nav-icon-hover" href="{{ route('logout') }}" 
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </nav>
-        </header>
-        <!--  Header End -->
-        <div class="container-fluid">
+    </header>
+    <!--  Header End -->
+    <div class="container-fluid">
         @yield('content')
-        </div>
+    </div>
     </div>
 </div>
 <script src="{{ asset('admin/libs/jquery/dist/jquery.min.js')}}"> </script>
@@ -359,7 +608,62 @@
     transition: transform 0.3s;
     }
 </style>
+<script>
+    const getPreferredTheme = () => {
+        const savedTheme = localStorage.getItem('theme')
+        if (savedTheme) {
+            return savedTheme
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-bs-theme', theme)
+        localStorage.setItem('theme', theme)
+        
+        // Toggle icons
+        const lightIcon = document.querySelector('.theme-icon-light')
+        const darkIcon = document.querySelector('.theme-icon-dark')
+        
+        if (theme === 'dark') {
+            lightIcon.classList.add('d-none')
+            darkIcon.classList.remove('d-none')
+            // Additional dark mode specific adjustments
+            document.querySelectorAll('.text-dark').forEach(element => {
+                element.classList.remove('text-dark');
+                element.classList.add('text-light');
+            });
+        } else {
+            lightIcon.classList.remove('d-none')
+            darkIcon.classList.add('d-none')
+            // Additional light mode specific adjustments
+            document.querySelectorAll('.text-light').forEach(element => {
+                element.classList.remove('text-light');
+                element.classList.add('text-dark');
+            });
+        }
+    }
+
+    // Set theme on load
+    document.addEventListener('DOMContentLoaded', () => {
+        setTheme(getPreferredTheme())
+    })
+
+    // Add toggle button handler
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-bs-theme')
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark')
+    })
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light')
+        }
+    })
+</script>
 @yield('scripts')
+@stack('scripts')
 </body>
 
 </html>
