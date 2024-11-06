@@ -19,7 +19,7 @@
   </section>
 
 <!-- Artikel Swaac -->
-<h1 class="judul-swaac">SWA Digital Solution</h1>
+<h1 class="judul-swaac">SWA Tech</h1>
 <section class="content-section">
     <!-- Gambar Pertama -->
     <div class="content-item align-left">
