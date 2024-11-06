@@ -525,7 +525,7 @@
     /* Mengatur lebar tetap kartu */
     .card-mengapa {
         width: 15rem;
-        height: 30rem;
+        height: 28rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
