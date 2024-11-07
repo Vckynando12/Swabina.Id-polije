@@ -24,7 +24,7 @@
     <!-- Gambar Pertama -->
     <div class="content-item align-left">
         @if($gambars->isNotEmpty() && $gambars->first()->gambar1)
-            <img src="{{ asset('storage/' . $gambars->first()->gambar1) }}" alt="Gambar Pertama" class="image1">
+            <img src="{{ asset('storage/' . $gambars->first()->gambar1) }}" alt="Gambar Pertama" class="gambar1">
         @else
             <h3>belum ada gambar ditambahkan</h3>
         @endif
@@ -39,7 +39,7 @@
     <!-- Gambar Kedua -->
     <div class="content-item align-right">
         @if($gambars->isNotEmpty() && $gambars->first()->gambar2)
-            <img src="{{ asset('storage/' . $gambars->first()->gambar2) }}" alt="Gambar Kedua" class="image1">
+            <img src="{{ asset('storage/' . $gambars->first()->gambar2) }}" alt="Gambar Kedua" class="gambar2">
         @else
             <h3>belum ada gambar ditambahkan</h3>
         @endif

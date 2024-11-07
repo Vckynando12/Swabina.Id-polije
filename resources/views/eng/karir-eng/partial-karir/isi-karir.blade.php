@@ -1,9 +1,7 @@
 <section class="section-pengumuman">
     <h1 class="judul-karir">Career</h1>
     <p class="teks-lowongan">Let's join and have a career with SWA. To apply, please click on 
-    <button type="button" class="btn btn-primary tombole-lowongan" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        The Availabe Vacancies
-    </button>
+    <a href="https://www.facebook.com/share/g/1CHndD9XWq/" class="link">The Available Vacancies</a>
     and fill out the link form below:
     </p>
     <!-- Link Form Data Pelamar-->
