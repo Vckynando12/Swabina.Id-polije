@@ -55,7 +55,7 @@ Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'
 Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
 Route::get('/Berita', [BeritaController::class, 'index'])->name('berita1212');
 Route::get('/Karir', [KarirController::class, 'karir'])->name('Karir');
-route::get('/Kontakkami',[KontakkamiController::class, 'index'])->name('kontakkami');
+Route::get('/Kontakkami',[KontakkamiController::class, 'index'])->name('kontakkami');
 
 //Route untuk memanggil view English
 Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');

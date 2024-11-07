@@ -1,13 +1,49 @@
 <section class="section-pengumuman">
     <h1 class="judul-karir">Career</h1>
-    <p class="teks-lowongan">Let's join and have a career with SWA. To apply, please click on 
-    <a href="https://www.facebook.com/share/g/1CHndD9XWq/" class="link">The Available Vacancies</a>
-    and fill out the link form below:
-    </p>
-    <!-- Link Form Data Pelamar-->
-    <p class="teks-link">
-        <a href="https://swabina.isc-hr.id/apply" class="link-form">Applicant Data Form</a>
-    </p>
+    <h5 class="sub-judul-karir" style="margin-left:50px; color:white; font-weight:bold; margin-top: 50px;">Job Vacancies Available :</h5>
+    <div class="owl-carousel">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Bakul Es</h5>
+          <img src="/assets/gambar_karir/bakul_es.jpg" alt="Logo 1" class="pamflet-kerja" >
+          <div class="d-flex justify-content-between">
+            <a href="#" class="btn btn-primary tombol-card">Apply</a>
+            <a href="#" class="btn btn-secondary tombol-card">Download</a> <!-- Tambahan tombol kedua -->
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <img src="/assets/gambar_karir/bakul_es.jpg" alt="Logo 1" class="pamflet-kerja" >
+          <div class="d-flex justify-content-between">
+            <a href="#" class="btn btn-primary tombol-card">Apply</a>
+            <a href="#" class="btn btn-secondary tombol-card">Download</a> <!-- Tambahan tombol kedua -->
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <img src="/assets/gambar_karir/karir.png" alt="Logo 1" class="pamflet-kerja" >
+          <div class="d-flex justify-content-between">
+            <a href="#" class="btn btn-primary tombol-card">Apply</a>
+            <a href="#" class="btn btn-secondary tombol-card">Download</a> <!-- Tambahan tombol kedua -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Tombol Previous dan Next -->
+<div class="carousel-nav tombol-nav">
+<button class="prev-btn">
+    <i class="bi bi-caret-left-fill"></i>
+</button>
+<button class="next-btn">
+    <i class="bi bi-caret-right-fill"></i>
+</button>
+</div>
 
 
     <!-- Modal -->
