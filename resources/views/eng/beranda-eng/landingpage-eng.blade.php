@@ -174,7 +174,7 @@
         @if($budaya->isNotEmpty())
         <h2 style="margin-bottom: 20px; text-align: {{ $budaya->first()->text_align }};">CULTURE</h2>
             @foreach($budaya as $budayaItem)
-                <h2 style="font-weight: bold">SIAP BISA</h2>
+                <h2 style="font-weight: bold; text-align: {{ $budaya->first()->text_align }};">SIAP BISA</h2>
                 <p style="font-size: large; text-align: {{ $budayaItem->text_align }};">
                     {!! nl2br(e($budayaItem->content['en'])) !!}
                 </p>
