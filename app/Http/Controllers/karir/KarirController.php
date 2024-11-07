@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Karir;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class KarirController extends Controller
 {
@@ -26,20 +28,46 @@ class KarirController extends Controller
         return view('eng.karir-eng.karir-eng', compact('karirs'));
     }
 
+    private function compressAndSaveImage($image)
+    {
+        $manager = new ImageManager(new Driver());
+        $img = $manager->read($image);
+
+        $img->scaleDown(800);
+
+        $fileName = time() . '_' . $image->getClientOriginalName();
+        $path = 'images/' . $fileName;
+
+        Storage::put('public/' . $path, $img->encode());
+
+        return $fileName;
+    }
+
     public function store(Request $request)
     {
         $request->validate([
             'judul' => 'required|string|max:255',
-            'file' => 'required|mimes:pdf,doc,docx,xls,xlsx|max:20480', // 20MB max
+            'file' => 'required|mimes:pdf,doc,docx,xls,xlsx|max:20480',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'deskripsi' => 'nullable|string',
+            'text_align' => 'required|in:left,center,right,justify',
         ]);
 
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
         $file->storeAs('public/documents', $fileName);
 
+        $gambarName = null;
+        if ($request->hasFile('gambar')) {
+            $gambarName = $this->compressAndSaveImage($request->file('gambar'));
+        }
+
         $karir = Karir::create([
             'judul' => $request->judul,
             'file' => $fileName,
+            'gambar' => $gambarName,
+            'deskripsi' => $request->deskripsi,
+            'text_align' => $request->text_align,
         ]);
 
         return response()->json([
@@ -55,10 +83,15 @@ class KarirController extends Controller
 
         $request->validate([
             'judul' => 'required|string|max:255',
-            'file' => 'nullable|mimes:pdf,doc,docx,xls,xlsx|max:20480', // 20MB max
+            'file' => 'nullable|mimes:pdf,doc,docx,xls,xlsx|max:20480',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'deskripsi' => 'nullable|string',
+            'text_align' => 'required|in:left,center,right,justify',
         ]);
 
         $karir->judul = $request->judul;
+        $karir->deskripsi = $request->deskripsi;
+        $karir->text_align = $request->text_align;
 
         if ($request->hasFile('file')) {
             Storage::delete('public/documents/' . $karir->file);
@@ -66,6 +99,15 @@ class KarirController extends Controller
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('public/documents', $fileName);
             $karir->file = $fileName;
+        }
+
+        if ($request->hasFile('gambar')) {
+            if ($karir->gambar) {
+                Storage::delete('public/images/' . $karir->gambar);
+            }
+            
+            $gambarName = $this->compressAndSaveImage($request->file('gambar'));
+            $karir->gambar = $gambarName;
         }
 
         $karir->save();
@@ -83,6 +125,9 @@ class KarirController extends Controller
             $karir = Karir::findOrFail($id);
             if ($karir->file) {
                 Storage::delete('public/documents/' . $karir->file);
+            }
+            if ($karir->gambar) {
+                Storage::delete('public/images/' . $karir->gambar);
             }
             $karir->delete();
             return response()->json([

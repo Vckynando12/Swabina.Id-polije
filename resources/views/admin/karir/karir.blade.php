@@ -11,7 +11,9 @@
     <table class="table mt-4">
         <thead>
             <tr>
+                <th>Gambar</th>
                 <th>Judul</th>
+                <th>Deskripsi</th>
                 <th>File</th>
                 <th>Aksi</th>
             </tr>
@@ -19,13 +21,25 @@
         <tbody>
             @foreach($karirs as $karir)
             <tr>
+                <td>
+                    @if($karir->gambar)
+                        <img src="{{ asset('storage/images/' . $karir->gambar) }}" 
+                             alt="Preview" style="max-width: 100px;">
+                    @endif
+                </td>
                 <td>{{ $karir->judul }}</td>
+                <td style="text-align: {{ $karir->text_align }};">
+                    {{ $karir->deskripsi }}
+                </td>
                 <td><a href="{{ asset('storage/documents/' . $karir->file) }}" target="_blank">Lihat File</a></td>
                 <td>
                     <button type="button" class="btn btn-sm btn-warning editBtn" 
                         data-id="{{ $karir->id }}" 
                         data-judul="{{ $karir->judul }}" 
-                        data-file="{{ $karir->file }}">
+                        data-file="{{ $karir->file }}"
+                        data-gambar="{{ $karir->gambar }}"
+                        data-deskripsi="{{ $karir->deskripsi }}"
+                        data-text-align="{{ $karir->text_align }}">
                         Edit
                     </button>
                     <button type="button" class="btn btn-sm btn-danger deleteBtn" data-id="{{ $karir->id }}">Hapus</button>
@@ -51,8 +65,44 @@
                 <input type="hidden" id="id" name="id">
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="gambar">Gambar</label>
+                        <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+                        <img id="previewImage" src="#" alt="Preview" style="max-width: 100%; margin-top: 10px; display: none;">
+                    </div>
+                    <div id="currentImage" style="display: none;">
+                        <img id="previewImage" src="" alt="Preview" style="max-width: 200px; margin: 10px 0;">
+                    </div>
+                    <div class="form-group">
                         <label for="judul">Judul</label>
                         <input type="text" class="form-control" id="judul" name="judul" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="text_align">Text Alignment</label>
+                        <div class="btn-group d-flex" role="group" aria-label="Text alignment">
+                            <input type="radio" class="btn-check" name="text_align" id="alignLeft" value="left" required>
+                            <label class="btn btn-outline-primary" for="alignLeft">
+                                <i class="fa-solid fa-align-left"></i> Left
+                            </label>
+
+                            <input type="radio" class="btn-check" name="text_align" id="alignCenter" value="center">
+                            <label class="btn btn-outline-primary" for="alignCenter">
+                                <i class="fa-solid fa-align-center"></i> Center
+                            </label>
+
+                            <input type="radio" class="btn-check" name="text_align" id="alignRight" value="right">
+                            <label class="btn btn-outline-primary" for="alignRight">
+                                <i class="fa-solid fa-align-right"></i> Right
+                            </label>
+
+                            <input type="radio" class="btn-check" name="text_align" id="alignJustify" value="justify">
+                            <label class="btn btn-outline-primary" for="alignJustify">
+                                <i class="fa-solid fa-align-justify"></i> Justify
+                            </label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="file">File (PDF, Word, Excel)</label>
@@ -84,6 +134,8 @@
         document.getElementById('currentFile').style.display = 'none';
         document.getElementById('id').value = '';
         document.getElementById('file').required = true;
+        document.getElementById('previewImage').src = '#';
+        document.getElementById('previewImage').style.display = 'none';
     });
 
     document.querySelectorAll('.editBtn').forEach(btn => {
@@ -92,13 +144,25 @@
             editId = this.getAttribute('data-id');
             var judul = this.getAttribute('data-judul');
             var file = this.getAttribute('data-file');
+            var gambar = this.getAttribute('data-gambar');
+            var deskripsi = this.getAttribute('data-deskripsi');
+            var textAlign = this.getAttribute('data-text-align');
 
             document.getElementById('karirModalLabel').textContent = 'Edit Karir';
             document.getElementById('id').value = editId;
             document.getElementById('judul').value = judul;
+            document.getElementById('deskripsi').value = deskripsi;
+            document.getElementById('text_align').value = textAlign;
             document.getElementById('currentFileName').textContent = file;
             document.getElementById('currentFile').style.display = 'block';
             document.getElementById('file').required = false;
+
+            if (gambar) {
+                document.getElementById('previewImage').src = '/storage/images/' + gambar;
+                document.getElementById('previewImage').style.display = 'block';
+            } else {
+                document.getElementById('previewImage').style.display = 'none';
+            }
 
             $('#karirModal').modal('show');
         });
@@ -202,6 +266,17 @@
                 }
             });
         });
+    });
+
+    document.getElementById('gambar').addEventListener('change', function() {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('previewImage').src = e.target.result;
+            document.getElementById('previewImage').style.display = 'block';
+        };
+        if (this.files[0]) {
+            reader.readAsDataURL(this.files[0]);
+        }
     });
 </script>
 

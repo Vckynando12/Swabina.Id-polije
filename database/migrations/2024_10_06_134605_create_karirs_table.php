@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('file');
+            $table->string('gambar')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->enum('text_align', ['left', 'center', 'right', 'justify'])->default('left');
             $table->timestamps();
         });
     }

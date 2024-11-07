@@ -2,12 +2,11 @@
 <section class="panggen-carousel">
     <div id="carouselExampleFade" class="carousel slide carousel-fade">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/assets/gambar_kontak/kantor1.jpg" class="d-block carousel-kontak" alt="...">
+            @foreach($carousels as $key => $carousel)
+            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                <img src="{{ asset('storage/' . $carousel->image) }}" class="d-block carousel-kontak" alt="Carousel Image">
             </div>
-            <div class="carousel-item">
-                <img src="/assets/gambar_kontak/kantor2.jpg" class="d-block carousel-kontak" alt="...">
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -15,36 +14,21 @@
 <section class="bagian-kontak">
     <div class="container">
         <div class="row">
-          <div class="col-sm-5 col-md-6">
-            <h1 class="judul-kontak">Contact</h1>
-            <p class="desk-pusat">
-                Head Office & AMDK Factory:
+          <div class="col-sm-5 col-md-6"><br>
+            @foreach($textKK as $text)
+            @if($text->content)
+            <p class="desk-pusat" style="text-align: {{ $text->text_align }}">
+                {!! nl2br($text->content) !!}
                 <br>
-                Jl. R.A. Kartini No.21 A Gresik 61122, Jawa Timur
-                <br>
-                Tel. 62 31 3984719
-                <br>
-                Fax. 62 31 3985794
-                <br>
-                Email. marketing@swabina.id
-                <br>
-                <a class="btn btn-primary tombol-pusat" href="https://goo.gl/maps/Gmhii9QLUbr4s2bNA" role="button">Lokasi</a>
+                <a class="btn btn-primary tombol-pusat" href="{{ $text->link }}" role="button">Location</a>
             </p>
-            <p class="desk-cabang">
-                Representative Office:
-                <br>
-                Desa Sumberarum, Kec. Kerek - Tuban, 62356 Jawa Timur
-                <br>
-                Tel. 62 356 711992
-                <br>
-                Fax. 62 356 711966
-                <br>
-                Email. -
-                <br>
-                <a class="btn btn-primary tombol-cabang" href="https://goo.gl/maps/fx5a8wDRejNEc1nw6" role="button">Lokasi</a>
+            @endif
+            @endforeach
           </div>
           <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
-            <img src="/assets/gambar_kontak/kantor1.jpg" class="img-fluid gambar-kontak" alt="...">
+            @foreach($gambarKK as $gambar)
+            <img src="{{ asset('storage/' . $gambar->image) }}" class="img-fluid gambar-kontak" alt="Office Image">
+            @endforeach
           </div>
         </div>
     </div>
@@ -104,40 +88,27 @@
 <section class="bagian-faq">
   <div class="container mt-5">
     <h1 class="judul-faq">FAQ</h1>
-    <!-- Pertanyaan 1 -->
-    <div class="d-flex mb-3 align-items-start">
-      <div class="icon">
-        <i class="bi bi-person"></i> <!-- Icon bisa disesuaikan -->
+    @foreach($faqs as $faq)
+      <!-- Pertanyaan -->
+      <div class="d-flex mb-3 align-items-start" style="justify-content: {{ $faq->text_align === 'center' ? 'center' : ($faq->text_align === 'right' ? 'flex-end' : 'flex-start') }}">
+        <div class="icon" style="margin-{{ $faq->text_align === 'right' ? 'left' : 'right' }}: 10px;">
+          <i class="bi bi-person"></i>
+        </div>
+        <p class="question mb-0" style="text-align: {{ $faq->text_align }}">
+          {{ $faq->getPertanyaan('en') }}
+        </p>
       </div>
-      <p class="question mb-0">Does swabina have any job vacancies this year?</p>
-    </div>
-    
-    <div class="d-flex mb-5 align-items-start">
-      <div class="icon">
-        <i class="bi bi-person-fill"></i> <!-- Icon bisa disesuaikan -->
+      
+      <!-- Jawaban -->
+      <div class="d-flex mb-5 align-items-start" style="justify-content: {{ $faq->text_align === 'center' ? 'center' : ($faq->text_align === 'right' ? 'flex-end' : 'flex-start') }}">
+        <div class="icon" style="margin-{{ $faq->text_align === 'right' ? 'left' : 'right' }}: 10px;">
+          <i class="bi bi-person-fill"></i>
+        </div>
+        <p class="answer mb-0" style="text-align: {{ $faq->text_align }}">
+          {!! $faq->getJawaban('en') !!}
+        </p>
       </div>
-      <p class="answer mb-0">Please check SWABINA gatra career information at the following link: 
-        <a href="http://swabina.id/home/karir">http://swabina.id/home/karir</a>
-      </p>
-    </div>
-  
-    <!-- Pertanyaan 2 -->
-    <div class="d-flex mb-3 align-items-start">
-      <div class="icon">
-        <i class="bi bi-person"></i> <!-- Icon bisa disesuaikan -->
-      </div>
-      <p class="question mb-0">Does SWABINA Gatra have relationships in various branches?</p>
-    </div>
-    
-    <div class="d-flex align-items-start">
-      <div class="icon">
-        <i class="bi bi-person-fill"></i> <!-- Icon bisa disesuaikan -->
-      </div>
-      <p class="answer mb-0">Yes it does, we have realtionships in various branches. Please check this url to view further information: 
-        <a href="https://swabina.id/home/klien">https://swabina.id/home/klien</a>
-      </p>
-    </div>
+    @endforeach
   </div>
-  
 </section>
 

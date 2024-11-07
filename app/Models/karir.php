@@ -9,5 +9,11 @@ class Karir extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['judul', 'file'];
+    protected $fillable = [
+        'judul', 
+        'file', 
+        'gambar',
+        'deskripsi',
+        'text_align'
+    ];
 }
