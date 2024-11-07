@@ -11,12 +11,14 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="background-image: url('{{ asset('assets/logo-perusahaan/Fantasi gunung alami(1).jpg') }}');">
 
-<div class="container-fluid">
-    @yield('content')
+<div class="bg-overlay">
+    <div class="container-fluid">
+        @yield('content')
+    </div>
 </div>
-    
+
 <script src="{{ asset('admin/libs/jquery/dist/jquery.min.js')}}"> </script>
 <script src="{{ asset('admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"> </script>
 <script src="{{ asset('admin/libs/apexcharts/dist/apexcharts.min.js')}}"> </script>
@@ -27,9 +29,30 @@
 <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script>$(document).ready(function() {$('.sidebar-link.has-arrow').on('click', function() {var $this = $(this);var $submenu = $this.next('.collapse');$submenu.slideToggle(300);$this.find('.dropdown-icon').toggleClass('rotate');});});</script>
 <style>
+    body {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+    }
+
+    .bg-overlay {
+        min-height: 100vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Overlay gelap untuk meningkatkan keterbacaan */
+        padding: 20px;
+    }
+
     .dropdown-icon.rotate {
-    transform: rotate(90deg);
-    transition: transform 0.3s;
+        transform: rotate(90deg);
+        transition: transform 0.3s;
+    }
+
+    @media (max-width: 768px) {
+        .container-fluid {
+            padding: 10px;
+        }
     }
 </style>
 @yield('scripts')

@@ -17,7 +17,7 @@
     @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine sekilas -->
-    @include ('kontak-eng.partial-kontak.isi-kontak')
+    @include ('eng.kontak-eng.partial-kontak.isi-kontak')
 
     <!-- Footer -->
     @include ('partial-eng.footer-eng')
