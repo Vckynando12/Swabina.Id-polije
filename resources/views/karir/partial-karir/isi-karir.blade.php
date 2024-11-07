@@ -1,7 +1,7 @@
 <section class="section-pengumuman">
     <h1 class="judul-karir">Karir</h1>
     <p class="teks-lowongan">Mari bergabung dan berkarir bersama SWABINA. Untuk melamar silahkan klik 
-    <a href="#" class="link">Lowongan Yang Tersedia</a>
+    <a href="https://www.facebook.com/share/g/1CHndD9XWq/" class="link">Lowongan Yang Tersedia</a>
     dan isi form link di bawah ini:
     </p>
     <!-- Link Form Data Pelamar-->
