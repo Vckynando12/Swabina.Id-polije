@@ -135,7 +135,7 @@
             {!! nl2br(e($sekilasItem->maintext['en'])) !!}
         </p>
     @endforeach
-      <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
+      <a href="{{ route('tentangkamiEng') }}" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
       onmouseover="this.style.backgroundColor='#0d6efd';" 
          onmouseout="this.style.backgroundColor='#0454a3';">
          Read More
@@ -181,7 +181,7 @@
             @endforeach
         @endif
 
-        <a href="#" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
+        <a href="{{ route('visimisiEng') }}" id="btn-tentang" role="button" class="btn btn-primary btn-lg"
             onmouseover="this.style.backgroundColor='#0d6efd';" 
             onmouseout="this.style.backgroundColor='#0454a3';">
             Read More
@@ -207,7 +207,7 @@
           </div>
           @endforeach
         </div>
-          <a href="#" role="button" class="btn btn-primary btn-lg" id="btn-tentang" style=""
+          <a href="{{ route('sertifEng') }}" role="button" class="btn btn-primary btn-lg" id="btn-tentang" style=""
              onmouseover="this.style.backgroundColor='#0d6efd';" onmouseout="this.style.backgroundColor='#0454a3';">
               Read More
             </a>
