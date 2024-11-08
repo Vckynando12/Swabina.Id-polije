@@ -52,7 +52,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link me-5" id="nav-hamburger"  href="#" style="">Kontak Kami</a> <!-- Add me-5 for margin -->
+            <a class="nav-link me-5" id="nav-hamburger"  href="{{ route('kontakkami') }}" style="">Kontak Kami</a> <!-- Add me-5 for margin -->
           </li>
 
           <li class="nav-item">
