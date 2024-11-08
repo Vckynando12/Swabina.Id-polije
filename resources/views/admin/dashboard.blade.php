@@ -65,7 +65,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">FAQ</p>
                     <h2 class="font-weight-bolder text-center">
-                      {{ $faq->count() }}
+                      {{ $faqs->count() }}
                     </h2>
                     <p class="mb-0">
                       <span class="text-success text-sm font-weight-bolder">+Aktif</span>
@@ -284,7 +284,7 @@
             labels: ['Berita', 'Sertifikat', 'FAQ', 'Karir'],
             datasets: [{
                 label: 'Jumlah Data',
-                data: [{{ $beritas->count() }}, {{ $sertifikats->count() }}, {{ $faq->count() }}, {{ $karirs->count() }}],
+                data: [{{ $beritas->count() }}, {{ $sertifikats->count() }}, {{ $faqs->count() }}, {{ $karirs->count() }}],
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 99, 132, 0.5)',

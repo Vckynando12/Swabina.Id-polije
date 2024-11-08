@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends($layout)
 
 @section('content')
 <div class="container">

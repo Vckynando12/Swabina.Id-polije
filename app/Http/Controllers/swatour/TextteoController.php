@@ -24,49 +24,69 @@ class TextteoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'content' => 'required|string',
-            'text_align' => 'required|in:left,center,right,justify',
-        ]);
+        try {
+            $request->validate([
+                'content' => 'required|string',
+                'text_align' => 'required|in:left,center,right,justify',
+            ]);
 
-        $content = str_replace("\r\n", "\n", $request->content);
+            $content = str_replace("\r\n", "\n", $request->content);
+            
+            // Initialize Google Translate
+            $tr_en = new GoogleTranslate('en');
+            $tr_en->setSource('id');
+
+            $text = Textteo::create([
+                'content' => [
+                    'id' => $content,
+                    'en' => $tr_en->translate($content)
+                ],
+                'text_align' => $request->text_align,
+            ]);
+
         
-        // Initialize Google Translate
-        $tr_en = new GoogleTranslate('en');
 
-        Textteo::create([
-            'content' => [
-                'id' => $content,
-                'en' => $tr_en->translate($content)
-            ],
-            'text_align' => $request->text_align,
-        ]);
+            return redirect()->back()->with('success', 'Text berhasil disimpan.');
+        } catch (\Exception $e) {
 
-        return redirect()->back()->with('success', 'Text berhasil disimpan.');
+            return redirect()->back()
+                ->with('error', 'Gagal menyimpan text: ' . $e->getMessage())
+                ->withInput();
+        }
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'content' => 'required|string',
-            'text_align' => 'required|in:left,center,right,justify',
-        ]);
+        try {
+            $request->validate([
+                'content' => 'required|string',
+                'text_align' => 'required|in:left,center,right,justify',
+            ]);
 
-        $content = str_replace("\r\n", "\n", $request->content);
-        
-        // Initialize Google Translate
-        $tr_en = new GoogleTranslate('en');
+            $content = str_replace("\r\n", "\n", $request->content);
+            
+            // Initialize Google Translate
+            $tr_en = new GoogleTranslate('en');
+            $tr_en->setSource('id');
 
-        $textteo = Textteo::findOrFail($id);
-        $textteo->update([
-            'content' => [
-                'id' => $content,
-                'en' => $tr_en->translate($content)
-            ],
-            'text_align' => $request->text_align,
-        ]);
+            $textteo = Textteo::findOrFail($id);
+            $textteo->update([
+                'content' => [
+                    'id' => $content,
+                    'en' => $tr_en->translate($content)
+                ],
+                'text_align' => $request->text_align,
+            ]);
 
-        return redirect()->back()->with('success', 'Text berhasil diperbarui.');
+ 
+
+            return redirect()->back()->with('success', 'Text berhasil diperbarui.');
+        } catch (\Exception $e) {
+          
+            return redirect()->back()
+                ->with('error', 'Gagal memperbarui text: ' . $e->getMessage())
+                ->withInput();
+        }
     }
 
     public function destroy($id)

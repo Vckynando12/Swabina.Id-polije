@@ -516,6 +516,11 @@
                             <span class="hide-menu">Text</span>
                         </a>
                     </li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('admin.kontakkami.faq.index') }}" class="sidebar-link">
+                            <span class="hide-menu">FAQ</span>
+                        </a>
+                    </li>
                 </ul>
             </li> 
             <li class="sidebar-item">

@@ -15,7 +15,9 @@ class GambarteoController extends Controller
     public function index()
     {
         $gambar = Gambarteo::first();
-        return view('admin.swatour.gambarteo', compact('gambar'));
+        $userRole = auth()->user()->role;
+        $layout = $userRole === 'admin' ? 'layouts.app' : 'layouts.ppa';
+        return view('admin.swatour.gambarteo', compact('gambar','userRole','layout'));
     }
 
     public function store(Request $request)

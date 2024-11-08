@@ -144,7 +144,6 @@ class KarirController extends Controller
             ]);
 
         } catch (\Exception $e) {
-           
             return response()->json([
                 'success' => false,
                 'message' => 'Gagal memperbarui data: ' . $e->getMessage()

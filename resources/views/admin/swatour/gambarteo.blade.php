@@ -1,5 +1,4 @@
-@extends('admin.dashboard')
-
+@extends($layout)
 @section('content')
 <div class="container">
     <h1>Manage Gambarteo Images</h1>

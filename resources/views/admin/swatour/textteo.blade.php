@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends($layout)
 
 @section('content')
 <div class="container">
@@ -10,6 +10,26 @@
                 icon: 'success',
                 title: 'Success',
                 text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    @if(session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
+    @if($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Error',
+                text: '{{ $errors->first() }}',
             });
         </script>
     @endif
@@ -62,8 +82,8 @@
                                 @method('PUT')
 
                                 <div class="form-group">
-                                    <label for="text">Edit Text:</label>
-                                    <textarea class="form-control" name="text" rows="3" required style="white-space: pre-wrap;">{{ $text->content['id'] }}</textarea>
+                                    <label for="content">Edit Text:</label>
+                                    <textarea class="form-control" name="content" rows="3" required style="white-space: pre-wrap;">{{ $text->content['id'] }}</textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -116,8 +136,8 @@
                     <form action="{{ route('admin.swatour.textteo.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="text">New Text:</label>
-                            <textarea class="form-control" name="text" rows="3" required style="white-space: pre-wrap;"></textarea>
+                            <label for="content">New Text:</label>
+                            <textarea class="form-control" name="content" rows="3" required style="white-space: pre-wrap;"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="text_align">Text Alignment:</label>

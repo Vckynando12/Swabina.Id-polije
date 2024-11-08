@@ -15,7 +15,10 @@ class CarouselteoController extends Controller
     public function index()
     {
         $carousels = Carouselteo::all();
-        return view('admin.swatour.carouselteo', compact('carousels'));
+        $userRole = auth()->user()->role;
+        $layout = $userRole === 'admin' ? 'layouts.app' : 'layouts.ppa';
+        
+        return view('admin.swatour.carouselteo', compact('carousels', 'userRole', 'layout'));
     }
 
     public function store(Request $request)
