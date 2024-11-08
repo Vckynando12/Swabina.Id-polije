@@ -1,38 +1,32 @@
+
 <section class="section-pengumuman">
     <h1 class="judul-karir">Karir</h1>
     <h5 class="sub-judul-karir" style="margin-left:50px; color:white; font-weight:bold; margin-top: 50px">Berikut lowongan kerja yang tersedia :</h5>
-    <div class="owl-carousel">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Bakul Es</h5>
-                <img src="/assets/gambar_karir/bakul_es.jpg" alt="Logo 1" class="pamflet-kerja" >
-                <div class="d-flex justify-content-between">
-                  <a href="#" class="btn btn-primary tombol-card">Apply</a>
-                  <a href="#" class="btn btn-secondary tombol-card">Download</a> <!-- Tambahan tombol kedua -->
+    
+    <!-- Tambahkan container untuk owl-carousel -->
+    <div class="container-fluid px-4">
+        <div class="owl-carousel">
+            @foreach($karirs as $karir)
+            <div class="card mx-2 my-4" style="width: 20rem; height: auto; overflow: hidden;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ $karir->judul }}</h5>
+                    @if($karir->gambar)
+                        <img src="{{ asset('storage/images/' . $karir->gambar) }}" alt="{{ $karir->judul }}" class="pamflet-kerja img-fluid">
+                    @else
+                        <img src="/assets/gambar_karir/karir.png" alt="Default Image" class="pamflet-kerja img-fluid">
+                    @endif
+                    <p class="card-text mt-3 flex-grow-1" style="text-align: {{ $karir->text_align }}">
+                        {{ $karir->deskripsi }}
+                    </p>
+                    <div class="d-flex justify-content-between mt-auto">
+                        <a href="#" class="btn btn-primary tombol-card">Apply</a>
+                        <a href="{{ asset('storage/documents/' . $karir->file) }}" class="btn btn-secondary tombol-card" target="_blank">Download</a>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <img src="/assets/gambar_karir/bakul_es.jpg" alt="Logo 1" class="pamflet-kerja" >
-                <div class="d-flex justify-content-between">
-                  <a href="#" class="btn btn-primary tombol-card">Apply</a>
-                  <a href="#" class="btn btn-secondary tombol-card">Download</a> <!-- Tambahan tombol kedua -->
-                </div>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <img src="/assets/gambar_karir/karir.png" alt="Logo 1" class="pamflet-kerja" >
-                <div class="d-flex justify-content-between">
-                  <a href="#" class="btn btn-primary tombol-card">Apply</a>
-                  <a href="#" class="btn btn-secondary tombol-card">Download</a> <!-- Tambahan tombol kedua -->
-                </div>
-              </div>
-            </div>
-          </div>
+            @endforeach
+        </div>
+    </div>
   
 
   <!-- Tombol Previous dan Next -->
@@ -68,28 +62,6 @@
               <a href="{{ asset('storage/documents/' . $karir->file) }}" class="btn btn-sm btn-primary me-3" target="_blank">
                   Download Persyaratan
               </a>
-              <div class="file-icon">
-                  @php
-                      $extension = pathinfo($karir->file, PATHINFO_EXTENSION);
-                      $iconClass = '';
-                      switch(strtolower($extension)) {
-                          case 'pdf':
-                              $iconClass = 'far fa-file-pdf text-danger';
-                              break;
-                          case 'doc':
-                          case 'docx':
-                              $iconClass = 'far fa-file-word text-primary';
-                              break;
-                          case 'xls':
-                          case 'xlsx':
-                              $iconClass = 'far fa-file-excel text-success';
-                              break;
-                          default:
-                              $iconClass = 'far fa-file text-secondary';
-                      }
-                  @endphp
-                  <i class="{{ $iconClass }} fa-2x"></i>
-              </div>
           </div>
           @endforeach
         </div>

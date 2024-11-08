@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use App\Models\Faq;
 use App\Models\SertifikatPenghargaan;
+use App\models\karir;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,7 +16,7 @@ class AdminController extends Controller
         $beritas = Berita::all();
         $sertifikats = SertifikatPenghargaan::all();
         $faq = faq::all();
-        
-        return view('admin.dashboard', compact('beritas', 'sertifikats','faq'));
+        $karirs = karir::all();
+        return view('admin.dashboard', compact('beritas', 'sertifikats','faq','karirs'));
     }
 }
