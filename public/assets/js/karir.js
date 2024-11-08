@@ -72,6 +72,25 @@ document.addEventListener("mouseup", () => {
     btn.style.cursor = 'grab';
 });
 
+//modal deskripsi lengkap 
+document.addEventListener('DOMContentLoaded', function () {
+    const cardTexts = document.querySelectorAll('.card-text');
+    
+    cardTexts.forEach(cardText => {
+        cardText.addEventListener('click', function () {
+            // Ambil teks lengkap dari elemen card-text
+            const fullText = this.textContent.trim();
+            
+            // Masukkan teks lengkap ke dalam modal
+            document.getElementById('fullDescription').textContent = fullText;
+            
+            // Tampilkan modal
+            const descriptionModal = new bootstrap.Modal(document.getElementById('descriptionModal'));
+            descriptionModal.show();
+        });
+    });
+});
+
 //owl carousel
 $(document).ready(function(){
   var owl = $('.owl-carousel');

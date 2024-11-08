@@ -7,7 +7,7 @@
     <div class="container-fluid px-4">
         <div class="owl-carousel">
             @foreach($karirs as $karir)
-            <div class="card mx-2 my-4" style="width: 20rem; height: auto; overflow: hidden;">
+            <div class="card mx-1 my-3" style="width: 20rem; height: 18rem; overflow: hidden;">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $karir->judul }}</h5>
                     @if($karir->gambar)
@@ -15,7 +15,7 @@
                     @else
                         <img src="/assets/gambar_karir/karir.png" alt="Default Image" class="pamflet-kerja img-fluid">
                     @endif
-                    <p class="card-text mt-3 flex-grow-1" style="text-align: {{ $karir->text_align }}">
+                    <p class="card-text mt-1 flex-grow-1" style="text-align: {{ $karir->text_align }}">
                         {{ $karir->deskripsi }}
                     </p>
                     <div class="d-flex justify-content-between mt-auto">
@@ -38,13 +38,25 @@
           <i class="bi bi-caret-right-fill"></i>
       </button>
   </div>
-    <!--<p class="teks-lowongan">Mari bergabung dan berkarir bersama SWABINA. Untuk melamar silahkan klik 
-    <a href="https://www.facebook.com/share/g/1CHndD9XWq/" class="link">Lowongan Yang Tersedia</a>
-    dan isi form link di bawah ini:
-    </p>
-    <p class="teks-link">
-        <a href="https://swabina.isc-hr.id/apply" class="link-form">Form Data Pelamar</a>
-    </p>-->
+  
+    <!-- Modal -->
+<div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="descriptionModalLabel">Deskripsi Lengkap</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fullDescription">
+                <!-- Deskripsi lengkap akan ditampilkan di sini -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
     <!-- Modal -->

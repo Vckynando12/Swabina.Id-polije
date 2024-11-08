@@ -123,13 +123,20 @@
     height: 150px;
 }
 
+.card-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    font-size: small;
+}
+
 .tombol-card {
     width: 125px;
     height: 25px;
     font-size: small;
     margin-right: 20px;
     margin-left: 20px;
-    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,7 +144,7 @@
 }
 
 .bg-gambar-karir{
-    margin-top: 100px;
+    margin-top: 150px;
     width: 100%;
     height: 450px;
 }
@@ -147,7 +154,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: -170px; /* Mengatur posisi tombol tepat di samping carousel */
+    margin-top: -250px; /* Mengatur posisi tombol tepat di samping carousel */
     z-index: 2; /* Agar tombol berada di atas gambar carousel */
     top: -60px;
 }
@@ -176,6 +183,13 @@
 .prev-btn:hover, .next-btn:hover {
     color: black;
 }
+
+.modal-body {
+    max-height: 60vh; /* Sesuaikan dengan tinggi modal yang Anda inginkan */
+    overflow-y: auto; /* Menambahkan scroll jika teks terlalu panjang */
+    word-wrap: break-word; /* Membagi kata yang terlalu panjang agar tidak melebihi batas */
+}
+
 /* Footer */
 .footer {
     background-color: #0454a3;
