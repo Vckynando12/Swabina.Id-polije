@@ -30,17 +30,38 @@ class KarirController extends Controller
 
     private function compressAndSaveImage($image)
     {
-        $manager = new ImageManager(new Driver());
-        $img = $manager->read($image);
+        try {
+            $manager = new ImageManager(new Driver());
+            
+            // Baca gambar
+            $img = $manager->read($image->getRealPath());
+            
+            // Resize gambar
+            $img->scaleDown(800);
+            
+            // Generate nama file unik
+            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            
+            // Tentukan path penyimpanan
+            $path = 'public/images/' . $fileName;
+            
+            // Encode dan simpan sesuai format
+            switch (strtolower($image->getClientOriginalExtension())) {
+                case 'png':
+                    Storage::put($path, $img->toPng());
+                    break;
+                case 'gif':
+                    Storage::put($path, $img->toGif());
+                    break;
+                default:
+                    Storage::put($path, $img->toJpeg(80));
+            }
+            
+            return $fileName;
+        } catch (\Exception $e) {
 
-        $img->scaleDown(800);
-
-        $fileName = time() . '_' . $image->getClientOriginalName();
-        $path = 'images/' . $fileName;
-
-        Storage::put('public/' . $path, $img->encode());
-
-        return $fileName;
+            throw $e;
+        }
     }
 
     public function store(Request $request)
@@ -48,7 +69,7 @@ class KarirController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'file' => 'required|mimes:pdf,doc,docx,xls,xlsx|max:20480',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
             'deskripsi' => 'nullable|string',
             'text_align' => 'required|in:left,center,right,justify',
         ]);
@@ -79,44 +100,56 @@ class KarirController extends Controller
 
     public function update(Request $request, $id)
     {
-        $karir = Karir::findOrFail($id);
+        try {
+            $request->validate([
+                'judul' => 'required|string|max:255',
+                'file' => 'nullable|mimes:pdf,doc,docx,xls,xlsx|max:20480',
+                'gambar' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:20840',
+                'deskripsi' => 'nullable|string',
+                'text_align' => 'required|in:left,center,right,justify',
+            ]);
 
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'file' => 'nullable|mimes:pdf,doc,docx,xls,xlsx|max:20480',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'deskripsi' => 'nullable|string',
-            'text_align' => 'required|in:left,center,right,justify',
-        ]);
+            $karir = Karir::findOrFail($id);
 
-        $karir->judul = $request->judul;
-        $karir->deskripsi = $request->deskripsi;
-        $karir->text_align = $request->text_align;
+            // Update basic fields
+            $karir->judul = $request->judul;
+            $karir->deskripsi = $request->deskripsi;
+            $karir->text_align = $request->text_align;
 
-        if ($request->hasFile('file')) {
-            Storage::delete('public/documents/' . $karir->file);
-            $file = $request->file('file');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/documents', $fileName);
-            $karir->file = $fileName;
-        }
-
-        if ($request->hasFile('gambar')) {
-            if ($karir->gambar) {
-                Storage::delete('public/images/' . $karir->gambar);
+            // Handle file upload if new file is provided
+            if ($request->hasFile('file')) {
+                // Delete old file if exists
+                if ($karir->file) {
+                    Storage::delete('public/documents/' . $karir->file);
+                }
+                $fileName = time() . '_' . $request->file('file')->getClientOriginalName();
+                $request->file('file')->storeAs('public/documents', $fileName);
+                $karir->file = $fileName;
             }
-            
-            $gambarName = $this->compressAndSaveImage($request->file('gambar'));
-            $karir->gambar = $gambarName;
+
+            // Handle image upload if new image is provided
+            if ($request->hasFile('gambar')) {
+                // Delete old image if exists
+                if ($karir->gambar) {
+                    Storage::delete('public/images/' . $karir->gambar);
+                }
+                $karir->gambar = $this->compressAndSaveImage($request->file('gambar'));
+            }
+
+            $karir->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Data berhasil diperbarui'
+            ]);
+
+        } catch (\Exception $e) {
+           
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal memperbarui data: ' . $e->getMessage()
+            ], 500);
         }
-
-        $karir->save();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Karir berhasil diperbarui',
-            'data' => $karir
-        ]);
     }
 
     public function destroy($id)

@@ -152,16 +152,25 @@
             document.getElementById('id').value = editId;
             document.getElementById('judul').value = judul;
             document.getElementById('deskripsi').value = deskripsi;
-            document.getElementById('text_align').value = textAlign;
+            
+            // Set text alignment radio button
+            const alignmentRadio = document.querySelector(`input[name="text_align"][value="${textAlign}"]`);
+            if (alignmentRadio) {
+                alignmentRadio.checked = true;
+            }
+
             document.getElementById('currentFileName').textContent = file;
             document.getElementById('currentFile').style.display = 'block';
             document.getElementById('file').required = false;
 
+            // Update preview image
             if (gambar) {
                 document.getElementById('previewImage').src = '/storage/images/' + gambar;
                 document.getElementById('previewImage').style.display = 'block';
+                document.getElementById('currentImage').style.display = 'block';
             } else {
                 document.getElementById('previewImage').style.display = 'none';
+                document.getElementById('currentImage').style.display = 'none';
             }
 
             $('#karirModal').modal('show');
@@ -171,35 +180,29 @@
     document.getElementById('karirForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        let fileInput = this.querySelector('input[type="file"]');
-        if (fileInput && fileInput.files[0]) {
-            let fileSize = fileInput.files[0].size / 1024 / 1024; // konversi ke MB
-            if (fileSize > 20) {
-                Swal.fire('Error!', 'Ukuran file melebihi 20 MB. Silakan pilih file yang lebih kecil.', 'error');
-                return;
-            }
-        }
-        
         let formData = new FormData(this);
         
         let url = isEditing 
-            ? '{{ route("admin.karir.karir.update", ":id") }}'.replace(':id', editId)
-            : '{{ route("admin.karir.karir.store") }}';
+            ? `/karir/${editId}`  // Simplified URL
+            : '/karir';           // Simplified URL
 
-        let method = isEditing ? 'POST' : 'POST';
-        
         if (isEditing) {
             formData.append('_method', 'PUT');
         }
 
         fetch(url, {
-            method: method,
+            method: 'POST', // Always POST, let Laravel handle the method override
             body: formData,
             headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
             }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
                 Swal.fire('Success!', data.message, 'success').then(() => {
