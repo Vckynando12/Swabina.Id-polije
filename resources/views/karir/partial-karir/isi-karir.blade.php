@@ -1,88 +1,20 @@
 
 <section class="section-pengumuman">
     <h1 class="judul-karir">Karir</h1>
-    <h5 class="sub-judul-karir" style="margin-left:50px; color:white; font-weight:bold; margin-top: 50px">Berikut lowongan kerja yang tersedia :</h5>
-    
-    <!-- Tambahkan container untuk owl-carousel -->
-    <div class="container-fluid px-4">
-        <div class="owl-carousel">
-            @foreach($karirs as $karir)
-            <div class="card mx-1 my-3" style="width: 20rem; height: 18rem; overflow: hidden;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ $karir->judul }}</h5>
-                    @if($karir->gambar)
-                        <img src="{{ asset('storage/images/' . $karir->gambar) }}" alt="{{ $karir->judul }}" class="pamflet-kerja img-fluid">
-                    @else
-                        <img src="/assets/gambar_karir/karir.png" alt="Default Image" class="pamflet-kerja img-fluid">
-                    @endif
-                    <p class="card-text mt-1 flex-grow-1" style="text-align: {{ $karir->text_align }}">
-                        {{ $karir->deskripsi }}
-                    </p>
-                    <div class="d-flex justify-content-between mt-auto">
-                        <a href="#" class="btn btn-primary tombol-card">Apply</a>
-                        <a href="{{ asset('storage/documents/' . $karir->file) }}" class="btn btn-secondary tombol-card" target="_blank">Download</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-  
+    <div class="container">
+        <div class="row">
+            <div class=".col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0">
+            <p class="teks-lowongan">Mari bergabung dan berkarir bersama SWABINA. Untuk melamar silahkan klik 
+            <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="https://www.facebook.com/share/g/1DwBo4ZPub/" target="_blank">Lowongan Kerja Yang Tersedia</a>
+            dan isi form link dibawah ini:
+            </p>
 
-  <!-- Tombol Previous dan Next -->
-  <div class="carousel-nav tombol-nav">
-      <button class="prev-btn">
-          <i class="bi bi-caret-left-fill"></i>
-      </button>
-      <button class="next-btn">
-          <i class="bi bi-caret-right-fill"></i>
-      </button>
-  </div>
-  
-    <!-- Modal -->
-<div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="descriptionModalLabel">Deskripsi Lengkap</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="fullDescription">
-                <!-- Deskripsi lengkap akan ditampilkan di sini -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <p>
+                <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="https://swabina.isc-hr.id/apply" target="_blank">Form Data Pelamar</a>   
+            </p>
             </div>
         </div>
     </div>
-</div>
-
-
-
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Lowongan Yang Tersedia</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          @foreach($karirs as $karir)
-          <div class="karir-item mb-3 d-flex align-items-center">
-              <h5 class="mb-0 me-3">{{ $karir->judul }}</h5>
-              <a href="{{ asset('storage/documents/' . $karir->file) }}" class="btn btn-sm btn-primary me-3" target="_blank">
-                  Download Persyaratan
-              </a>
-          </div>
-          @endforeach
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <img src="/assets/gambar_karir/karir.png" alt="Logo 1" class="bg-gambar-karir" >
 </section>
