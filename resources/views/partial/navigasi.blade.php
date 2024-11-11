@@ -35,7 +35,7 @@
               <li><a class="dropdown-item" href="{{ route('sekilas') }}" style="">Sekilas Perusahaan</a></li>
               <li><a class="dropdown-item" href="{{ route('visimisi') }}" style="">Visi & Misi Perusahaan</a></li>
               <li><a class="dropdown-item" href="{{ route('sertif') }}" style="">Sertifikat & Penghargaan</a></li>
-              <li><a class="dropdown-item" href="/assets/file_pdf/PANCAGATRA (5 KOMPETENSI DASAR KARYAWAN SWA)-1.pdf" target="_blank" style="">Kebijakan</a></li>
+              <li><a class="dropdown-item" href="#" target="_blank">Kebijakan & Pedoman</a></li>
             </ul>
           </li>
 
