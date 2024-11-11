@@ -56,6 +56,10 @@ Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
 Route::get('/Berita', [BeritaController::class, 'index'])->name('berita1212');
 Route::get('/Karir', [KarirController::class, 'karir'])->name('Karir');
 Route::get('/Kontakkami',[KontakkamiController::class, 'index'])->name('kontakkami');
+Route::get('/kebijakandanpedoman', function () {
+    return view('kebijakandanpedoman.kp'); // Merender view bernama 'halaman.blade.php'
+});
+
 
 //Route untuk memanggil view English
 Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');
@@ -71,6 +75,9 @@ Route::get('/en/memilihkami', [MkController::class, 'indexEng'])->name('memilihk
 Route::get('/en/Berita', [BeritaController::class, 'indexEng'])->name('berita1212Eng');
 Route::get('/en/Karir', [KarirController::class, 'karirEng'])->name('KarirEng');
 Route::get('/en/Kontakkami', [KontakkamiController::class, 'indexEng'])->name('kontakkamiEng');
+Route::get('/kebijakandanpedoman', function () {
+    return view('eng.kebijakandanpedoman-eng.kp-eng'); // Merender view bernama 'halaman.blade.php'
+});
 // Route untuk login
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
