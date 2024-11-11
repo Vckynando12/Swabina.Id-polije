@@ -97,7 +97,7 @@
           <img src="/assets/gambar_landingpage/digital.png" alt="..." class="card-img-top mx-auto" style="">
           <div class="card-body text-center">
             <h4 class="card-text fw-bold" style="color:#0454a3;">SWA</h4>
-            <h5 class="card-text fw-bold">Digital Solution</h5>
+            <h5 class="card-text fw-bold">Tech</h5>
           </div>
         </div>
     </div>
