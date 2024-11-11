@@ -72,7 +72,36 @@ document.addEventListener("mouseup", () => {
     btn.style.cursor = 'grab';
 });
 
-   
+$(document).ready(function(){
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: false,
+        center: true,
+        items: 3,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
+
+    // Fungsi untuk tombol prev dan next di carousel
+    $('.next-btn').click(function() {
+        owl.trigger('next.owl.carousel');
+    });
+
+    $('.prev-btn').click(function() {
+        owl.trigger('prev.owl.carousel');
+    });
+});
       
   
   

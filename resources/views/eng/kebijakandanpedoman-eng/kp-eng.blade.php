@@ -20,7 +20,7 @@
     @include ('partial-eng.navigasi-eng')
 
     <!-- Iki isine kebijakan dan pedoman -->
-   
+    @include ('eng.kebijakandanpedoman-eng.partial-kp.isi-kp-eng')
 
     <!-- Footer -->
     @include ('partial-eng.footer-eng')
