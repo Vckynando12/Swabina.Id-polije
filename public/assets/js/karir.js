@@ -72,57 +72,6 @@ document.addEventListener("mouseup", () => {
     btn.style.cursor = 'grab';
 });
 
-//modal deskripsi lengkap 
-document.addEventListener('DOMContentLoaded', function () {
-    const cardTexts = document.querySelectorAll('.card-text');
-    
-    cardTexts.forEach(cardText => {
-        cardText.addEventListener('click', function () {
-            // Ambil teks lengkap dari elemen card-text
-            const fullText = this.textContent.trim();
-            
-            // Masukkan teks lengkap ke dalam modal
-            document.getElementById('fullDescription').textContent = fullText;
-            
-            // Tampilkan modal
-            const descriptionModal = new bootstrap.Modal(document.getElementById('descriptionModal'));
-            descriptionModal.show();
-        });
-    });
-});
-
-//owl carousel
-$(document).ready(function(){
-  var owl = $('.owl-carousel');
-  owl.owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: false,
-      center: true,
-      items: 3,
-      responsive: {
-          0: {
-              items: 1
-          },
-          600: {
-              items: 2
-          },
-          1000: {
-              items: 3
-          }
-      }
-  });
-
-  // Fungsi untuk tombol prev dan next di carousel
-  $('.next-btn').click(function() {
-      owl.trigger('next.owl.carousel');
-  });
-
-  $('.prev-btn').click(function() {
-      owl.trigger('prev.owl.carousel');
-  });
-});
-
    
       
   
