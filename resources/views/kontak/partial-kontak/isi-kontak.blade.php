@@ -14,6 +14,7 @@
 <section class="bagian-kontak">
     <div class="container">
         <div class="row">
+          <h1 class="judul-kontak">Kontak</h1>
           <div class="col-sm-5 col-md-6"><br>
             @foreach($textKK as $text)
             @if($text->content)

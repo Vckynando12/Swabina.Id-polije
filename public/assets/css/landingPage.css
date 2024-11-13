@@ -520,6 +520,7 @@
         margin-bottom: 0px;
         text-align: center;
     }
+    
     #produk-layanan {
         font-size: 1.6em;
         margin-top: 0px;
@@ -536,11 +537,13 @@
         background: url('/assets/gambar_landingpage/bg.png');
         background-size: cover; /* Mengatur gambar background mencakup seluruh area tanpa mengubah rasio aspek */
     }
-#tentang-kami{
-    font-size: 25.6px;
-    color:black;
-    text-align: center;
-}
+
+    #tentang-kami{
+        font-size: 25.6px;
+        color:black;
+        text-align: center;
+        }
+        
     .navigasi {
         position: sticky;
         top: 0;
@@ -552,6 +555,25 @@
     .nav-item {
         background-color: white;
         color:black;
+        flex: 0 0 auto;
+    }
+
+    #aboutTab {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* untuk smooth scrolling di iOS */
+        padding-left: 280px !important;
+    }
+
+    #aboutTab .nav-item {
+        flex: 0 0 auto; /* Pastikan item tidak mengisi penuh layar */
+    }
+
+    /* Opsional: menyesuaikan lebar setiap tab untuk menampilkan 2-3 item pada awal */
+    #aboutTab .nav-link {
+        min-width: 150px; /* sesuaikan ukuran ini untuk kebutuhan Anda */
+        text-align: center;
     }
 
     .topheader {
@@ -661,7 +683,6 @@
     .mengapa-pilih-kami{
         display: inline-flex;
         margin-top: -50px;
-
     }
 
     .card img{
@@ -937,7 +958,8 @@
     .about-tab{
         background-color: white;
         font-size: 12px;
-        margin:5px;
+        margin-left: 0;
+        margin-right: 0;
         border-radius: 0px;
     }
 
