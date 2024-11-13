@@ -46,12 +46,16 @@
     ```bash
     composer require intervention/image
     ```
-8. Jalankan server lokal.
+ 8. Seed data ke dalam tabel `users` menggunakan seeder `UsersTableSeeder`.
+    ```bash
+    composer require stichoza/google-translate-php
+    ```
+9. Jalankan server lokal.
     ```bash
     php artisan serve
     ```
 
-9. Buka aplikasi di browser dengan alamat yang muncul pada terminal, contoh URL: [http://localhost:8000](http://localhost:8000).
+10. Buka aplikasi di browser dengan alamat yang muncul pada terminal, contoh URL: [http://localhost:8000](http://localhost:8000).
 
 ## Kontribusi
 
