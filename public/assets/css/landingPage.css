@@ -768,6 +768,20 @@
         margin-bottom: 5px; /* Memberikan jarak antara gambar dan teks */
     }
 
+    .floating-btn {
+        position: fixed; /* Menggunakan posisi fixed agar tetap di layar saat di-scroll */
+        right: 2px; /* Di tepi kanan */
+        top: 50%; /* Di tengah secara vertikal */
+        transform: translateY(-50%); /* Menyelaraskan ke tengah secara vertikal */
+        z-index: 1000; /* Agar tombol selalu berada di atas elemen lainnya */
+        text-align: center;
+        cursor: grab; /* Mengganti kursor menjadi tangan ketika hover */
+        }
+    
+    .floating-btn:active {
+        cursor: grabbing; /* Mengganti kursor menjadi tangan tertutup ketika di-drag */
+    }
+
     @keyframes emergencyLightGlow {
         0% {
             background-color: white;
@@ -825,14 +839,14 @@
         height: 100%; /* Atur tinggi tetap */
         margin: 0px;
         display: flex; /* Memusatkan kartu */
-
-
     }
+
     #carouselExample .card-img-top{
         height: auto;
         padding: 10px;
         width: 100%;
     }
+
     #carouselExample{
         margin:0px;
         align-items: flex-end;
