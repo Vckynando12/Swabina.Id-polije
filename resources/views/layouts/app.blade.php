@@ -540,15 +540,15 @@
                     </span>
                     <span class="hide-menu">Berita</span>
                 </a>
-            </li>
+            </li>        
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.karir.karir.index') }}" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route('admin.pedoman.pedoman.index') }}" aria-expanded="false">
                     <span>
-                        <iconify-icon icon="solar:text-field-focus-bold-duotone" class="fs-6"></iconify-icon>
+                        <iconify-icon icon="solar:book-bold-duotone" class="fs-6"></iconify-icon>
                     </span>
-                    <span class="hide-menu">Karir</span>
+                    <span class="hide-menu">Pedoman</span>
                 </a>
-            </li>   
+            </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('logout') }}" 
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 

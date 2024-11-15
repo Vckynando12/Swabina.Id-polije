@@ -1,3 +1,6 @@
+<!-- Tambahkan CSS Fancybox di bagian head -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
 <section class="panggen-kp container">
     <!-- Judul Section -->
     <div class="judul-wrapper text-center my-4">
@@ -7,51 +10,29 @@
     <!-- Carousel Konten -->
     <div class="carousel-wrapper position-relative">
         <div class="owl-carousel">
+            @foreach($pedomans as $pedoman)
             <div class="item text-center">
                 <div class="card">
                     <div class="card-body card-kebijakan">
-                <h5>Kebijakan Anti Penyuapan</h5>
-                <img src="/assets/gambar_kp/kebijakan-korupsi.png" alt="Gambar 1" class="img-fluid gambar-kebijakan">
-                <a href="#" class="btn btn-primary mt-3">Lihat Detail</a>
+                        <h5>{{ $pedoman->judul }}</h5>
+                        @if($pedoman->gambar)
+                            <img src="{{ asset('storage/images/' . $pedoman->gambar) }}" 
+                                 alt="{{ $pedoman->judul }}" 
+                                 class="img-fluid gambar-kebijakan">
+                        @endif
+                        @if($pedoman->file)
+                            <a href="{{ asset('storage/documents/' . $pedoman->file) }}" 
+                               data-fancybox="pdf"
+                               data-width="100%"
+                               data-height="100%"
+                               class="btn btn-primary mt-3">
+                                Lihat Detail
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
-            <div class="item text-center">
-                <div class="card">
-                    <div class="card-body card-kebijakan">
-                <h5>Kebijakan Mutu</h5>
-                <img src="/assets/gambar_kp/kebijakan-mutu.png" alt="Gambar 2" class="img-fluid gambar-kebijakan">
-                <a href="#" class="btn btn-primary mt-3">Lihat Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="item text-center">
-                <div class="card">
-                    <div class="card-body card-kebijakan">
-                <h5>Kebijakan Keselamatan Kesehatan Kerja</h5>
-                <img src="/assets/gambar_kp/kebijakan-k3.png" alt="Gambar 3" class="img-fluid gambar-kebijakan">
-                <a href="#" class="btn btn-primary mt-3">Lihat Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="item text-center">
-                <div class="card">
-                    <div class="card-body card-kebijakan">
-                <h5>Kebijakan Lingkungan</h5>
-                <img src="/assets/gambar_kp/kebijakan-lingkungan.png" alt="Gambar 4" class="img-fluid gambar-kebijakan">
-                <a href="#" class="btn btn-primary mt-3">Lihat Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="item text-center">
-                <div class="card">
-                    <div class="card-body card-kebijakan">
-                <h5>Kebijakan Alkohol, Obat Terlarang, dan Merokok</h5>
-                <img src="/assets/gambar_kp/kebijakan-narkoba.png" alt="Gambar 5" class="img-fluid gambar-kebijakan">
-                <a href="#" class="btn btn-primary mt-3">Lihat Detail</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <!-- Tombol Previous dan Next -->
@@ -65,3 +46,32 @@
         </div>
     </div>
 </section>
+
+<!-- Tambahkan JavaScript Fancybox sebelum closing </body> -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+    Fancybox.bind('[data-fancybox="pdf"]', {
+        defaultDisplay: 'pdf',
+        dragToClose: false,
+        toolbar: {
+            display: {
+                left: [
+                    "infobar",
+                ],
+                middle: [
+                    "zoomIn",
+                    "zoomOut",
+                    "toggle1to1",
+                    "rotateCCW",
+                    "rotateCW",
+                    "flipX",
+                    "flipY",
+                ],
+                right: [
+                    "close",
+                ],
+            },
+        },
+    });
+</script>
+

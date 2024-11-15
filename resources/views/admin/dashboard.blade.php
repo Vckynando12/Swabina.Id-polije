@@ -90,9 +90,9 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Karir</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pedoman</p>
                     <h2 class="font-weight-bolder text-center">
-                      {{ $karirs->count() }}
+                      {{ $pedomans->count() }}
                     </h2>
                     <p class="mb-0">
                       <span class="text-success text-sm font-weight-bolder">+Aktif</span>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                    <i class="fas fa-briefcase text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="fas fa-book text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -281,10 +281,10 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Berita', 'Sertifikat', 'FAQ', 'Karir'],
+            labels: ['Berita', 'Sertifikat', 'FAQ', 'Pedoman'],
             datasets: [{
                 label: 'Jumlah Data',
-                data: [{{ $beritas->count() }}, {{ $sertifikats->count() }}, {{ $faqs->count() }}, {{ $karirs->count() }}],
+                data: [{{ $beritas->count() }}, {{ $sertifikats->count() }}, {{ $faqs->count() }}, {{ $pedomans->count() }}],
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 99, 132, 0.5)',

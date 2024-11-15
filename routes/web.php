@@ -27,6 +27,7 @@ use App\Http\Controllers\landingpage\SertifikatPenghargaanController;
 use App\Http\Controllers\landingpage\VisiMisiBudayaController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Memilihkami\MkController;
+use App\Http\Controllers\pedoman\PedomanController;
 use App\Http\Controllers\swaacademy\CarouselSAController;
 use App\Http\Controllers\Swaacademy\GambarSAController;
 use App\Http\Controllers\swaacademy\TextSAController;
@@ -54,12 +55,9 @@ Route::get('/visimisibudaya', [TentangkamiController::class, 'visiMisiBudaya'])-
 Route::get('/SertifikatPenghargaan', [TentangkamiController::class, 'sertifikat'])->name('sertif');
 Route::get('/memilihkami', [MkController::class, 'index'])->name('memilihkami');
 Route::get('/Berita', [BeritaController::class, 'index'])->name('berita1212');
-Route::get('/Karir', [KarirController::class, 'karir'])->name('Karir');
+Route::get('/karir', [KarirController::class,'karir'])->name('Karir');
 Route::get('/Kontakkami',[KontakkamiController::class, 'index'])->name('kontakkami');
-Route::get('/kebijakandanpedoman', function () {
-    return view('kebijakandanpedoman.kp'); })->name('kebijakandanpedoman');
-
-
+Route::get('/kebijakanDanPedoman', [PedomanController::class, 'pedoman'])->name('kebijakandanpedoman');
 
 //Route untuk memanggil view English
 Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');
@@ -75,8 +73,7 @@ Route::get('/en/memilihkami', [MkController::class, 'indexEng'])->name('memilihk
 Route::get('/en/Berita', [BeritaController::class, 'indexEng'])->name('berita1212Eng');
 Route::get('/en/Karir', [KarirController::class, 'karirEng'])->name('KarirEng');
 Route::get('/en/Kontakkami', [KontakkamiController::class, 'indexEng'])->name('kontakkamiEng');
-Route::get('/kebijakandanpedoman-eng', function () {
-    return view('eng.kebijakandanpedoman-eng.kp-eng'); })->name('kebijakandanpedoman-eng');
+Route::get('/en/kebijakanDanPedoman', [PedomanController::class, 'pedomanEng'])->name('kebijakandanpedomanEng');
 
 // Route untuk login
 Route::middleware('guest')->group(function () {
@@ -123,7 +120,6 @@ Route::group(['middleware' => ['auth', 'role:admin,marketing']], function() {
         Route::get('/', [VisiMisiBudayaController::class, 'index'])->name('admin.landingpage.visimisi.index');
         Route::post('/store', [VisiMisiBudayaController::class, 'store'])->name('admin.landingpage.visimisi.store');
         Route::put('/admin/landingpage/visimisi/{id}', [VisiMisiBudayaController::class, 'update'])->name('admin.landingpage.visimisi.update');
-        // Route::delete('/delete/{id}', [VisiMisiBudayaController::class, 'destroy'])->name('admin.landingpage.visimisi.destroy');
         Route::delete('/admin/landingpage/visimisi/{id}', [VisiMisiBudayaController::class, 'destroy'])->name('admin.landingpage.visimisi.destroy');
     });
     Route::prefix('sertifikat-penghargaan')->group(function () {
@@ -282,10 +278,31 @@ Route::group(['middleware' => ['auth', 'role:admin,marketing']], function() {
 
 });
 Route::group(['middleware' => ['auth', 'role:admin,sdm']], function() {
-    Route::prefix('karir')->group(function () {
-        Route::get('/', [KarirController::class, 'index'])->name('admin.karir.karir.index');
-        Route::post('/', [KarirController::class, 'store'])->name('admin.karir.karir.store');
-        Route::put('/{id}', [KarirController::class, 'update'])->name('admin.karir.karir.update');
-        Route::delete('/{id}', [KarirController::class, 'destroy'])->name('admin.karir.karir.destroy');
+    Route::prefix('Pedoman')->group(function () {
+        Route::get('/', [PedomanController::class, 'index'])->name('admin.pedoman.pedoman.index');
+        Route::post('/', [PedomanController::class, 'store'])->name('admin.pedoman.pedoman.store');
+        Route::put('/{id}', [PedomanController::class, 'update'])->name('admin.pedoman.pedoman.update');
+        Route::delete('/{id}', [PedomanController::class, 'destroy'])->name('admin.pedoman.pedoman.destroy');
     });
+});
+
+// Route untuk Pedoman
+Route::prefix('pedoman')->group(function () {
+    // Route untuk halaman admin
+    Route::get('/', [App\Http\Controllers\pedoman\PedomanController::class, 'index'])
+        ->name('admin.pedoman.pedoman.index');
+    
+    // Route untuk CRUD operations
+    Route::post('/', [App\Http\Controllers\pedoman\PedomanController::class, 'store'])
+        ->name('admin.pedoman.pedoman.store');
+    Route::put('/{id}', [App\Http\Controllers\pedoman\PedomanController::class, 'update'])
+        ->name('admin.pedoman.pedoman.update');
+    Route::delete('/{id}', [App\Http\Controllers\pedoman\PedomanController::class, 'destroy'])
+        ->name('admin.pedoman.pedoman.destroy');
+    
+    // Route untuk halaman publik
+    Route::get('/public', [App\Http\Controllers\pedoman\PedomanController::class, 'pedoman'])
+        ->name('pedoman');
+    Route::get('/public/eng', [App\Http\Controllers\pedoman\PedomanController::class, 'pedomanEng'])
+        ->name('pedoman.eng');
 });

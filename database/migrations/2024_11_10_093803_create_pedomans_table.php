@@ -6,27 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('karirs', function (Blueprint $table) {
+        Schema::create('pedomans', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('file');
-            $table->string('gambar')->nullable();
             $table->text('deskripsi')->nullable();
+            $table->string('file')->nullable();
+            $table->string('gambar')->nullable();
             $table->enum('text_align', ['left', 'center', 'right', 'justify'])->default('left');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('karirs');
+        Schema::dropIfExists('pedomans');
     }
 };

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use App\Models\Faq;
 use App\Models\SertifikatPenghargaan;
-use App\Models\Karir;
+use App\Models\Pedoman;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -17,13 +17,13 @@ class AdminController extends Controller
             $beritas = Berita::latest()->get();
             $sertifikats = SertifikatPenghargaan::latest()->get();
             $faqs = Faq::all();
-            $karirs = Karir::latest()->get();
+            $pedomans = pedoman::all();
 
             return view('admin.dashboard', compact(
                 'beritas',
                 'sertifikats',
                 'faqs',
-                'karirs'
+                'pedomans'
             ));
         } catch (\Exception $e) {
             return view('admin.dashboard')->with('error', 'Terjadi kesalahan saat memuat data');

@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h2>Manajemen Karir</h2>
+    <h2>Manajemen Pedoman</h2>
 
-    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#karirModal" id="addKarirBtn">
-        Tambah Karir
+    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#pedomanModal" id="addPedomanBtn">
+        Tambah Pedoman
     </button>
 
     <table class="table mt-4">
@@ -19,30 +19,30 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($karirs as $karir)
+            @foreach($pedomans as $pedoman)
             <tr>
                 <td>
-                    @if($karir->gambar)
-                        <img src="{{ asset('storage/images/' . $karir->gambar) }}" 
+                    @if($pedoman->gambar)
+                        <img src="{{ asset('storage/images/' . $pedoman->gambar) }}" 
                              alt="Preview" style="max-width: 100px;">
                     @endif
                 </td>
-                <td>{{ $karir->judul }}</td>
-                <td style="text-align: {{ $karir->text_align }};">
-                    {{ $karir->deskripsi }}
+                <td>{{ $pedoman->judul }}</td>
+                <td style="text-align: {{ $pedoman->text_align }};">
+                    {{ $pedoman->deskripsi }}
                 </td>
-                <td><a href="{{ asset('storage/documents/' . $karir->file) }}" target="_blank">Lihat File</a></td>
+                <td><a href="{{ asset('storage/documents/' . $pedoman->file) }}" target="_blank">Lihat File</a></td>
                 <td>
                     <button type="button" class="btn btn-sm btn-warning editBtn" 
-                        data-id="{{ $karir->id }}" 
-                        data-judul="{{ $karir->judul }}" 
-                        data-file="{{ $karir->file }}"
-                        data-gambar="{{ $karir->gambar }}"
-                        data-deskripsi="{{ $karir->deskripsi }}"
-                        data-text-align="{{ $karir->text_align }}">
+                        data-id="{{ $pedoman->id }}" 
+                        data-judul="{{ $pedoman->judul }}" 
+                        data-file="{{ $pedoman->file }}"
+                        data-gambar="{{ $pedoman->gambar }}"
+                        data-deskripsi="{{ $pedoman->deskripsi }}"
+                        data-text-align="{{ $pedoman->text_align }}">
                         Edit
                     </button>
-                    <button type="button" class="btn btn-sm btn-danger deleteBtn" data-id="{{ $karir->id }}">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-danger deleteBtn" data-id="{{ $pedoman->id }}">Hapus</button>
                 </td>
             </tr>
             @endforeach
@@ -50,17 +50,17 @@
     </table>
 </div>
 
-<!-- Modal Karir -->
-<div class="modal fade" id="karirModal" tabindex="-1" role="dialog" aria-labelledby="karirModalLabel" aria-hidden="true">
+<!-- Modal Pedoman -->
+<div class="modal fade" id="pedomanModal" tabindex="-1" role="dialog" aria-labelledby="pedomanModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="karirModalLabel">Tambah Karir</h5>
+                <h5 class="modal-title" id="pedomanModalLabel">Tambah Pedoman</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="karirForm" enctype="multipart/form-data">
+            <form id="pedomanForm" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" id="id" name="id">
                 <div class="modal-body">
@@ -126,11 +126,11 @@
     let isEditing = false;
     let editId = null;
 
-    document.getElementById('addKarirBtn').addEventListener('click', function() {
+    document.getElementById('addPedomanBtn').addEventListener('click', function() {
         isEditing = false;
         editId = null;
-        document.getElementById('karirForm').reset();
-        document.getElementById('karirModalLabel').textContent = 'Tambah Karir';
+        document.getElementById('pedomanForm').reset();
+        document.getElementById('pedomanModalLabel').textContent = 'Tambah Pedoman';
         document.getElementById('currentFile').style.display = 'none';
         document.getElementById('id').value = '';
         document.getElementById('file').required = true;
@@ -148,7 +148,7 @@
             var deskripsi = this.getAttribute('data-deskripsi');
             var textAlign = this.getAttribute('data-text-align');
 
-            document.getElementById('karirModalLabel').textContent = 'Edit Karir';
+            document.getElementById('pedomanModalLabel').textContent = 'Edit Pedoman';
             document.getElementById('id').value = editId;
             document.getElementById('judul').value = judul;
             document.getElementById('deskripsi').value = deskripsi;
@@ -173,39 +173,54 @@
                 document.getElementById('currentImage').style.display = 'none';
             }
 
-            $('#karirModal').modal('show');
+            $('#pedomanModal').modal('show');
         });
     });
 
-    document.getElementById('karirForm').addEventListener('submit', function(e) {
+    document.getElementById('pedomanForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
         let formData = new FormData(this);
         
         let url = isEditing 
-            ? `/karir/${editId}`  // Simplified URL
-            : '/karir';           // Simplified URL
+            ? `{{ route('admin.pedoman.pedoman.update', '') }}/${editId}`
+            : '{{ route('admin.pedoman.pedoman.store') }}';
 
         if (isEditing) {
             formData.append('_method', 'PUT');
         }
 
         fetch(url, {
-            method: 'POST', // Always POST, let Laravel handle the method override
+            method: 'POST',
             body: formData,
             headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json'
             }
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+        .then(async response => {
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                const data = await response.json();
+                if (!response.ok) {
+                    if (response.status === 422) {
+                        const errorMessages = Object.values(data.errors).flat().join('\n');
+                        throw new Error(errorMessages);
+                    }
+                    throw new Error(data.message || 'Network response was not ok');
+                }
+                return data;
+            } else {
+                throw new Error('Response was not JSON');
             }
-            return response.json();
         })
         .then(data => {
             if (data.success) {
-                Swal.fire('Success!', data.message, 'success').then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: data.message,
+                    icon: 'success'
+                }).then(() => {
                     window.location.reload();
                 });
             } else {
@@ -214,7 +229,11 @@
         })
         .catch(error => {
             console.error('Error:', error);
-            Swal.fire('Error!', error.message || 'An unexpected error occurred. Please try again.', 'error');
+            Swal.fire({
+                title: 'Error!',
+                text: error.message || 'An unexpected error occurred. Please try again.',
+                icon: 'error'
+            });
         });
     });
 
@@ -231,7 +250,7 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`{{ route('admin.karir.karir.destroy', ':id') }}`.replace(':id', id), {
+                    fetch(`{{ route('admin.pedoman.pedoman.destroy', '') }}/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}',

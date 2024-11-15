@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Karir extends Model
+class Pedoman extends Model
 {
-    use HasFactory;
+    protected $table = 'pedomans';
 
     protected $fillable = [
-        'judul', 
-        'file', 
+        'judul',
+        'file',
         'gambar',
         'deskripsi',
         'text_align'
