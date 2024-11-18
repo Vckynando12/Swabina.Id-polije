@@ -38,6 +38,12 @@ class BeritaController extends Controller
         try {
             Log::info('Starting image compression', ['original_size' => $file->getSize()]);
             
+            // Create directory if it doesn't exist
+            $storagePath = storage_path('app/public/beritas');
+            if (!file_exists($storagePath)) {
+                mkdir($storagePath, 0755, true);
+            }
+            
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
 
