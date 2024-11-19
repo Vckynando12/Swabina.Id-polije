@@ -241,7 +241,24 @@
 <section style="background-color:rgba(236, 236, 236, 0.958); padding: 40px 0;">
   <div class="container" style="width: 100%; max-width: 100%; padding: 0; display: flex; justify-content: center;">
     <div class="embed-responsive embed-responsive-16by9" style="width: 75%; position: relative; padding-bottom: 42%; height: 0; overflow: hidden;">
-      <iframe class="embed-responsive-item" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/f3bHlPrWspY" allowfullscreen></iframe>
+      @php
+        $defaultUrl = 'https://www.youtube.com/embed/f3bHlPrWspY';
+        $youtubeUrl = $social->youtube_landing ?? '';
+        
+        // Extract video ID from various YouTube URL formats
+        $videoId = '';
+        if (preg_match('/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $youtubeUrl, $matches)) {
+            $videoId = $matches[1];
+        }
+        
+        $embedUrl = $videoId ? "https://www.youtube.com/embed/{$videoId}" : $defaultUrl;
+      @endphp
+      
+      <iframe class="embed-responsive-item" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+        src="{{ $embedUrl }}" 
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
 </section>

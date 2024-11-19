@@ -32,9 +32,23 @@
         </div>
         <div class="col-md-6 text-md-end">
           <div class="social-icons">
-            <a class="social-icons" href="https://www.facebook.com/profile.php?id=100074480148412"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.youtube.com/channel/UCYFZXYfnQjvJx269wUFN9og"><i class="bi bi-youtube"></i></a>
-            <a href="https://www.instagram.com/swabina.official/"><i class="bi bi-instagram"></i></a>
+            @if($social->facebook)
+              <a class="social-icons" href="{{ $social->facebook }}" target="_blank">
+                <i class="bi bi-facebook"></i>
+              </a>
+            @endif
+            
+            @if($social->youtube)
+              <a href="{{ $social->youtube }}" target="_blank">
+                <i class="bi bi-youtube"></i>
+              </a>
+            @endif
+            
+            @if($social->instagram)
+              <a href="{{ $social->instagram }}" target="_blank">
+                <i class="bi bi-instagram"></i>
+              </a>
+            @endif
           </div>
         </div>
       </div>

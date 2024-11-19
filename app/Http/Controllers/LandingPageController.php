@@ -8,6 +8,7 @@ use App\Models\JejakLangkah;
 use App\Models\SertifikatPenghargaan;
 use App\Models\VisiMisiBudaya;
 use App\Models\FotoLayanan;
+use App\models\SocialLink;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -19,13 +20,14 @@ class LandingPageController extends Controller
         $jejakLangkahs = JejakLangkah::all();
         $sertifikatPenghargaans = SertifikatPenghargaan::all();
         $fotoLayanan = FotoLayanan::first();
+        $social = SocialLink::first();
 
         // Fetch Visi, Misi, and Budaya separately
         $visi = VisiMisiBudaya::where('type', 'visi')->get();
         $misi = VisiMisiBudaya::where('type', 'misi')->get();
         $budaya = VisiMisiBudaya::where('type', 'budaya')->get();
 
-        return view('beranda.landingpage', compact('carousels', 'sekilas', 'jejakLangkahs', 'sertifikatPenghargaans', 'fotoLayanan','visi','misi','budaya'));
+        return view('beranda.landingpage', compact('carousels', 'sekilas', 'jejakLangkahs', 'sertifikatPenghargaans', 'fotoLayanan','visi','misi','budaya','social'));
     }
     public function indexEng()
     {
@@ -34,12 +36,12 @@ class LandingPageController extends Controller
         $jejakLangkahs = JejakLangkah::all();
         $sertifikatPenghargaans = SertifikatPenghargaan::all();
         $fotoLayanan = FotoLayanan::first();
-
+        $social = SocialLink::first();
         // Fetch Visi, Misi, and Budaya separately
         $visi = VisiMisiBudaya::where('type', 'visi')->get();
         $misi = VisiMisiBudaya::where('type', 'misi')->get();
         $budaya = VisiMisiBudaya::where('type', 'budaya')->get();
 
-        return view('eng.beranda-eng.landingpage-eng', compact('carousels', 'sekilas', 'jejakLangkahs', 'sertifikatPenghargaans', 'fotoLayanan','visi','misi','budaya'));
+        return view('eng.beranda-eng.landingpage-eng', compact('carousels', 'sekilas', 'jejakLangkahs', 'sertifikatPenghargaans', 'fotoLayanan','visi','misi','budaya','social'));
     }
 }

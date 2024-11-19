@@ -28,6 +28,7 @@ use App\Http\Controllers\landingpage\VisiMisiBudayaController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Memilihkami\MkController;
 use App\Http\Controllers\pedoman\PedomanController;
+use App\Http\Controllers\SocialMedia\SocialLinkController;
 use App\Http\Controllers\swaacademy\CarouselSAController;
 use App\Http\Controllers\Swaacademy\GambarSAController;
 use App\Http\Controllers\swaacademy\TextSAController;
@@ -274,6 +275,12 @@ Route::group(['middleware' => ['auth', 'role:admin,marketing']], function() {
         Route::post('/store', [FaqController::class, 'store'])->name('admin.kontakkami.faq.store');
         Route::put('/update/{id}', [FaqController::class, 'update'])->name('admin.kontakkami.faq.update');
         Route::delete('/destroy/{id}', [FaqController::class, 'destroy'])->name('admin.kontakkami.faq.destroy');
+    });
+    Route::prefix('sosialmedia')->name('admin.sosialmedia.')->group(function () {
+        Route::get('/sosmed', [SocialLinkController::class, 'index'])->name('sosmed.index');
+        Route::post('/sosmed', [SocialLinkController::class, 'store'])->name('sosmed.store');
+        Route::put('/sosmed/{id}', [SocialLinkController::class, 'update'])->name('sosmed.update');
+        Route::delete('/sosmed/{id}', [SocialLinkController::class, 'destroy'])->name('sosmed.destroy');
     });
 
 });
