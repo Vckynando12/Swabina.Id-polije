@@ -8,7 +8,12 @@
     <div class="owl-carousel">
         @foreach($berita as $index => $item)
             <div class="item">
-                <img src="{{ asset('storage/' . $item->image) }}" alt="Berita {{ $index + 1 }}">
+                <!-- Fancybox Preview -->
+                <a href="{{ asset('storage/' . $item->image) }}" data-fancybox="gallery" data-caption="Berita {{ $index + 1 }}">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="Berita {{ $index + 1 }}">
+                </a>
+    
+                <!-- Read More Button -->
                 <button class="read-more-btn" data-target="desc{{ $index + 1 }}">
                     <span class="content-id">Baca Selengkapnya</span>
                     <span class="content-en" style="display: none;">Read More</span>
@@ -16,6 +21,7 @@
             </div>
         @endforeach
     </div>
+    
 
     <!-- Tombol Previous dan Next -->
     <div class="carousel-nav tombol-nav">

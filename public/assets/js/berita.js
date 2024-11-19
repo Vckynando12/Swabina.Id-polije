@@ -132,6 +132,18 @@ document.addEventListener("mouseup", () => {
     });
 });
 
+//menambah tombol unduh pada fancybox
+Fancybox.bind("[data-fancybox]", {
+    Toolbar: {
+        display: [
+            "zoom",
+            "download",  // Tambahkan tombol download
+            "close"
+        ],
+    },
+    Thumbs: false, // Nonaktifkan thumbnail
+});
+
 
 
   
