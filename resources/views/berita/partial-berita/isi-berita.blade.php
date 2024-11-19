@@ -9,7 +9,7 @@
         @foreach($berita as $index => $item)
             <div class="item">
                 <!-- Fancybox Preview -->
-                <a href="{{ asset('storage/' . $item->image) }}" data-fancybox="gallery" data-caption="Berita {{ $index + 1 }}">
+                <a href="{{ asset('storage/' . $item->image) }}" data-fancybox="gallery" data-caption="Berita {{ isset($item->title['id']) ? $item->title['id'] : '' }}">
                     <img src="{{ asset('storage/' . $item->image) }}" alt="Berita {{ $index + 1 }}">
                 </a>
     
