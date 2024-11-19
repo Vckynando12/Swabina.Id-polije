@@ -5,11 +5,17 @@
     <div class="owl-carousel">
         @foreach($berita as $index => $item)
             <div class="item">
-                <img src="{{ asset('storage/' . $item->image) }}" alt="News {{ $index + 1 }}">
+                <!-- Fancybox Preview -->
+                <a href="{{ asset('storage/' . $item->image) }}" data-fancybox="gallery" data-caption="News {{ $index + 1 }}">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="News {{ $index + 1 }}">
+                </a>
+    
+                <!-- Read More Button -->
                 <button class="read-more-btn" data-target="desc{{ $index + 1 }}">Read More</button>
             </div>
         @endforeach
     </div>
+    
 
     <!-- Navigation Buttons -->
     <div class="carousel-nav tombol-nav">
