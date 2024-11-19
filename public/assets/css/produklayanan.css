@@ -449,7 +449,7 @@
     /* Judul */
     .judul-swaac {
         font-size: 22px; /* Mengurangi ukuran font judul */
-        margin-bottom: 20px; /* Mengurangi margin bawah judul */
+        margin-bottom: 5px; /* Mengurangi margin bawah judul */
         color: #0454a3;
     }
 
@@ -465,15 +465,15 @@
     }
 
     /* Mengatur gambar pertama agar berada di tengah */
-    .image1 {
-        max-width: 80%;
+    .gambar1 {
+        width: 90%;
         margin: 0 auto 15px auto; /* Mengatur gambar agar berada di tengah dan memberi jarak dengan deskripsi */
-        margin-top: 20px;
+        margin-top: 5px;
     }
 
     /* Mengatur gambar kedua tetap di bawah kanan */
-    .image2 {
-        max-width: 70%; /* Memperbesar gambar kedua agar lebih proporsional */
+    .gambar2 {
+        width: 90%; /* Memperbesar gambar kedua agar lebih proporsional */
         margin: 15px auto 0 auto; /* Menempatkan gambar kedua di tengah, dengan jarak margin atas */
         align-self: flex-end; /* Tetap menempel di bawah kanan */
     }
