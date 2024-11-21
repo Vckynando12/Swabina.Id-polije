@@ -22,7 +22,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['partial.footer', 'partial-eng.footer-eng'], function ($view) {
-            $view->with('social', SocialLink::first());
+            try {
+                $social = SocialLink::select('facebook', 'youtube', 'instagram')
+                    ->firstOrCreate(['id' => 1]);
+                $view->with('social', $social);
+            } catch (\Exception $e) {
+                // Fallback jika database error
+                $view->with('social', new SocialLink());
+            }
         });
     }
 }
