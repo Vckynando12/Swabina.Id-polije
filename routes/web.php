@@ -59,6 +59,7 @@ Route::get('/Berita', [BeritaController::class, 'index'])->name('berita1212');
 Route::get('/karir', [KarirController::class,'karir'])->name('Karir');
 Route::get('/Kontakkami',[KontakkamiController::class, 'index'])->name('kontakkami');
 Route::get('/kebijakanDanPedoman', [PedomanController::class, 'pedoman'])->name('kebijakandanpedoman');
+Route::get('/public', [PedomanController::class, 'pedoman'])->name('pedoman');
 
 //Route untuk memanggil view English
 Route::get('/en', [LandingPageController::class, 'indexEng'])->name('landingpageEng');
@@ -75,6 +76,7 @@ Route::get('/en/Berita', [BeritaController::class, 'indexEng'])->name('berita121
 Route::get('/en/Karir', [KarirController::class, 'karirEng'])->name('KarirEng');
 Route::get('/en/Kontakkami', [KontakkamiController::class, 'indexEng'])->name('kontakkamiEng');
 Route::get('/en/kebijakanDanPedoman', [PedomanController::class, 'pedomanEng'])->name('kebijakandanpedomanEng');
+Route::get('/public/eng', [PedomanController::class, 'pedomanEng'])->name('pedoman.eng');
 
 // Route untuk login
 Route::middleware('guest')->group(function () {
@@ -284,32 +286,18 @@ Route::group(['middleware' => ['auth', 'role:admin,marketing']], function() {
     });
 
 });
-Route::group(['middleware' => ['auth', 'role:admin,sdm']], function() {
+Route::group(['middleware' => ['auth', 'role:admin,sdm,marketing']], function() {
     Route::prefix('Pedoman')->group(function () {
         Route::get('/', [PedomanController::class, 'index'])->name('admin.pedoman.pedoman.index');
         Route::post('/', [PedomanController::class, 'store'])->name('admin.pedoman.pedoman.store');
         Route::put('/{id}', [PedomanController::class, 'update'])->name('admin.pedoman.pedoman.update');
         Route::delete('/{id}', [PedomanController::class, 'destroy'])->name('admin.pedoman.pedoman.destroy');
     });
-});
-
-// Route untuk Pedoman
-Route::prefix('pedoman')->group(function () {
-    // Route untuk halaman admin
-    Route::get('/', [App\Http\Controllers\pedoman\PedomanController::class, 'index'])
-        ->name('admin.pedoman.pedoman.index');
     
-    // Route untuk CRUD operations
-    Route::post('/', [App\Http\Controllers\pedoman\PedomanController::class, 'store'])
-        ->name('admin.pedoman.pedoman.store');
-    Route::put('/{id}', [App\Http\Controllers\pedoman\PedomanController::class, 'update'])
-        ->name('admin.pedoman.pedoman.update');
-    Route::delete('/{id}', [App\Http\Controllers\pedoman\PedomanController::class, 'destroy'])
-        ->name('admin.pedoman.pedoman.destroy');
-    
-    // Route untuk halaman publik
-    Route::get('/public', [App\Http\Controllers\pedoman\PedomanController::class, 'pedoman'])
-        ->name('pedoman');
-    Route::get('/public/eng', [App\Http\Controllers\pedoman\PedomanController::class, 'pedomanEng'])
-        ->name('pedoman.eng');
+    Route::prefix('pedoman')->group(function () {
+        Route::get('/', [PedomanController::class, 'index'])->name('admin.pedoman.pedoman.index');
+        Route::post('/', [PedomanController::class, 'store'])->name('admin.pedoman.pedoman.store');
+        Route::put('/{id}', [PedomanController::class, 'update'])->name('admin.pedoman.pedoman.update');
+        Route::delete('/{id}', [PedomanController::class, 'destroy'])->name('admin.pedoman.pedoman.destroy');
+    });
 });
