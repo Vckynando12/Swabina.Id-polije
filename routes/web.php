@@ -293,11 +293,4 @@ Route::group(['middleware' => ['auth', 'role:admin,sdm,marketing']], function() 
         Route::put('/{id}', [PedomanController::class, 'update'])->name('admin.pedoman.pedoman.update');
         Route::delete('/{id}', [PedomanController::class, 'destroy'])->name('admin.pedoman.pedoman.destroy');
     });
-    
-    Route::prefix('pedoman')->group(function () {
-        Route::get('/', [PedomanController::class, 'index'])->name('admin.pedoman.pedoman.index');
-        Route::post('/', [PedomanController::class, 'store'])->name('admin.pedoman.pedoman.store');
-        Route::put('/{id}', [PedomanController::class, 'update'])->name('admin.pedoman.pedoman.update');
-        Route::delete('/{id}', [PedomanController::class, 'destroy'])->name('admin.pedoman.pedoman.destroy');
-    });
 });

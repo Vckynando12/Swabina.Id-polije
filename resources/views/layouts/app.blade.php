@@ -550,6 +550,14 @@
                 </a>
             </li>
             <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.sosialmedia.sosmed.index') }}" aria-expanded="false">
+                    <span>
+                        <i class="fa-solid fa-icons"></i>
+                    </span>
+                    <span class="hide-menu">Sosial Media</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('logout') }}" 
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
                 aria-expanded="false">
