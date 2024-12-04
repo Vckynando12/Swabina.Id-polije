@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\kontakkami;
 
-use App\Models\textKK;
+use App\Models\TextKK;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

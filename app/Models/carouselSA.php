@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class carouselSA extends Model
+class CarouselSA extends Model
 {
     use HasFactory;
 
